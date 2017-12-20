@@ -3,7 +3,7 @@ ul,li{list-style:none;}
 a{text-decoration:none;}
 fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
 select, input { vertical-align:middle;}
-select, input, textarea { font-size:12px; margin:0; }
+select, input, textarea { font-size:0.16rem; margin:0; }
 textarea { resize:none; }
 img {border:0; vertical-align:middle; }
 table { border-collapse:collapse; }
@@ -22,36 +22,8 @@ s,i,em{font-style:normal;text-decoration:none;}
 }
 input:focus{outline:none;} 
 article, aside, canvas, details, figcaption, figure,main,footer, header, hgroup, menu, nav, section, summary{display: block;}
-@font-face {font-family: "iconfont";
-  src: url('../font/iconfont.eot?t=1484793044531'); /* IE9*/
-  src: url('../font/iconfont.eot?t=1484793044531#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../font/iconfont.woff?t=1484793044531') format('woff'), /* chrome, firefox */
-  url('../font/iconfont.ttf?t=1484793044531') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('../font/iconfont.svg?t=1484793044531#iconfont') format('svg'); /* iOS 4.1- */
-}
 body {
     font-size: 0.375rem;
     font-family: "微软雅黑";
     color: #3e3e3e;
 }
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:0.25rem;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-caidan:before { content: "\f000d"; }
-
-.icon-erweima:before { content: "\f0050"; }
-
-.icon-tuichu:before { content: "\e796"; }
-
-.icon-my:before { content: "\e607"; }
-
-.icon-fangdajing:before { content: "\e653"; }
-
-.icon-shouye:before { content: "\e600"; }
-
-.icon-camera:before { content: "\e501"; }

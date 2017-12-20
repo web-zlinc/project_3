@@ -2,7 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" id="vp"/>
+    <script type="text/javascript">
+        var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+        document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+        var scale = 1/window.devicePixelRatio;
+        var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+        document.getElementById("vp").content = mstr;
+    </script>
     <title>Document</title>
+    <link rel="stylesheet"  href="libs/base.css" />
 </head>
 <body>
     <div id="app"></div>

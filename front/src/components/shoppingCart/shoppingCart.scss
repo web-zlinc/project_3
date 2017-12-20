@@ -1,0 +1,48 @@
+html,body{
+    height: 100%;
+}
+#app{
+    height:100%;
+
+}
+.container{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+#y_cart_header{
+    height:1.2rem;
+    ul{
+        height: 100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:0 0.133333rem;
+        li{
+            font-size:0.6rem;
+            color:#58bc58;
+        }
+        li:last-child{
+            font-size:0.4rem;
+        }
+    }
+}
+
+// 主内容区
+#y_cart_Main{
+    flex:1;
+    overflow-x:hidden;}
+
+// 结算部分
+#y_cart_footer{
+    height: 1.333333rem;
+    border-bottom:0.015625rem solid #D9D9D9;
+    background-color: #f00;
+}
+
+
+// 最底下的切换部分，待首页人员做好再更改
+.gonggong{
+    height:1.333333rem;
+    background-color: #672ded;
+}
