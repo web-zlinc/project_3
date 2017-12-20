@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --colors",
-    "start": "webpack-dev-server --devtool eval --progress --open --colors --content-base ./"
+    "start": "webpack-dev-server --devtool eval --progress --colors --content-base ./"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -39,6 +39,7 @@
   "author": "ys",
   "license": "ISC",
   "dependencies": {
+    "antd": "^3.0.2",
     "axios": "^0.17.1",
     "events": "^1.1.1",
     "flux": "^3.1.2"
