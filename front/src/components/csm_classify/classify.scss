@@ -1,0 +1,20 @@
+#classify_container{
+    height:100%;
+    display:felx;
+    flex-direction:column;
+    .classify_top{
+        height:0.6rem;
+        border-bottom:0.013333rem solid #D8D8D8;
+    }
+    .classify_content{
+        flex:1;
+        display:flex;
+        .left{
+            width: 1.066667rem;
+        }
+        .right{
+            flex:1;
+            background-color:red;
+        }
+    }
+}
