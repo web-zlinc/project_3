@@ -6,13 +6,9 @@ import {Router, Route, hashHistory, browserHistory, Link, IndexRoute} from 'reac
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
 
-
+import Cart from './components/shoppingCart/shoppingCartComponent'
 
 
 
      
-ReactDOM.render(
-    <div>
-        
-    </div>
-, document.getElementById('app'));
+ReactDOM.render(<Cart/>, document.getElementById('app'));
