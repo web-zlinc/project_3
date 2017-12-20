@@ -52,7 +52,18 @@ module.exports = {
                     }
                 }
             }]
-      }]
+        },{ 
+            test: /\.(js|jsx)$/, 
+            exclude: /node_modules/, 
+            loader: "babel-loader", 
+            query:
+              {
+                presets:['es2015','react'],
+                plugins: [
+                    ["import", {libraryName: "antd", style: "css"}] //按需加载
+                ]
+              },
+        },]
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
