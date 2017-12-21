@@ -11,12 +11,17 @@ import Cart from './components/shoppingCart/shoppingCartComponent'
 import ClassifyComponent from './components/csm_classify/classifyComponent.js'
 
 import Login from './components/login/loginComponent'
+import Myorchard from './components/myorchard/myorchardComponent';
+import Personal from './components/personal/personalComponent';
+
 Rem.rem();
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/Classify" component={ClassifyComponent}/>
         <Route path="/cart" component={Cart}/>
         <Route path="/login" component={Login}/>
+        <Route path="/myorchard" component={Myorchard}/>
+        <Route path="/personal" component={Personal}/>
     </Router>,document.getElementById('app'))
 
      

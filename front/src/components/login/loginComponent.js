@@ -5,7 +5,7 @@ import './login.scss'
 export default class LoginComponent extends React.Component{
     render(){
         return (
-            <div id="container">
+            <div id="l_container">
                 <div className="l_top">
                     <p>
                         <Icon type="left" className="fl" />
