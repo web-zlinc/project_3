@@ -3,7 +3,6 @@ html,body{
 }
 #app{
     height:100%;
-
 }
 .container{
     height:100%;
@@ -18,9 +17,10 @@ html,body{
         justify-content:space-between;
         align-items:center;
         padding:0 0.133333rem;
+        border-bottom:0.013333rem solid #ccc;
         li{
-            font-size:0.6rem;
-            color:#58bc58;
+            font-size:0.5rem;
+            color:#75a739;
         }
         li:last-child{
             font-size:0.4rem;
@@ -31,13 +31,48 @@ html,body{
 // 主内容区
 #y_cart_Main{
     flex:1;
-    overflow-x:hidden;}
+    overflow-x:hidden;
+}
 
 // 结算部分
 #y_cart_footer{
     height: 1.333333rem;
-    border-bottom:0.015625rem solid #D9D9D9;
-    background-color: #f00;
+    border-top:0.013333rem solid #ddd;
+    box-shadow: 0 -0.05rem 0.05rem 0 rgba(0,0,0,.15);
+    display:flex;
+    justify-content:space-between;
+    span{
+        height:1.333333rem;
+        line-height:1.333333rem;
+        i.y_checked_icon{
+            display:inline-block;
+            width:0.666667rem;
+            height:0.666667rem;
+            font-size: 0.42rem;
+            line-height:0.666667rem;
+            margin-right:0.133333rem;
+            padding-left: 0.266667rem;
+        }
+    }
+    .y_select_all,em.tt{
+        font-size:0.38rem;
+    }
+    .y_cart_total{
+        flex:1;
+        text-align:right;
+        margin-right:0.266667rem;
+        em.price{
+            color:#ff8000;
+            font-size:0.52rem;
+        }
+    }
+    .y_cart_account{
+        width: 3rem;
+        background-color: #ff8000;
+        color:#fff;
+        font-size:0.45rem;
+        text-align:center;
+    }
 }
 
 
