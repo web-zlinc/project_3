@@ -14,10 +14,7 @@ class ClassifyComponent extends React.Component{
         this.setState({type:event.target.innerText});
         const left=document.getElementsByClassName('left')[0];
         const spans=left.getElementsByTagName('span');
-        for(var i=0;i<spans.length;i++){
-            spans[i].style.color="#3A3A3A";
-            spans[i].style.backgroundColor="#3A3A3A";
-            spans[i].style.borderLeft="none";
+        for(var i=0;i<spans.length;i++){         
             spans[i].classList.remove("active");
       }        
         const currentLi=event.target;

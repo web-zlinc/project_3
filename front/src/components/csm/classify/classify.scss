@@ -26,11 +26,7 @@
 
                     }
                 }
-                li:nth-child(1){
-                    color:#65A032;
-                    background-color:#fff;
-                    border-left:2px solid #65A032;
-                }
+               
                 .active{
                     color:#65A032;
                     background-color:#fff;
@@ -40,6 +36,7 @@
         }
         .right{
             flex:1;
+            background-color:#fff;
         }
     }
 }
