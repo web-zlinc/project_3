@@ -24,8 +24,6 @@ ReactDOM.render(
         <Route path="/search" component={SearchComponent} />
         <Route path="/" component={Main} />
         <Route path="/classify" component={ClassifyComponent}>
-            <IndexRoute component={AllShow}/>
-            <Route myParmas={{url:'allshow.php',type:'果园优选'}} path="allshow" component={AllShow}/>
         </Route>
         <Route path="/cart" component={Cart}/>
     </Router>
