@@ -6,6 +6,7 @@ const ButtonGroup = Button.Group;
 
 import '../../assets/css/commonSearch.css'
 
+
 export default class SearchComponent extends React.Component {
     constructor(props) {
         super(props);

@@ -8,13 +8,6 @@
     $phone = isset($_GET["phone"]) ? $_GET["phone"] : '';
 
 
-    // $sql = "select * from user where phone=$phone";
-    // $sql = "select * from shoppingcart as cart 
-    //         inner join user as us on us.uid=cart.uid
-    //         inner join goods as gds on gds.gid=us.gid";
-
-
-    // $sql = "select * from goods,`user`,shoppingcart where shoppingcart.uid =1 and  shoppingcart.gid= goods.gid and `user`.uid = shoppingcart.uid;";
 
     $sql = "select * from goods,`user`,shoppingcart where `user`.phone =$phone and `user`.uid = shoppingcart.uid and  shoppingcart.gid= goods.gid ;";
 

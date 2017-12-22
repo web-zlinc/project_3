@@ -1,7 +1,7 @@
 //http://visionmedia.github.io/superagent/
 import request from 'superagent'
 
-const LOCAL_SERVER = 'http://localhost:888/php/';
+const LOCAL_SERVER = 'http://localhost:5555/php/';
 
 const DEV_SERVER = '';
 const PRO_SERVER = '';
@@ -19,7 +19,7 @@ const HttpClient = {
             .get(getUrl(path))
             .query(query)
             .end((err, res) => {
-                if (err) {
+                if (err){
                     reject(err);
                 } else {
                     console.log(res)
