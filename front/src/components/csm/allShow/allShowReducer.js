@@ -1,5 +1,11 @@
-export default function LoginReducer(state = {}, action){
-    var newState = JSON.parse(JSON.stringify(state));
+/* 
+* @Author: sherah
+* @Date:   2017-12-21 14:15:02
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-12-21 14:15:37
+*/
+export default function AllShowReducer(state = {}, action){
+    var newState = state;
     switch(action.type){
         case 'beforeRequest':
             newState.status = 0;

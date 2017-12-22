@@ -1,8 +1,8 @@
 .allshow{
     display:flex;
+    height: 100%;
     flex-direction:column;
     div:nth-child(1){
-       
         height: 0.666667rem;
         line-height: 0.666667rem;
         text-align:center;
@@ -20,13 +20,11 @@
         
     }
     div:nth-child(2){
-        flex:1;      
+        flex:1;    
         dl{
-            height:100%;
             display:flex;
             flex-wrap:wrap;
             justify-content:flex-around;   
-            column-count:3;
             a{
                 width: 33%;
                 display:flex;
@@ -40,8 +38,8 @@
                     img{
                         background-position:center;
                         display:block;
-                        height:0.96rem;
-                      width:0.96rem;
+                        height:1.0rem;
+                      width:1.0rem;
                     }
                 }
             }
