@@ -2,23 +2,25 @@
 * @Author: sherah
 * @Date:   2017-12-20 20:41:46
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-21 20:48:13
+* @Last Modified time: 2017-12-22 20:22:32
 */
 import React from 'react';
 import {connect} from 'react-redux'
 import {Icon} from 'antd';
+import {Link} from 'react-router'
 import * as allShowActions from '../../datagrid/datagridAction.js'
-class AllShowComponent extends React.Component{
-    shouldComponentUpdate(newProps, newState){
+class AllShowComponent extends React.Component{ 
+      shouldComponentUpdate(nextProps, nextState){
+         var type=this.props.type;
         var url=this.props.url;
-        var type=this.props.type;
-            this.props.getData(url,{type:this.props.type});
-            return true       
-    }
+        this.props.getData(url,{type:type});
+            return true 
+     }
      componentDidMount(){
-        var url=this.props.url;
         var type=this.props.type;
-            this.props.getData(url,{type:this.props.type}); 
+        var url=this.props.url;
+        this.props.getData(url,{type:type});
+
      }
     render(){
         if(!this.props.dataset){
@@ -26,17 +28,17 @@ class AllShowComponent extends React.Component{
         }
         return (
             <div className="allshow">
-                <div><p>{this.props.type}<span>全部<Icon type="right" /></span></p></div>
+                <div><p className="tip">{this.props.type}</p><span>全部<Icon type="right" /></span></div>
                 <div>
                     <dl>
                         {
                             this.props.dataset.map(function(obj,index){
                                 return (
-                                <a key={index}>
+                            <Link to="/classify/classify_list" key={index}>
                             <dt key={'dt'+index}><img src={obj.images} alt="" />
                             </dt>
                             <dd key={'dd'+index}>{obj.short_name}</dd>
-                             </a>)
+                             </Link>)
                             })
                         }
                     

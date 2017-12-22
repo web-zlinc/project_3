@@ -3,14 +3,13 @@
     display:flex;
     flex-direction:column;
     .classify_top{
-        // position:flex!important;
         top:0.0rem;
         height:0.6rem;
         border-bottom:0.013333rem solid #D8D8D8;
     }
     .classify_content{
         flex:1; 
-        // margin-top:2px;
+        margin-top:2px;
         display:flex;
         .left{           
                 background-color:#F5F5F5;
@@ -26,12 +25,11 @@
 
                     }
                 }
-               
-                .active{
+               li:nth-child(1) span{
                     color:#65A032;
                     background-color:#fff;
                     border-left:2px solid #65A032;
-                }
+               }
             }
         }
         .right{

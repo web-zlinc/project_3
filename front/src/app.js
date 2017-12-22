@@ -15,7 +15,7 @@ import Login from './components/login/loginComponent'
 import Main from "./components/commonComponent/commonFoot";
 import HomeComponent from "./components/home/homeComponent";
 import SearchComponent from "./components/commonComponent/commonSearch";
-
+import Classify_list from './components/csm/classify_list/classify_list.js'
 
 Rem.rem();
 ReactDOM.render(
@@ -25,8 +25,8 @@ ReactDOM.render(
         <Route path="/search" component={SearchComponent} />
         <Route path="/home" component={HomeComponent} />
         <Route path="/" component={Main} />
-        <Route path="/classify" component={ClassifyComponent}>
-        </Route>
+        <Route path="/classify" component={ClassifyComponent}/>
+        <Route path="/classify/classify_list(name)" component={Classify_list}/>
         <Route path="/cart" component={Cart}/>
     </Router>
     </Provider>,document.getElementById('app'))
