@@ -1,23 +1,29 @@
 import React from 'react';
-import { Icon , Carousel} from 'antd';
+import { Icon , Carousel , Affix } from 'antd';
+import { Link } from 'react-router'
 import './home.scss';
 
 export default class HomeComponent extends React.Component {
     render(){
         return (
             <div>
-                <header className="home-header" style={{display: 'block'}}>
-                    <div className="head">
-                        <div className="position">
-                            <div id="arri-time">
-                                <img src="./src/assets/images/ci_20171025_1.png" />
+                <Affix>
+                    <header className="home-header" style={{display: 'block'}}>
+                        <div className="head">
+                            <div className="position">
+                                <div id="arri-time">
+                                    <img src="./src/assets/images/ci_20171025_1.png" />
+                                </div>
                             </div>
+                            <Link to="search">
+
+                                <Icon type="search">
+
+                                </Icon>
+                            </Link>
                         </div>
-                        <Icon type="search">
-                            <a  />
-                        </Icon>
-                    </div>
-                </header>
+                    </header>
+                </Affix>
                 <section className="container home" style={{paddingTop: 10}}>
                     <div className="swiper-container home-swiper">
                         <div className="swiper-wrapper" >

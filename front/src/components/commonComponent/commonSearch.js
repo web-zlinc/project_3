@@ -6,6 +6,8 @@ const ButtonGroup = Button.Group;
 
 import '../../assets/css/commonSearch.css'
 
+import createHistory from 'history/createBrowserHistory'
+
 export default class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
