@@ -1,0 +1,35 @@
+#commonFoot {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, .15);
+    background: #fff;
+    height: .42rem;
+    font-size: .1rem;
+    line-height: 1.2;
+}
+
+#commonFoot a {
+    position: relative;
+    width: 100%;
+    color: #898989;
+    display: block;
+    text-align: center;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+}
+
+#commonFoot i {
+    display: block;
+    font-size: .24rem;
+}
