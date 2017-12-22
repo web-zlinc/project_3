@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
-import datagrid from '../components/datagrid/datagridReducer'
+import login from '../components/login/loginReducer'
 
 export default combineReducers({
-    datagrid
+    login
 })

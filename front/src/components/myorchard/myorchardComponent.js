@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Icon, Input, Button } from 'antd';
+import {hashHistory} from 'react-router'
 
 import './myorchard.scss';
 export default class WyorchardComponent extends React.Component{
@@ -9,7 +10,7 @@ export default class WyorchardComponent extends React.Component{
                 <div className="w_head">
                     <div className="h_top sa">
                         <div className="htl">
-                            <img src=""/>
+                            <img src="" onClick={this.hasHistory.push('/personal')}/>
                             <div className="htl_r">   
                                 <p className="one">15285601671</p>
                                 <p className="two">签到送豪礼</p>
@@ -58,19 +59,19 @@ export default class WyorchardComponent extends React.Component{
                             </li>
                             <li>
                                 <Icon type="folder-open" />
-                                <a>待付款</a>
+                                <a>待发货</a>
                             </li>
                             <li>
                                 <Icon type="folder-open" />
-                                <a>待付款</a>
+                                <a>待收货</a>
                             </li>
                             <li>
                                 <Icon type="folder-open" />
-                                <a>待付款</a>
+                                <a>待评价</a>
                             </li>
                             <li>
                                 <Icon type="folder-open" />
-                                <a>待付款</a>
+                                <a>退换货</a>
                             </li>
 
 
@@ -79,19 +80,19 @@ export default class WyorchardComponent extends React.Component{
                     <div className="wm_m">
                         <ul className="wmmc">
                             <li>
-                            <a><Icon type="home" /><span>会员中心</span></a>
-                                <Icon type="right" />
-                            </li>
-                            <li>
-                            <a><Icon type="home" /><span>会员中心</span></a>
-                                <Icon type="right" />
-                            </li>
-                            <li>
                                 <a><Icon type="home" /><span>会员中心</span></a>
                                 <Icon type="right" />
                             </li>
                             <li>
-                                <a><Icon type="home" /><span>会员中心</span></a>
+                            <a><Icon type="heart-o" /><span>我的收藏</span></a>
+                                <Icon type="right" />
+                            </li>
+                            <li>
+                                <a><Icon type="customer-service" /><span>在线客服</span></a>
+                                <Icon type="right" />
+                            </li>
+                            <li>
+                                <a><Icon type="rocket" /><span>邮费特权</span></a>
                                 <Icon type="right" />
                             </li>
                         </ul>

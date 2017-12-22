@@ -28,12 +28,11 @@
         padding-left:0.213333rem;
         p{
             position:relative;
-
             .ant-input{
                 padding-left:0.453333rem;
             }
             .phone{
-                width:100px;
+                width:69%;
             }
             .anticon{
                 font-size:0.266667rem;
@@ -43,9 +42,11 @@
                 z-index:1;
             }
             .ant-input,.ant-btn{
-                width: 100%;
                 font-size:0.213333rem;
                 height:0.48rem;
+            }
+            .login,.register{
+                width: 100%;
             }
             
         }
