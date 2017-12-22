@@ -2,8 +2,23 @@ import React from 'react';
 import { Icon , Carousel , Affix } from 'antd';
 import { Link } from 'react-router'
 import './home.scss';
+import { browserHistory } from "react-router";
 
 export default class HomeComponent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            _currentUrl: '',
+            _path : []
+        }
+        console.log(this.state)
+    }
+    componentDidMount() {
+        // this.setState({_currentUrl: this.props.location.pathname})
+        this.state._path.push(this.props.location.pathname)
+        // console.log(this.props.location.pathname)
+        // console.log(this.state)
+    }
     render(){
         return (
             <div>
@@ -15,7 +30,7 @@ export default class HomeComponent extends React.Component {
                                     <img src="./src/assets/images/ci_20171025_1.png" />
                                 </div>
                             </div>
-                            <Link to="search">
+                            <Link to={{pathname: 'search', state: this.state._path}}>
 
                                 <Icon type="search">
 
