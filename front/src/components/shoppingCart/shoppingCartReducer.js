@@ -1,10 +1,19 @@
-/* 
-* @Author: Marte
-* @Date:   2017-12-20 20:19:50
-* @Last Modified by:   Marte
-* @Last Modified time: 2017-12-21 20:57:12
-*/
 
-$(document).ready(function(){
-    
-});
+export default function DataGridReducer(state = {}, action){
+    var newState = JSON.parse(JSON.stringify(state));
+    switch(action.type){
+        case 'beforeRequest':
+            newState.status = 0;
+            break;
+        case 'Requested':
+            newState.status = 1;
+            newState.response = action.response;
+            break;
+        case 'requestError':
+            newState.status = -1;
+            newState.error = action.error
+            break;
+    }
+
+    return newState;
+}

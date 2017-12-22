@@ -6,18 +6,20 @@
         height: 0.666667rem;
         line-height: 0.666667rem;
         text-align:center;
+        position:relative;  
         p{
-           position:relative;  
+           
             font-size:0.186667rem;
             color:#000;
-           span{
+           
+        }
+        span{
             position:absolute;
+            top:0px;
             right:0px;
             font-size:0.16rem;
             color:#878787;
             } 
-        }
-        
     }
     div:nth-child(2){
         flex:1;    

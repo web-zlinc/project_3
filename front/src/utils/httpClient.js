@@ -22,7 +22,7 @@ const HttpClient = {
                 if (err){
                     reject(err);
                 } else {
-                    // console.log(res)
+                    console.log(res)
                     resolve(res.body || JSON.parse(res.text));
                 }
             });
