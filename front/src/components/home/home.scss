@@ -46,6 +46,8 @@ img {
         -ms-box-pack: justify;
         -o-box-pack: justify;
         box-pack: justify;
+        -webkit-box-shadow: 0 0.03rem 0.03rem 0 rgba(0, 0, 0, .2);
+        box-shadow: 0 0.03rem 0.03rem 0 rgba(0, 0, 0, .2);
 
     }
     .position {

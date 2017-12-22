@@ -1,0 +1,207 @@
+html,body{
+    height: 100%;
+}
+#app{
+    height:100%;
+}
+.container{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+#y_cart_header{
+    height:1.2rem;
+    ul{
+        height: 100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:0 0.133333rem;
+        border-bottom:0.013333rem solid #ccc;
+        li{
+            font-size:0.5rem;
+            color:#75a739;
+        }
+        li:last-child{
+            font-size:0.4rem;
+        }
+    }
+}
+
+// 主内容区
+#y_cart_Main{
+    flex:1;
+    overflow-x:hidden;
+    background-color: #eee;
+}
+
+.y_cart_Main_address{
+    padding:0.3rem 1.066667rem;
+    position:relative;
+    background-color: #fff;
+    
+    .y_address_name{
+        font-size:0.45rem;
+        color:#4b4b4b;
+        margin-right:0.4rem;
+    }
+    .y_address_tel{
+        font-size:0.52rem;
+        color:#4b4b4b;
+    }
+    p{
+        margin-top:0.133333rem;
+        font-size:0.4rem;
+        color:#878787;
+    }
+    .y_right_arror{
+        position:absolute;
+        right:0.366667rem;
+        top:1.1rem;
+        font-size:0.4rem;
+        color:#878787;
+    }
+}
+
+
+
+
+.y_cart_address:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: .02rem;
+    background-image: url("../../assets/images/y_cart_border.png");
+}
+.y_cart_address:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: .02rem;
+    background-image: url("../../assets/images/y_cart_border.png");
+}
+
+.y_cart_Main_list{
+    padding:0.3rem 0 ; 
+}
+.y_cart_title{
+    height: 0.8rem;
+    padding: 0 0.26rem;
+    font-size: 0.35rem;
+    line-height: 0.8rem;
+    color: #878787;
+    border-bottom: 0.013333rem solid #d8d8d8;
+    background-color: #FFF;
+
+}
+ul.y_cart_list_items{
+    background-color: #FFF;
+    display:flex;
+    flex-direction:column;
+    li.y_cart_info{
+        display:flex;
+        align-items:center;
+        padding:0.133333rem;
+        border-top:0.013333rem solid #ccc;
+        i.y_checked_icon{
+            display:inline-block;
+            width:0.666667rem;
+            height:0.666667rem;
+            font-size: 0.42rem;
+            line-height:0.666667rem;
+            margin-right:0.133333rem;
+
+        }
+        .y_goods_pic{
+            width: 2.4rem;
+            width: 2.4rem;
+            img{
+                width: 2.4rem;
+            }
+        }
+        .y_goods_info{
+            flex:1;
+            padding-left:0.133333rem;
+           .y_goods_name{
+                height:0.8rem;
+                font-size:0.4rem;
+                line-height: 0.8rem;
+           } 
+           .y_goods_standard{
+                font-size:0.33rem;
+                color:#333;
+                padding-top:0.1rem;
+           }
+           .y_goods_price{
+                font-size:0.43rem;
+                color:#ff8000;
+    
+           }
+        }
+       .y_goods_count{
+            margin-right:0.133333rem;
+            width: 2rem;
+            display:flex;
+            justify-content:space-between;
+            span{
+                flex:1;
+                font-size:0.42rem;
+                text-align:center;
+                .anticon{
+                    color:#f88000;
+                }
+            }
+            .y_goods_num{
+                margin:0 0.4rem;
+            }
+       }
+    }
+}
+
+// 结算部分
+#y_cart_footer{
+    height: 1.333333rem;
+    border-top:0.013333rem solid #ddd;
+    box-shadow: 0 -0.05rem 0.05rem 0 rgba(0,0,0,.15);
+    display:flex;
+    justify-content:space-between;
+    span{
+        height:1.333333rem;
+        line-height:1.333333rem;
+        i.y_checked_icon{
+            display:inline-block;
+            width:0.666667rem;
+            height:0.666667rem;
+            font-size: 0.42rem;
+            line-height:0.666667rem;
+            margin-right:0.133333rem;
+            padding-left: 0.266667rem;
+        }
+    }
+    .y_select_all,em.tt{
+        font-size:0.38rem;
+    }
+    .y_cart_total{
+        flex:1;
+        text-align:right;
+        margin-right:0.266667rem;
+        em.price{
+            color:#ff8000;
+            font-size:0.52rem;
+        }
+    }
+    .y_cart_account{
+        width: 3rem;
+        background-color: #ff8000;
+        color:#fff;
+        font-size:0.45rem;
+        text-align:center;
+    }
+}
+
+
+// 最底下的切换部分，待首页人员做好再更改
+.gonggong{
+    height:1.333333rem;
+    background-color: #672ded;
+}
