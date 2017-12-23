@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-/* 
-* @Author: Marte
-* @Date:   2017-12-20 20:19:50
-* @Last Modified by:   Marte
-* @Last Modified time: 2017-12-22 17:08:30
-*/
-
-$(document).ready(function(){
-    
-});
-=======
 export function getUserInfo(_params){
     return {
         type: ['beforeRequest', 'Requested', 'requestError'],
@@ -26,4 +14,3 @@ export function getUsergid(_params){
         params: _params
     }
 }
->>>>>>> 48317008fd1ed6146b587b8eab7034fa3aa7f126

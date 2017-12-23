@@ -22,10 +22,6 @@ const HttpClient = {
                 if (err){
                     reject(err);
                 } else {
-<<<<<<< HEAD
-                    
-=======
->>>>>>> 48317008fd1ed6146b587b8eab7034fa3aa7f126
                     resolve(res.body || JSON.parse(res.text));
                 }
             });
