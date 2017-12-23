@@ -1,0 +1,66 @@
+#Tab{
+    width: 100%;
+    min-height: 500px;
+    .ant-select{
+        margin-top:10px;
+        margin-left:6px;
+        width: 120px;
+    }
+    .SearchIpt{
+        margin-top:10px;        
+        width:165px;
+        margin-left:6px;
+    }
+    .ant-btn-icon-only{
+        margin-top:10px;        
+        margin-left:6px;
+    }
+    .tabBox{
+        width:100%;
+        margin-top:10px;
+        min-height: 300px;
+        .tabHead{
+            background-color:#F7F7F7;
+            >tr{
+                >th{
+                    width: 60px;
+                    height: 40px;
+                    text-align:center;
+                    color:#423A52;
+                }
+            }
+        }
+        .tabBody{
+            >tr{
+                border-bottom:1px solid #F7F7F7;
+                >td{
+                    text-align:center;
+                    height: 50px;
+                }
+                &:hover{
+                    background-color:#ECF6FD;
+                    color:#118EEA;
+                }
+            }
+        }
+    }
+    .pagination{
+        float: right;
+        >li{
+            float: left;
+            width:30px;
+            height:30px;
+            border:1px solid #ddd;
+            border-radius:50%;
+            text-align:center;
+            line-height:30px;
+            margin:0 2px;
+            margin-top:4px;
+            &.activePage{
+                border:1px solid #118EEA;
+                background-color:#118EEA;
+                color:#fff;
+            }
+        }
+    }
+}

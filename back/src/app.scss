@@ -1,0 +1,28 @@
+#app{
+    width:100%;
+    height:100%;
+}
+.ModalDiv{
+    .ant-modal-content{
+        .ant-modal-body{
+            .ModalP{
+                padding:6px 0;
+                .LabelP{
+                    display:inline-block;
+                    width:80px;
+                    font-size:16px;
+                    text-align:center;
+                    font-weight: bold;
+                }
+                >span{
+                    .ant-input{
+                        width:280px;
+                    }
+                    .edt{
+                        margin-left:20px;
+                    }
+                }
+            }
+        }
+    }
+}
