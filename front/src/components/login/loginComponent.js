@@ -1,12 +1,12 @@
 import React from 'react';
 import { Form, Icon, Input, Button ,Alert} from 'antd';
+import { hashHistory, Link } from 'react-router';
 import {connect} from 'react-redux';
 import * as LoginAction from './loginAction';
 import Spinner from '../spinner/spinnerComponent'
 import './login.scss'
 
 class LoginComponent extends React.Component{
-
     constructor(props){  
         super(props);  
         this.state = {  
@@ -19,32 +19,62 @@ class LoginComponent extends React.Component{
         this.props.router.goBack()
     }
 
-    telCheck(e){  
-        var tel=e.target.value;  
-        var reg=/^1[34578]\d{9}$/;  
-        if(!reg.test(tel)){  
-            alert('输入手机号格式不对！');
-            return false;
-        }
+    // telCheck(e){  
+    //     var tel=e.target.value;  
+    //     var reg=/^1[34578]\d{9}$/;  
+    //     if(!reg.test(tel)){  
+    //         alert('输入手机号格式不对！');
+    //         return false;
+    //     }
   
-    } 
-    pwdCheck(e){
-        var pwd=e.target.value  
-        var reg=/^\w{6,20}$/;  
-        if(!reg.test(pwd)){  
-            alert('密码格式不对！');
-            return true; 
-        } 
+    // } 
+    // pwdCheck(e){
+    //     var pwd=e.target.value  
+    //     var reg=/^\w{6,20}$/;  
+    //     if(!reg.test(pwd)){  
+    //         alert('密码格式不对！');
+    //         return true; 
+    //     } 
+    // }
+    // 组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state
+    componentWillUpdate(nextProps, nextState){
+        if(nextProps.type == 0){
+            nextState.show = true;
+        }else if(nextProps.type == 1){
+            nextState.show = false;
+            if(nextProps.dataset.length>0){
+               hashHistory.push('myorchard');
+
+            }else if(nextProps.dataset.length==0){
+                alert('用户名和密码错误');
+            }
+
+        }
+        
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(this.props.dataset){
+            var obj=JSON.stringify(this.props.dataset);
+            var storage = window.localStorage;
+            storage.setItem('data',obj);
+        }
+        
+
+       
     }
 
     login(){
         var phone=this.refs.phone.input.value;
         var password=this.refs.pwd.input.value;
         if(phone&&password){
+            console.log(phone)
             this.props.getData('user.php',{lphone:phone,lpassword:password});
+            return;
         }
-        
+
     }
+
+    
 
     register(){
         var phone=this.refs.phone.input.value;
@@ -93,8 +123,8 @@ class LoginComponent extends React.Component{
 }
 
 const mapToState = function(state){ 
-    console.log(state);
     return {
+        type:state.login.status,
         dataset: state.login.response
     }
 }

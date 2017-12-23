@@ -25,9 +25,9 @@ class Main extends Component {
                 now: "/cart"
             }, {
                 title: "我的",
-                urlTo: "/personal",
+                urlTo: "/myorchard",
                 icon: "user",
-                now: "/personal"
+                now: "/myorchard"
             }],
             currentIndex: 0
         }
