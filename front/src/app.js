@@ -7,8 +7,8 @@ import store from './redux/configStore.js'
 
 // 引入蚂蚁金服
 import { DatePicker } from 'antd';
-import 'antd/dist/antd.css';
-import './basescss/base.scss'
+// import 'antd/dist/antd.css';
+// import './basescss/base.scss'
 import Rem from './getRem/getRem.js'
 import HomeComponent from './components/home/homeComponent'
 import Cart from './components/shoppingCart/shoppingCartComponent'
@@ -23,17 +23,16 @@ import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
 import Classify_list from './components/csm/classify_list/classify_list.js'
 
-
-
 Rem.rem();
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={hashHistory}>
-        <Route path="/cart" component={Cart}/>
+    <Router history={hashHistory}>
         <Route path="/login" component={Login}/>
         <Route path="/home" component={HomeComponent} />
         <Route path="/myorchard" component={Myorchard}/>
         <Route path="/personal" component={Personal}/>
+        <Route path="/cart" component={Cart}/>
+
         <Route path="/search" component={SearchComponent} />
         <Route path="/" component={Main} />
         <Route path="/classify" component={ClassifyComponent}/>

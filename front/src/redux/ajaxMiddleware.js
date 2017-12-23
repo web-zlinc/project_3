@@ -13,6 +13,7 @@ export function ajaxMiddleware(api){
             })
             if(url){
                 http.get(url, params).then(res => {
+                    
                     api.dispatch({
                         type: 'Requested',
                         response: res

@@ -11,5 +11,3 @@ export default combineReducers({
     searchFruit,
     cart,
     login
-
-})
