@@ -1,12 +1,15 @@
-$color:#75A739;
+$color:#FF8000;
 #details{
+    P{
+        margin: 0;
+    }
     height: 100%;
     display:flex;
     flex-direction:column;
     .data_header{
             position:flex;
             top:0;
-            color:$color;
+            color:#75A739;
             background-color:#F8F8F8;
             height:0.6rem;
             border-bottom:1px solid #D8D8D8;      
@@ -31,24 +34,57 @@ $color:#75A739;
     }
     .details_content{
         background-color:#F5F5F5;
+        color:#000;
         flex:1;
         :div{
-           background-color:#fff;
+           background-color:#fff; 
         }
         .imgUrl{
             display:block;
             width: 100%;
-
         }
         .name{
             text-align:center;
-            p:nth-child(1){
-                color:#000;
+            p:nth-child(1){         
                 font-size:0.266667rem;
             }
             p:nth-child(2){
+                font-size:0.16rem;
+                color:#878787;
+            }
+            p:nth-child(3){
+                color:$color;
+                 line-height: 0.48rem;
+                 font-size:0.133333rem; 
+                span:nth-child(1){
+                    font-size:0.32rem;
+                    font-weight:bold;
+                }               
+            }
+            .standard{
+                padding:0.08rem 0;
+                display:flex;
+                justify-content:center;
+                div{
+                    height: 0.533333rem;
+                    width: 0.96rem;
+                    background-color:$color;  
+                    display:flex;
+                    flex-direction:column;
+                    border-radius:0.066667rem;
+                    p{
+                        color:#fff;
+                        flex:1;
+                        font-size:0.186667rem;
+                    }
+                }
 
             }
+            .time{
+                text-align:center;
+                font-size:0.133333rem;
+                color:$color;
+                }
         }
     }
     .cart{

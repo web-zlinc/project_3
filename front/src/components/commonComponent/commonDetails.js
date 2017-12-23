@@ -21,8 +21,12 @@ class Details extends React.Component{
             <div className="name">
                 <p>佳沛新西兰绿奇异果(巨无霸)</p>
                 <p>清新绿果 酸甜多汁</p>
-                <p>￥<span>49.9</span><span>￥59.9</span></p>
+                <p>￥<span>49.9</span></p>
+                <div className="standard"><div><p>6个</p><p>明日达</p></div>
+                </div>
+        <p className="time">最快明天09:00-18:00送达</p>
             </div>
+
         </div>
         <div className="cart">
                     <Link to="/cart">
