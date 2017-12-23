@@ -11,7 +11,7 @@ export default class HomeComponent extends React.Component {
             _currentUrl: '',
             _path : []
         }
-        console.log(this.state)
+        // console.log(this.state)
     }
     componentDidMount() {
         // this.setState({_currentUrl: this.props.location.pathname})
