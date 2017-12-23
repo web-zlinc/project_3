@@ -9,10 +9,8 @@ const ButtonGroup = Button.Group;
 
 import * as searchFruitActions from './searchAction'
 
-<<<<<<< HEAD
 import '../../assets/css/commonSearch.css'
-=======
->>>>>>> 10d7e9e7b0df1b74e8c6cb527f4de342f40491b8
+
 
 class SearchComponent extends React.Component {
     constructor(props) {

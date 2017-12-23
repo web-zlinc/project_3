@@ -10,7 +10,7 @@ class PersonalComponent extends React.Component{
     constructor(props){  
         super(props);  
         this.state = {  
-            Storage:JSON.parse(window.localStorage.data)
+         
         }  
   
     }
@@ -27,7 +27,7 @@ class PersonalComponent extends React.Component{
         var site=this.refs.site.input.value;
 
         if(nick&&gender&&birthday&&site){
-            var params={id:this.state.Storage[0].id,pphone:nick,pgender:gender,pbirthday:birthday,psite:site};
+            var params={pphone:nick,pgender:gender,pbirthday:birthday,psite:site};
             this.props.getData('user.php',params);
 
         }
@@ -43,12 +43,12 @@ class PersonalComponent extends React.Component{
                 <div className="p_main">
                     <div className="pmt">
                         <span>头像</span>
-                        <img src={this.state.Storage[0].portrait}/>
+                        <img src/>
                     </div>
                     <div className="pmc">
                         <p>
                             <label htmlFor="nick">呢称</label>
-                            <Input placeholder={this.state.Storage[0].phone} id="nick" ref="nick"/>
+                            <Input placeholder id="nick" ref="nick"/>
                         </p>
                         <p>
                             <label htmlFor="gender">性别</label>
