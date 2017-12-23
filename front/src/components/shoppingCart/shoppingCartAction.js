@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 80642f993a0bde109ea299306c7dc5923f458550
 export function getUserInfo(_params){
     return {
         type: ['beforeRequest', 'Requested', 'requestError'],
@@ -18,7 +14,3 @@ export function getUsergid(_params){
         params: _params
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 80642f993a0bde109ea299306c7dc5923f458550

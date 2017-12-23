@@ -10,11 +10,6 @@ const ButtonGroup = Button.Group;
 import * as searchFruitActions from './searchAction'
 
 import '../../assets/css/commonSearch.css'
-<<<<<<< HEAD
-
-=======
->>>>>>> 9b43023ae0b410171fe849de7f012b0404898781
->>>>>>> 80642f993a0bde109ea299306c7dc5923f458550
 
 const dataSource = ['奇异果', '牛油果', '热带水果', '樱桃', '葡萄/提子', '柑橙桔柚'];
 

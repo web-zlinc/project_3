@@ -4,16 +4,6 @@ import {Router, Route, hashHistory, browserHistory, Link, IndexRoute} from 'reac
 
 import {Provider} from 'react-redux'
 import store from './redux/configStore.js'
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
-
->>>>>>> 80642f993a0bde109ea299306c7dc5923f458550
 // 引入蚂蚁金服
 import { DatePicker } from 'antd';
 // import 'antd/dist/antd.css';
@@ -32,30 +22,6 @@ import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
 import Classify_list from './components/csm/classify_list/classify_list.js'
 
-<<<<<<< HEAD
-import Myorder from './components/myorder/myorderComponent'
-
-
-
-Rem.rem();
-ReactDOM.render(
-    <Provider store={store}>
-        <Router history={hashHistory}>
-            <Route path="/classify" component={ClassifyComponent}/>
-             <Route path="/classify/classify_list(name)" component={Classify_list}/>
-            <Route path="/cart" component={Cart}/>
-             <Route path="/myorchard/personal(/:pagenumber)" component={Personal}/>
-            <Route path="/myorchard" component={Myorchard} />
-            <Route path="/login" component={Login}/>
-            <Route path="/myorder" component={Myorder}/>
-            <Route path="/search" component={SearchComponent} />
-            <Route path="/" component={Main} />
-            <Route path="/home" component={HomeComponent} />
-        </Router>
-    </Provider>
-    ,document.getElementById('app'))
-
-=======
 Rem.rem();
 ReactDOM.render(
     <Provider store={store}>
@@ -73,7 +39,6 @@ ReactDOM.render(
         </Router>
     </Provider>
     ,document.getElementById('app'))
->>>>>>> 80642f993a0bde109ea299306c7dc5923f458550
 
      
 
