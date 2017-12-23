@@ -23,6 +23,7 @@ import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
 import Classify_list from './components/csm/classify_list/classify_list.js'
 import Details from './components/commonComponent/commonDetails.js'
+import Myorder from './components/myorder/myorderComponent'
 
 Rem.rem();
 ReactDOM.render(
@@ -39,6 +40,7 @@ ReactDOM.render(
         <Route path="/classify" component={ClassifyComponent}/>
         <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
         <Route path="/details" component={Details}/>
+        <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
         </Router>
     </Provider>
     ,document.getElementById('app'))

@@ -19,7 +19,6 @@ img {
 }
 
 .swiper-container {
-    // margin: 0 auto;
     position: relative;
     overflow: hidden;
     z-index: 0;
@@ -318,4 +317,15 @@ img {
 // for bigImgBanner
 .bigImageBanner {
     padding-top: 30px;
+}
+
+// for BackTop
+#backTop {
+    // display: none;
+    background-color: #f60;
+    color: #FFFFCC;
+    padding: 10px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
 }

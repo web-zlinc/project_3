@@ -33,7 +33,6 @@
 
     $psite = isset($_GET["psite"]) ? $_GET["psite"] : '';
     
-    var_dump($pid,$pgender,$pphone,$pbirthday);
     if($pid&&$pgender&&$pphone&&$pbirthday&&$psite){
         $sql = "UPDATE user SET gender='$pgender',phone='$pphone',birthday='$pbirthday',address='$psite'' WHERE id='$id'";
     }
