@@ -4,10 +4,6 @@ import {Router, Route, hashHistory, browserHistory, Link, IndexRoute} from 'reac
 
 import {Provider} from 'react-redux'
 import store from './redux/configStore.js'
-<<<<<<< HEAD
-=======
-
->>>>>>> 6013d2a6ce0fcd0ab259f7978f2858f30de9ba5e
 // 引入蚂蚁金服
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
@@ -25,11 +21,8 @@ import Personal from './components/personal/personalComponent';
 import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
 import Classify_list from './components/csm/classify_list/classify_list.js'
-<<<<<<< HEAD
-=======
 import Details from './components/commonComponent/commonDetails.js'
 import Myorder from './components/myorder/myorderComponent'
->>>>>>> 6013d2a6ce0fcd0ab259f7978f2858f30de9ba5e
 
 Rem.rem();
 ReactDOM.render(
