@@ -1,7 +1,6 @@
-
-export default function DataGridReducer(state = {}, action){
-    var newState = JSON.parse(JSON.stringify(state));
-    switch(action.type){
+export default function searchFruit(state = {}, action) {
+    var newState = state;
+    switch (action.type) {
         case 'beforeRequest':
             newState.status = 0;
             break;
