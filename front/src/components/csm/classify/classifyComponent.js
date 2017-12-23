@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+import * as classifyActions from '../../datagrid/datagridAction.js'
 import AllShowComponent from '../allShow/allShowComponent.js'
 // 数据库数据不足，自力更生
 var arr=["果园优选","新鲜水果","水产海鲜","肉禽蛋类","乳品速食","时令鲜蔬","烘焙料理","粮油干货","酒水饮料","礼盒券卡","果园周边"];
@@ -11,8 +12,12 @@ class ClassifyComponent extends React.Component{
             type: "果园优选"
         };
     }
+      componentWillMount(){
+        this.props.getData("allShow.php",{type:this.state.type});
+
+     }
     change(event){
-        this.setState({type:event.target.innerText});
+        this.setState({type:event.target.innerText});console.log(this)
         const left=document.getElementsByClassName('left')[0];
         const spans=left.getElementsByTagName('span');
         for(var i=0;i<spans.length;i++){
@@ -23,7 +28,9 @@ class ClassifyComponent extends React.Component{
         const currentLi=event.target;
             currentLi.style.backgroundColor="#fff"; 
             currentLi.style.color="#65A032";
-            currentLi.style.borderLeft="2px solid #65A032";    
+            currentLi.style.borderLeft="2px solid #65A032";
+            const type=currentLi.innerText;
+            this.props.getData("allShow.php",{type:type}); 
     }
     render(){
         return (
@@ -40,7 +47,7 @@ class ClassifyComponent extends React.Component{
                             </ul>
                          </div>
                         <div className="right">
-                        <AllShowComponent type={this.state.type} url="allshow.php"></AllShowComponent>
+                        <AllShowComponent data={this.props.dataset} type={this.state.type}></AllShowComponent>
                         </div>
                     </div>
                     
@@ -48,5 +55,10 @@ class ClassifyComponent extends React.Component{
             )
     }
 }
+const mapToState=function(state){
+    return {
+        dataset:state.allshow.response
+    }
+}
 import './classify.scss'
-export default ClassifyComponent
+export default connect(mapToState,classifyActions)(ClassifyComponent)

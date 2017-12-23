@@ -13,9 +13,25 @@ import TopMenu from './topMenu/topMenu'
 import './home.scss';
 
 export default class HomeComponent extends React.Component {
+<<<<<<< HEAD
  
     scrollTop(){
         scrollTo(0,0)
+=======
+    constructor(props) {
+        super(props)
+        this.state = {
+            _currentUrl: '',
+            _path : []
+        }
+        // console.log(this.state)
+    }
+    componentDidMount() {
+        // this.setState({_currentUrl: this.props.location.pathname})
+        this.state._path.push(this.props.location.pathname)
+        // console.log(this.props.location.pathname)
+        // console.log(this.state)
+>>>>>>> adf29f5193f26cbf0ad7e91fde2b558b6201300a
     }
 
     render(){
