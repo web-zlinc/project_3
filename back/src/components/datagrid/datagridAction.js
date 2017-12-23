@@ -1,4 +1,5 @@
-export function getData(_url, _params = {}){
+export function getData(_url, _params = {}, _page = 1){
+    _params.page = _page;
     return {
         type:'requested',
         url:_url,
@@ -34,11 +35,12 @@ export function saveData(_url, _arr, _status){
 }
 
 //删除内容
-export function delData(_url, _id, _status){
+export function delData(_url, _id, _status,_page){
     var params = new Object();
     params.id = _id;
     params.status = _status;
     params.handle = 'delete';
+    params.page = _page;
     return {
         type:'requested',
         url:_url,

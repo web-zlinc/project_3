@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './Spinner.scss'
+import './spinner.scss'
 
 export default class Spinner extends Component{
     render(){
@@ -8,11 +8,11 @@ export default class Spinner extends Component{
         }        
         return (
             <div>
-                <div className="dk-spinner-mask"></div>
-                <div className="dk-spinner dk-spinner-three-bounce">
-                    <div className="dk-bounce1"></div>
-                    <div className="dk-bounce2"></div>
-                    <div className="dk-bounce3"></div>
+                <div className="Ed-spinner-mask"></div>
+                <div className="Ed-spinner Ed-spinner-three-bounce">
+                    <div className="Ed-bounce1"></div>
+                    <div className="Ed-bounce2"></div>
+                    <div className="Ed-bounce3"></div>                 
                 </div>
             </div>
         )

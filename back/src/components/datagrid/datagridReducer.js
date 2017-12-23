@@ -5,6 +5,7 @@ export default function dataGridReducer(state = {}, action){
             newState.status = 0;
             newState.type = action.type;
             newState.updateResponse = '';
+            newState.loading = action.loading;
             break;
         case 'requested':
             newState.status = 1;
@@ -12,22 +13,22 @@ export default function dataGridReducer(state = {}, action){
             newState.respones = action.respones.data.data1;
             newState.total = action.respones.data.data2[0].rowsCount;
             newState.currentPage = action.page;
-            newState.updateResponse = '';
+            newState.loading = action.loading;            
             break;
         case 'requestError':
             newState.status = -1;
             newState.error = action.error;
-            newState.updateResponse = '';
             break;
         case 'requestSingle':
-            newState.updateResponse = '';
             newState.status = 2;
             newState.type = action.type;
             newState.responeSingle = action.respones.data.data1;
             break;
         case 'updateResponse':
+            console.log('action',action);
             newState.status = 3;
             newState.type = action.type;
+            newState.currentPage = action.page;            
             if(action.updateResponse.data == "updateOk" ||  action.updateResponse.data == 'deleteOk' ||  action.updateResponse.data == 'insertOk' ){
                 newState.updateResponse = 'Ok';
             }

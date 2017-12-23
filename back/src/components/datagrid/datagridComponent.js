@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as dataGridAction from './datagridAction';
 
+import Spinner from '../spinner/spinnerComponent';
+
 import { Modal, Button, Input, Select, Row, Col } from 'antd';
 import './datagrid.scss';
 
@@ -15,7 +17,7 @@ class DataGridComponent extends React.Component{
         })
     }
     componentDidMount(){
-        this.props.getData(this.state.url, {status:this.state.states});
+        this.props.getData(this.state.url, {status:this.state.states}, this.props.currentPage);
     }
     getKeys(item){
         return item ? Object.keys(item) : []
@@ -66,7 +68,7 @@ class DataGridComponent extends React.Component{
             this.setState({visible:true});
             this.props.getData(this.state.url, {id:e.target.parentNode.parentNode.id, handle:e.target.className, status:this.state.states});
         } else if(e.target.className == 'ant-btn del ant-btn-danger'){
-            this.props.delData(this.state.url, e.target.parentNode.parentNode.id, 'delete');
+            this.props.delData(this.state.url, e.target.parentNode.parentNode.id, 'delete', this.props.currentPage);
         }
     }
     //编辑框的内容修改时触发
@@ -170,6 +172,7 @@ class DataGridComponent extends React.Component{
                         }
                     </tbody>
                 </table>
+                <Spinner show={this.props.loading}></Spinner>
                 <ul className="pagination clearfix" >
                     {this.pageNumbers()}
                 </ul>
@@ -203,18 +206,20 @@ class DataGridComponent extends React.Component{
     }
     componentDidUpdate(){
         if(this.props.updateResponse == 'Ok'){
-            this.props.getData(this.state.url, {status:this.state.states});
+            this.props.getData(this.state.url, {status:this.state.states},this.props.currentPage);
         }
     }
 }
 
 const mapToState = function(state){
+    console.log(state)
     return {
         dataset: state.dataGrid.respones,
         total: state.dataGrid.total,
         currentPage:state.dataGrid.currentPage || 1,
         edtData:state.dataGrid.responeSingle || [],
         updateResponse:state.dataGrid.updateResponse || '',
+        loading:state.dataGrid.loading || false,
     }
 }
 

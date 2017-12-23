@@ -7,15 +7,25 @@ export function ajaxMiddleWare(MiddleWareAPI){
             if(!url){
                 return dispatch(action);
             }
+
+            MiddleWareAPI.dispatch({
+                type: 'beforeRequest',
+                loading:true,
+            })
+
+            var curPage;
             if(!params.page){
-                params.page = 1;
+                curPage = 1;
+            }else{
+                curPage = params.page
             }
             if(url && !params.handle ){
                 http[method]({url:url,params}).then(res => {
                     MiddleWareAPI.dispatch({
                         type:'requested',
                         respones:res,
-                        page:params.page
+                        page:curPage,
+                        loading:false,
                     })
                 }).catch(error => {
                     MiddleWareAPI.dispatch({
@@ -55,7 +65,8 @@ export function ajaxMiddleWare(MiddleWareAPI){
                 http[method]({url:url,params}).then(res =>{
                     MiddleWareAPI.dispatch({
                         type:'updateResponse',
-                        updateResponse:res
+                        updateResponse:res,
+                        page:curPage
                     })
                 }).catch(error => {
                     MiddleWareAPI.dispatch({
