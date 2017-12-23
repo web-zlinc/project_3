@@ -1,0 +1,106 @@
+$color:#FF8000;
+#details{
+    P{
+        margin: 0;
+    }
+    height: 100%;
+    display:flex;
+    flex-direction:column;
+    .data_header{
+            position:flex;
+            top:0;
+            color:#75A739;
+            background-color:#F8F8F8;
+            height:0.6rem;
+            border-bottom:1px solid #D8D8D8;      
+               display:flex;
+               padding:0.106667rem 0.266667rem;
+                p{
+                text-align:center;
+                flex:1;
+                font-size:0.266667rem; 
+                line-height: 0.0.002667rem;
+                position:relative;                
+                }
+                p:nth-child(1){
+                    text-align:left;
+                }
+                p:nth-child(2){
+                    font-size:0.213333rem;
+                } 
+                p:nth-child(3){
+                    text-align:right;
+                } 
+    }
+    .details_content{
+        background-color:#F5F5F5;
+        color:#000;
+        flex:1;
+        :div{
+           background-color:#fff; 
+        }
+        .imgUrl{
+            display:block;
+            width: 100%;
+        }
+        .name{
+            text-align:center;
+            p:nth-child(1){         
+                font-size:0.266667rem;
+            }
+            p:nth-child(2){
+                font-size:0.16rem;
+                color:#878787;
+            }
+            p:nth-child(3){
+                color:$color;
+                 line-height: 0.48rem;
+                 font-size:0.133333rem; 
+                span:nth-child(1){
+                    font-size:0.32rem;
+                    font-weight:bold;
+                }               
+            }
+            .standard{
+                padding:0.08rem 0;
+                display:flex;
+                justify-content:center;
+                div{
+                    height: 0.533333rem;
+                    width: 0.96rem;
+                    background-color:$color;  
+                    display:flex;
+                    flex-direction:column;
+                    border-radius:0.066667rem;
+                    p{
+                        color:#fff;
+                        flex:1;
+                        font-size:0.186667rem;
+                    }
+                }
+
+            }
+            .time{
+                text-align:center;
+                font-size:0.133333rem;
+                color:$color;
+                }
+        }
+    }
+    .cart{
+        position:flex;
+        bottom:0.133333rem;
+        a{
+            text-align:center;
+            display:block;
+            width: 0.693333rem;
+            height: 0.693333rem;
+            border-radius:50%;
+            background-color:#65A032;
+            margin:0.133333rem;
+            font-size:0.533333rem;
+            color:#fff;
+
+        }
+     }  
+}

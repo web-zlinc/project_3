@@ -98,5 +98,19 @@ $color:#75A739;
         flex:1;
         overflow:auto;
     }
-
+     .cart{
+        position:flex;
+        bottom:0.133333rem;
+        a{
+            text-align:center;
+            display:block;
+            width: 0.693333rem;
+            height: 0.693333rem;
+            border-radius:50%;
+            background-color:#65A032;
+            margin:0.133333rem;
+            font-size:0.533333rem;
+            color:#fff;
+        }
+     }       
 }

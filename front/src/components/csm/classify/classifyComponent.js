@@ -17,7 +17,6 @@ class ClassifyComponent extends React.Component{
 
      }
     change(event){
-        this.setState({type:event.target.innerText});console.log(this)
         const left=document.getElementsByClassName('left')[0];
         const spans=left.getElementsByTagName('span');
         for(var i=0;i<spans.length;i++){
@@ -30,6 +29,7 @@ class ClassifyComponent extends React.Component{
             currentLi.style.color="#65A032";
             currentLi.style.borderLeft="2px solid #65A032";
             const type=currentLi.innerText;
+             this.setState({type:type});
             this.props.getData("allShow.php",{type:type}); 
     }
     render(){

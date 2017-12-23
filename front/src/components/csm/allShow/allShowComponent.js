@@ -2,13 +2,19 @@
 * @Author: sherah
 * @Date:   2017-12-20 20:41:46
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-23 12:41:08
+* @Last Modified time: 2017-12-23 14:07:08
 */
 import React from 'react';
 import {connect} from 'react-redux'
 import {Icon} from 'antd';
 import {Link} from 'react-router'
-class AllShowComponent extends React.Component{ 
+class AllShowComponent extends React.Component{
+     constructor(props){
+        super(props);
+        this.state = {
+            type: this.props.type
+        };
+    } 
     render(){
         if(!this.props.data){
             return null
@@ -21,7 +27,7 @@ class AllShowComponent extends React.Component{
                        {
                             this.props.data.map(function(obj,index){
                                 return (
-                            <Link to={"/classify/classify_list/"+obj.short_name} key={index}>
+                            <Link to={"/classify/classify_list/"+obj.short_name+"/"+obj.type} key={index}>
                             <dt key={'dt'+index}><img src={obj.images} alt="" />
                             </dt>
                             <dd key={'dd'+index}>{obj.short_name}</dd>
