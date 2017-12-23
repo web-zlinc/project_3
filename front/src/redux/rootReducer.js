@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+<<<<<<< HEAD
 
 
 import login from '../components/login/loginReducer'
@@ -13,3 +14,17 @@ export default combineReducers({
     cart,
     searchFruit
 })
+=======
+import datagrid from '../components/datagrid/datagridReducer'
+import allshow from '../components/csm/allShow/allShowReducer'
+import searchFruit from '../components/commonComponent/searchReducer'
+import login from '../components/login/loginReducer'
+import cart from '../components/shoppingCart/shoppingCartReducer';
+
+export default combineReducers({
+    datagrid,
+    allshow,
+    searchFruit,
+    cart,
+    login
+>>>>>>> 80642f993a0bde109ea299306c7dc5923f458550
