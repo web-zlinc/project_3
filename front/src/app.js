@@ -22,6 +22,7 @@ import Personal from './components/personal/personalComponent';
 
 import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
+import cartOrder from "./components/cartOrder/cartOrderComponent.js";
 
 
 Rem.rem();
@@ -30,6 +31,7 @@ ReactDOM.render(
         <Router history={hashHistory}>
             <Route path="/Classify" component={ClassifyComponent}/>
             <Route path="/cart" component={Cart}/>
+            <Route path="/cartOrder" component={cartOrder}/>
             <Route path="/login" component={Login}/>
 
             <Route path="/myorchard" component={Myorchard}/>

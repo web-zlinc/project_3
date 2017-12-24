@@ -1,0 +1,11 @@
+.alertMess{
+    position: fixed;z-index: 998;
+    bottom: 15%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background:rgba(52, 52, 52, .5);
+    font-size: 26px;
+    height: 80px;
+    padding: 20px;
+    text-align: center;color:rgb(255, 255, 255);border-radius: 8px;
+}
