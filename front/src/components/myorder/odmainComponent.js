@@ -16,7 +16,8 @@ class OdmainComponent extends React.Component{
     }
     callback(key) {
         if(window.localStorage.data){
-            this.props.getData('order.php',{status:key});
+            var arr=JSON.parse(window.localStorage.data);
+            this.props.getData('order.php',{uid:arr[0].uid,status:key});
         }
         if(key=='全部'){
             if(window.localStorage.data){
@@ -56,7 +57,7 @@ class OdmainComponent extends React.Component{
                 </li>
             })
         }else{
-            return <li><Link to="/login">请先登录</Link></li>
+            return <li><Link to="/login"><h1>请先登录</h1></Link></li>
         }
 
     }
@@ -109,7 +110,7 @@ class OdmainComponent extends React.Component{
                 </TabPane>
                 <TabPane tab="待评价" key="待评价">
                     <ul>
-                        <li>待评价</li>
+                        <li><h1>待评价</h1></li>
                     </ul>
                 </TabPane>
             </Tabs>

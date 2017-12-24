@@ -5,6 +5,7 @@ import './myorder.scss'
 
 import Odmain from './odmainComponent'
 
+
 export default class MyorderComponent extends React.Component{
     constructor(props){  
         super(props);  
@@ -15,7 +16,7 @@ export default class MyorderComponent extends React.Component{
   
     }
     
-
+    
     
     back(){
         this.props.router.goBack()

@@ -4,7 +4,7 @@ import { Form, Icon, Input, Button } from 'antd'
 
 
 import './myorchard.scss';
-
+import Footer from '../commonComponent/commonFoot'
 export default class WyorchardComponent extends React.Component{
     constructor(props){  
         super(props);  
@@ -18,6 +18,8 @@ export default class WyorchardComponent extends React.Component{
         }  
   
     }
+
+
     componentWillMount(){
         if(window.localStorage.data){
             this.state.storage=JSON.parse(window.localStorage.data);
@@ -25,9 +27,18 @@ export default class WyorchardComponent extends React.Component{
             this.state.img=this.state.storage[0].portrait;
         }
     }
-    person(){
+
+    breaklogin(){
         if(this.state.hint=='登陆/注册'){
              hashHistory.push('login');
+        }
+    }
+    gopersonal(){
+        if(this.state.img){
+            hashHistory.push('/myorchard/personal');
+        }
+        if(!this.state.img){
+            hashHistory.push('login');
         }
     }
 
@@ -47,9 +58,9 @@ export default class WyorchardComponent extends React.Component{
                 <div className="w_head">
                     <div className="h_top sa">
                         <div className="htl">
-                            <Link to="/myorchard/personal"><img src={this.state.img}/></Link>
+                            <img src={this.state.img} onClick={this.gopersonal.bind(this)}/>
                             <div className="htl_r">   
-                                <p className="one" onClick={this.person.bind(this)}>{this.state.hint}</p>
+                                <p className="one" onClick={this.breaklogin.bind(this)}>{this.state.hint}</p>
                                 <p className="two">签到送豪礼</p>
                             </div>
                         </div>
@@ -103,6 +114,7 @@ export default class WyorchardComponent extends React.Component{
                         
                     </div>
                 </div>
+                <Footer/>
             </div>
             )
     }

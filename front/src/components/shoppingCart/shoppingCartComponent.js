@@ -16,7 +16,7 @@ var ShoppingCartComponent = React.createClass({
     getInitialState: function(){
         return {
             edit:"编辑",
-            phone:'15285601671',//通过发送username(phone)从user表中获取用户的地址和username写入页面以及uid（用户自己独有的id）再通过uid从shoppingcart中获取gid（商品id）以及qty，再通过gid从goods表中获取商品信息
+            phone:'15027101120',//通过发送username(phone)从user表中获取用户的地址和username写入页面以及uid（用户自己独有的id）再通过uid从shoppingcart中获取gid（商品id）以及qty，再通过gid从goods表中获取商品信息
             uid:'',
             address:'',
 
@@ -67,7 +67,6 @@ var ShoppingCartComponent = React.createClass({
                 </div>
                 <div className="y_cart_Main_list">
                     <div className="y_cart_title">商品清单</div>
-
 
                         <ul className="y_cart_list_items" >
                             {
