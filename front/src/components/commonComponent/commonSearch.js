@@ -1,18 +1,56 @@
 import React from 'react'
-import { Input, Button, Icon, Layout, Row, Col } from 'antd';
+import { connect } from 'react-redux'
+
+import { Input, Button, Icon, Layout, Row, Col, AutoComplete } from 'antd';
+import { IndexLink } from "react-router";
 const { Header, Content } = Layout;
 const Search = Input.Search;
 const ButtonGroup = Button.Group;
 
+import * as searchFruitActions from './searchAction'
+
 import '../../assets/css/commonSearch.css'
 
 
-export default class SearchComponent extends React.Component {
+const dataSource = ['奇异果', '牛油果', '热带水果', '樱桃', '葡萄/提子', '柑橙桔柚'];
+
+
+class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            api: 'Hsearch.php',
             searchFruit: '',
+            lastPath: ''
         };
+    }
+    componentDidMount() {
+        // this.setState({_currentUrl: this.props.location.pathname})
+
+        // 获取进入此处之前的路由
+        // let _pathArr = this.props.location.state;
+        // let len = _pathArr.length - 1;
+        // console.log(_pathArr[len])
+        // 这里是一个异步请求，下面的console.log打印的结果会导致为空，而到render()时则能正确获取数据
+        // this.setState({lastPath: _pathArr[len]});
+        // console.log(this.state)
+    }
+    componentWillUpdate(newProps, newState) {
+        // let keyWord = this.state.searchFruit;
+        // let api = this.state.api;
+
+        // this.timer = setTimeout(function(){
+
+        //     this.props.getData(api, { keyword: keyWord });
+
+        // }.bind(this),1000)
+        
+        // console.log(this.props.dataset)
+
+        return true;
+    }
+    back(){
+        this.props.router.goBack()
     }
     emitEmpty() {
         this.searchFruitInput.focus();
@@ -21,16 +59,30 @@ export default class SearchComponent extends React.Component {
     onChangesearchFruit(e) {
         this.setState({ searchFruit: e.target.value });
     }
+    searchForList(){
+        console.log(this.state.searchFruit)
+        let keyWord = this.state.searchFruit;
+        let api = this.state.api;
+
+        this.props.getData(api, { keyword: keyWord });
+
+        var resData = this.props.dataset;
+        // 异步请求 返回undefind
+        console.log(resData)
+    }
     render() {
         const { searchFruit } = this.state;
+        let self = this;
+        // const path = this.state.lastPath;
         const suffix = searchFruit ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this)} /> : null;
         return (
             <div>
+
                 <Layout id="commonSearch">
                     <Header id="searchNav" style={{ background: '#fff' }}>
                         <div className="navbar-header">
                             <Icon type="right" />
-                            <span>返回</span>
+                            <IndexLink style={{ color: 'green' }} onClick={this.back.bind(this)}>返回</IndexLink>
                         </div>
                         <Input
                             id="searchInput"
@@ -42,7 +94,7 @@ export default class SearchComponent extends React.Component {
                             ref={node => this.searchFruitInput = node}
                         />
                         <div className="sub-btn">
-                            <span>
+                            <span onClick={this.searchForList.bind(this)}>
                             搜索
                             </span>
                         </div>
@@ -67,3 +119,10 @@ export default class SearchComponent extends React.Component {
     }
 }
 
+const mapToState = function (state) {
+    return {
+        dataset: state.searchFruit.response
+    }
+}
+
+export default connect(mapToState, searchFruitActions)(SearchComponent)

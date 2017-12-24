@@ -1,11 +1,23 @@
 import {combineReducers} from 'redux'
-import login from '../components/login/loginReducer'
-import cart from '../components/shoppingCart/shoppingCartReducer';
-import allshow from '../components/csm/allShow/allShowReducer.js'
 
+import login from '../components/login/loginReducer'
+import datagrid from '../components/datagrid/datagridReducer'
+import allshow from '../components/csm/allShow/allShowReducer'
+import cart from '../components/shoppingCart/shoppingCartReducer';
+import searchFruit from '../components/commonComponent/searchReducer'
+
+
+import myorder from '../components/myorder/myorderReducer'
+
+import searchRecommend from '../components/home/recommend/recommendReducer'
 
 export default combineReducers({
-    cart,
+    login,
+    datagrid,
     allshow,
-    login
+    cart,
+    searchFruit,
+    myorder,
+    searchRecommend
 })
+

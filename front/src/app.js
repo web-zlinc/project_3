@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory, browserHistory, Link, IndexRoute} from 'react-router'
 
-import {Provider} from 'react-redux';
-import store from './redux/configStore'
-
+import {Provider} from 'react-redux'
+import store from './redux/configStore.js'
 
 // 引入蚂蚁金服
 import { DatePicker } from 'antd';
@@ -22,27 +21,37 @@ import Personal from './components/personal/personalComponent';
 
 import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
+
 import cartOrder from "./components/cartOrder/cartOrderComponent.js";
 
+import Classify_list from './components/csm/classify_list/classify_list.js'
+import Details from './components/commonComponent/commonDetails.js'
+
+
+import Myorder from './components/myorder/myorderComponent'
 
 Rem.rem();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route path="/Classify" component={ClassifyComponent}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/home" component={HomeComponent} />
+            <Route path="/myorchard" component={Myorchard}/>
+            <Route path="/myorchard/personal" component={Personal}/>
             <Route path="/cart" component={Cart}/>
             <Route path="/cartOrder" component={cartOrder}/>
-            <Route path="/login" component={Login}/>
-
-            <Route path="/myorchard" component={Myorchard}/>
-            <Route path="/personal" component={Personal}/>
-
+            <Route path="/myorder" component={Myorder}/>
             <Route path="/search" component={SearchComponent} />
             <Route path="/" component={Main} />
+            <Route path="/classify" component={ClassifyComponent}/>
+            <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
+            <Route path="/details" component={Details}/>
+            <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
 
         </Router>
     </Provider>
     ,document.getElementById('app'))
+
 
      
 

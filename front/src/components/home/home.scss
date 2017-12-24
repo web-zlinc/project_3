@@ -19,7 +19,6 @@ img {
 }
 
 .swiper-container {
-    margin: 0 auto;
     position: relative;
     overflow: hidden;
     z-index: 0;
@@ -319,3 +318,95 @@ img {
 .bigImageBanner {
     padding-top: 30px;
 }
+
+
+// for BackTop
+#backTop {
+    // display: none;
+    background-color: #f60;
+    color: #FFFFCC;
+    padding: 10px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+// for dialog
+.dialog {
+    display: none;
+    z-index: 92;
+    background: rgba(0, 0, 0, .5);
+    top: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    .dialog-content {
+        position: fixed;
+        z-index: 99; // top: 50%;
+        left: 35%;
+        width: 2.875rem;
+        height: 1.375rem;
+        min-height: 1.375rem; // margin-top: -75px;
+        margin-left: -135px;
+        background: #fff;
+        overflow: hidden;
+        border-radius: .06rem .06rem .06rem .06rem; // -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
+    }
+    .panel-content {
+        display: table;
+        width: 100%;
+        height: 105px;
+        color: #000;
+        text-align: center;
+    }
+    .panel-cell {
+        padding: .08rem;
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 1.6;
+    }
+    .panel-text {
+        font-size: 0.17rem;
+        overflow: auto;
+    }
+    .panel-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: .01rem solid #bfbfbf;
+    }
+    .options {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-box;
+        display: -o-box;
+        display: box;
+        .btn-default {
+            border: none;
+            color: #008eff;
+        }
+        .btn-primary {
+            color: #008eff;
+            border-left: .01rem solid #bfbfbf;
+        }
+        .btn {
+            height: .46rem;
+            line-height: .46rem;
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            -ms-box-flex: 1;
+            -o-box-flex: 1;
+            box-flex: 1;
+            width: 1%;
+            font-size: .17rem;
+            display: block;
+            text-align: center;
+        }
+    }
+}
+
+

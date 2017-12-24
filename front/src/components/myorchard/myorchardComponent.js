@@ -1,18 +1,55 @@
 import React from 'react'
-import { Form, Icon, Input, Button } from 'antd';
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
+import { Form, Icon, Input, Button } from 'antd'
+
 
 import './myorchard.scss';
+
 export default class WyorchardComponent extends React.Component{
+    constructor(props){  
+        super(props);  
+        this.state = {  
+            arr1:['积分','余额','优惠券','礼品'],
+            arr2:['待付款','待发货','待收货','待评价','退换货'],
+            arr3:['会员中心','我的收藏','在线客服','邮费特权'],
+            hint:'登陆/注册',
+            img:'',
+            storage:[]
+        }  
+  
+    }
+    componentWillMount(){
+        if(window.localStorage.data){
+            this.state.storage=JSON.parse(window.localStorage.data);
+            this.state.hint=this.state.storage[0].phone;
+            this.state.img=this.state.storage[0].portrait;
+        }
+    }
+    person(){
+        if(this.state.hint=='登陆/注册'){
+             hashHistory.push('login');
+        }
+    }
+
+    myorder(e){
+        var currli=e.target.parentElement;
+        if(currli.tagName.toLowerCase()==='li'||e.target.tagName.toLowerCase()==='li'){
+            hashHistory.push('myorder');
+        }
+        if(e.target.tagName.toLowerCase()==='span'){
+            hashHistory.push('myorder');
+        }
+    }
+
     render(){
         return (
             <div id="w_container">
                 <div className="w_head">
                     <div className="h_top sa">
                         <div className="htl">
-                            <img src="" onClick={this.hasHistory.push('/personal')}/>
+                            <Link to="/myorchard/personal"><img src={this.state.img}/></Link>
                             <div className="htl_r">   
-                                <p className="one">15285601671</p>
+                                <p className="one" onClick={this.person.bind(this)}>{this.state.hint}</p>
                                 <p className="two">签到送豪礼</p>
                             </div>
                         </div>
@@ -22,22 +59,12 @@ export default class WyorchardComponent extends React.Component{
                         </div>
                     </div>
                     <ul className="h_bottom sa">
-                        <li>
-                            <a>积分</a>
-                            <span>0</span>
-                        </li>
-                        <li>
-                            <a>余额</a>
-                            <span>0</span>
-                        </li>
-                        <li>
-                            <a>优惠券</a>
-                            <span>0</span>
-                        </li>
-                        <li>
-                            <a>礼品</a>
-                            <span>0</span>
-                        </li>
+                        {
+                            this.state.arr1.map((item,idx)=>{
+                                return <li key={idx}><a>{item}</a><span>0</span></li>
+                            })
+                        }
+                        
                     </ul>
                 </div>
                 <div className="w_main">
@@ -45,56 +72,33 @@ export default class WyorchardComponent extends React.Component{
                         <div className="wmht">
                             <div>
                                 <Icon type="exception" className="ord1" />
-                                <span>我的订单</span>
+                                <span onClick={this.myorder.bind(this)}>我的订单</span>
                             </div>
                             <div>
-                                <span>全部订单</span>
+                                <span onClick={this.myorder.bind(this)}>全部订单</span>
                                 <Icon type="right" className="ord2" />
                             </div>
                         </div>
                         <ul className="wmhc">
-                            <li>
-                                <Icon type="folder-open" />
-                                <a>待付款</a>
-                            </li>
-                            <li>
-                                <Icon type="folder-open" />
-                                <a>待发货</a>
-                            </li>
-                            <li>
-                                <Icon type="folder-open" />
-                                <a>待收货</a>
-                            </li>
-                            <li>
-                                <Icon type="folder-open" />
-                                <a>待评价</a>
-                            </li>
-                            <li>
-                                <Icon type="folder-open" />
-                                <a>退换货</a>
-                            </li>
-
+                             {
+                                this.state.arr2.map((item,idx)=>{
+                                    return <li key={idx} onClick={this.myorder.bind(this)}><Icon type="folder-open" /><a>{item}</a></li>
+                                })
+                            }
 
                         </ul>
                     </div>
                     <div className="wm_m">
                         <ul className="wmmc">
-                            <li>
-                                <a><Icon type="home" /><span>会员中心</span></a>
-                                <Icon type="right" />
-                            </li>
-                            <li>
-                            <a><Icon type="heart-o" /><span>我的收藏</span></a>
-                                <Icon type="right" />
-                            </li>
-                            <li>
-                                <a><Icon type="customer-service" /><span>在线客服</span></a>
-                                <Icon type="right" />
-                            </li>
-                            <li>
-                                <a><Icon type="rocket" /><span>邮费特权</span></a>
-                                <Icon type="right" />
-                            </li>
+                            {
+                                this.state.arr3.map((item,idx)=>{
+                                    return <li key={idx}>
+                                    <a><Icon type="home" /><span>{item}</span></a>
+                                    <Icon type="right" />
+                                    </li>
+                                })
+                            }
+                            
                         </ul>
                         
                     </div>
