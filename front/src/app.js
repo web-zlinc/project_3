@@ -26,9 +26,6 @@ import Details from './components/commonComponent/commonDetails.js'
 
 import Myorder from './components/myorder/myorderComponent'
 
-
-
-
 Rem.rem();
 ReactDOM.render(
     <Provider store={store}>
@@ -36,7 +33,7 @@ ReactDOM.render(
         <Route path="/login" component={Login}/>
         <Route path="/home" component={HomeComponent} />
         <Route path="/myorchard" component={Myorchard}/>
-        <Route path="/personal" component={Personal}/>
+        <Route path="/myorchard/personal" component={Personal}/>
         <Route path="/cart" component={Cart}/>
         <Route path="/myorder" component={Myorder}/>
         <Route path="/search" component={SearchComponent} />
