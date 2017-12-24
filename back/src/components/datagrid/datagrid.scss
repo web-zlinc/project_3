@@ -36,6 +36,10 @@
                 >td{
                     text-align:center;
                     height: 50px;
+                    .ant-btn-danger{
+                        color:#fff;
+                        background-color:#f5222d;
+                    }
                 }
                 &:hover{
                     background-color:#ECF6FD;

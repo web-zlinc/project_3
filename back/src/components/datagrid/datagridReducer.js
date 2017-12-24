@@ -4,35 +4,41 @@ export default function dataGridReducer(state = {}, action){
         case 'beforeRequest':
             newState.status = 0;
             newState.type = action.type;
-            newState.updateResponse = '';
             newState.loading = action.loading;
+            newState.responesone = '';    
             break;
-        case 'requested':
+        case 'dataGridRequested':
             newState.status = 1;
             newState.type = action.type;
-            newState.respones = action.respones.data.data1;
-            newState.total = action.respones.data.data2[0].rowsCount;
+            newState.respones = action.respones.data1;
+            newState.total = action.respones.data2[0].rowsCount;
             newState.currentPage = action.page;
-            newState.loading = action.loading;            
+            newState.loading = action.loading;       
             break;
-        case 'requestError':
+        case 'dataGridRequestedError':
             newState.status = -1;
             newState.error = action.error;
             break;
-        case 'requestSingle':
-            newState.status = 2;
+        case 'dataGridRequestedOne':
+            newState.status = 1;
             newState.type = action.type;
-            newState.responeSingle = action.respones.data.data1;
-            break;
-        case 'updateResponse':
-            console.log('action',action);
-            newState.status = 3;
-            newState.type = action.type;
-            newState.currentPage = action.page;            
-            if(action.updateResponse.data == "updateOk" ||  action.updateResponse.data == 'deleteOk' ||  action.updateResponse.data == 'insertOk' ){
-                newState.updateResponse = 'Ok';
+            if(action.respones.data1){
+                newState.responesone = action.respones.data1;
+            }else{
+                newState.responesone = action.respones;              
             }
+            newState.loading = action.loading;
+            newState.currentPage = action.page;            
             break;
+        // case 'updateResponse':
+        //     newState.status = 3;
+        //     newState.type = action.type;
+        //     newState.currentPage = action.page;            
+        //     if(action.updateResponse.data == "updateOk" ||  action.updateResponse.data == 'deleteOk' ||  action.updateResponse.data == 'insertOk' ){
+        //         newState.updateResponse = 'Ok';
+        //     }
+        //     newState.loading = action.loading;                 
+        //     break;
     } 
     return newState;
 }

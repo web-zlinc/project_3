@@ -4,20 +4,47 @@ import * as dataGridAction from './datagridAction';
 
 import Spinner from '../spinner/spinnerComponent';
 
-import { Modal, Button, Input, Select, Row, Col } from 'antd';
+import { Modal, Button, Input, Select, notification } from 'antd';
 import './datagrid.scss';
+
+//消息提示框全局设置
+notification.config({
+    placement: 'topLeft',
+});
+
 
 class DataGridComponent extends React.Component{
     componentWillMount(){
         this.setState({
-            url:'furitQuery.php',
-            filerSet:['imgurl','details'],
-            status:1,
-            states:'query',
+            url:'FuritExpress.php',
+            filerSet:['imgurl','details','name'],
+            states:1,
+            status:'query',
+            languageExchange:{
+                id:'#',
+                gid:'商品编号',
+                name:'商品详情',
+                details:'商品描述',
+                price:'商品价格',
+                images:'图片路径',
+                short_name:'商品名称',
+                inventory:'商品库存',
+                standard:'商品规格',
+                hot:'热销',
+                sale:'销售量',
+                type:'商品类型',
+            }
         })
     }
     componentDidMount(){
-        this.props.getData(this.state.url, {status:this.state.states}, this.props.currentPage);
+        var params = {
+            status:this.state.status,
+            page:this.props.currentPage
+        }
+        this.props.getData(
+            this.state.url,
+            params
+        );
     }
     getKeys(item){
         return item ? Object.keys(item) : []
@@ -25,7 +52,7 @@ class DataGridComponent extends React.Component{
     //生成分页
     pageNumbers(){
         let result = [];
-        for(let i = 1; i <= Math.ceil(this.props.total/5); i++) {
+        for(let i = 1; i <= Math.ceil(this.props.total/7); i++) {
           result.push(<li
             className={i == this.props.currentPage ? 'activePage' : ''} key={i}
             onClick={e => this.handlePage(e)}
@@ -37,7 +64,26 @@ class DataGridComponent extends React.Component{
     handlePage(e) {
         let page = Number(e.target.innerHTML);
         if(page !== this.props.currentPage) {
-            this.props.onPage(this.state.url, page, this.state.optType, this.state.optContent, this.state.states);
+            if(!this.state.optType && !this.state.optContent){
+                var params = {
+                    page:page,
+                    status:this.state.status,
+                }
+                this.props.getData(
+                    this.state.url,
+                    params
+                );
+            }else if(this.state.optType && this.state.optContent){
+                var params = {
+                    page:page,
+                    status:this.state.status,
+                }
+                params[this.state.optType] = this.state.optContent;
+                this.props.getData(
+                    this.state.url,
+                    params
+                )
+            }
         }
     }
     //生成查询的选项框
@@ -46,53 +92,89 @@ class DataGridComponent extends React.Component{
         var Option = Select.Option;
         this.getKeys(this.props.dataset[0]).map(function(key, index){
             if(this.state.filerSet.indexOf(key) < 0){
-                optSelect.push(<Option value={key} key={index} id={index} >{key}</Option>)
+                optSelect.push(<Option value={key} key={index} id={index} >{this.state.languageExchange[key]}</Option>)
             }
         }.bind(this))
         return optSelect;
     }
     //获取选项框的内容的函数
     getSelectValue(value){
-        this.setState({optType:value})//获取选项框的value的值
+        this.setState({optType:value})
     }
     //获取输入框的内容的函数
     getInputValue(e){
-        this.setState({optContent:e.target.value})//获取输入框的value的值
+        this.setState({optContent:e.target.value})
     }
     //发起查询的条件
     sendCondition(){
-        this.props.onPage(this.state.url, undefined, this.state.optType, this.state.optContent, this.state.states)
+        if(!this.state.optContent || !this.state.optType){
+            notification.error({
+                message: '错误信息',
+                description: '选项框内容和输入框内容不能为空!',
+            });
+            return false;
+        }
+        var params = {
+            status:this.state.status,
+            page:1,
+        };
+        params[this.state.optType] = this.state.optContent;
+        this.props.getData(
+            this.state.url,
+            params
+        )
     }
     handle(e){
         if(e.target.className == 'ant-btn show ant-btn-primary'){
             this.setState({visible:true});
-            this.props.getData(this.state.url, {id:e.target.parentNode.parentNode.id, handle:e.target.className, status:this.state.states});
+            var params = {
+                id:e.target.parentNode.parentNode.id,
+                status:this.state.status,
+                handle:'queryOne'
+            }
+            this.props.getData(
+                this.state.url,
+                params
+            );
         } else if(e.target.className == 'ant-btn del ant-btn-danger'){
-            this.props.delData(this.state.url, e.target.parentNode.parentNode.id, 'delete', this.props.currentPage);
+            var params = {
+                status:'delete',
+                id:e.target.parentNode.parentNode.id,
+                handle:'deleteOne',
+                page:this.props.currentPage,
+            }
+            this.props.getData(
+                this.state.url,
+                params
+            );
         }
     }
     //编辑框的内容修改时触发
     setValue(e){
-        var newEdtData = JSON.parse(JSON.stringify(this.state.edtData));
+        var newEdtData = JSON.parse(JSON.stringify(this.state.dataAlter));
         newEdtData[0][e.target.id] = e.target.value;
         this.setState({
-            edtData:newEdtData
+            dataAlter:newEdtData
         })
     }
     //替换选项框
     changeCont(e){
         if(e.target.innerText == '编 辑' ){
             this.setState({
-                edtData:this.props.edtData,
-                status:2,
-                states:'update',
+                dataAlter:this.props.dataAlter,
+                states:2,
             })
         } else if(e.target.innerText == '保 存'){
-            this.props.saveData(this.state.url, this.state.edtData, this.state.states)
+            var params = JSON.parse(JSON.stringify(this.state.dataAlter[0]));
+            params.status = 'update';
+            params.handle = 'updateOne';
+            this.props.getData(
+                this.state.url,
+                params
+            )
             this.handleOk();
             this.setState({
-                states:'query',
-                status:1,
+                states:1,
             })
         }
     }
@@ -100,7 +182,7 @@ class DataGridComponent extends React.Component{
     bounceModal(e){
         this.setState({
             addvisible: true,
-            status:3,
+            states:3,
             tempOpt:{}
         })
     }
@@ -111,28 +193,36 @@ class DataGridComponent extends React.Component{
     handleOk = (e) => {
         this.setState({
             visible: false,
-            status:1,
-            states:'query',            
+            states:1,
+            status:'query',            
         });
     }
     handleCancel = (e) => {
         this.setState({
             visible: false,
-            status:1,       
-            states:'query',            
+            states:1,       
+            status:'query',            
         });
     }
     addOk = (e) => {
         this.setState({
             addvisible: false,
-            status:1,        
+            states:1,        
         });
-        this.props.addData(this.state.url, this.state.tempOpt,'insert');
+        var params = JSON.parse(JSON.stringify(this.state.tempOpt));
+        params.status = 'insert';
+        params.handle = 'insertOne';
+        params.page = this.props.currentPage;
+        console.log(params);
+        this.props.getData(
+            this.state.url,
+            params,
+        );
     }
     addCancel = (e) => {
         this.setState({
             addvisible: false,
-            status:1,                  
+            states:1,                  
         });
     }
     render(){
@@ -153,7 +243,7 @@ class DataGridComponent extends React.Component{
                             {
                                 this.getKeys(this.props.dataset[0]).map((key, index) => {
                                     if(this.state.filerSet.indexOf(key) < 0 ){
-                                        return <th key={index}>{key}</th>
+                                        return <th key={index}>{this.state.languageExchange[key]}</th>
                                     }
                                 })
                             }
@@ -167,7 +257,7 @@ class DataGridComponent extends React.Component{
                                         if(this.state.filerSet.indexOf(key) < 0 ){
                                             return <td key={idx}>{obj[key]}</td>
                                         }
-                                    })}<td><Button type="primary" className='show'>查看</Button><Button type='danger' className="del">删除</Button></td></tr>
+                                    })}<td><Button type="primary" className='show'>查看</Button><Button type="danger" className="del">删除</Button></td></tr>
                             }.bind(this))
                         }
                     </tbody>
@@ -180,23 +270,23 @@ class DataGridComponent extends React.Component{
                     okText="确定" cancelText="取消" className="ModalDiv" footer={null}
                 >
                     {
-                        this.getKeys(this.props.edtData[0]).map((key, index) => {
-                            if(this.state.status == '1'){
-                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{key}</label><span id={key} key={key} >{this.props.edtData[0][key]}</span></p>
-                            } else if(this.state.status == '2'){
-                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{key}</label><span><Input disabled={ key=="id" ? 'true' :""} id={key} key={key} value={this.state.edtData[0][key]} onChange={this.setValue.bind(this)} /></span></p>
+                        this.getKeys(this.props.dataAlter[0]).map((key, index) => {
+                            if(this.state.states == '1'){
+                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{this.state.languageExchange[key]}</label><span id={key} key={key} >{this.props.dataAlter[0][key]}</span></p>
+                            } else if(this.state.states == '2'){
+                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{this.state.languageExchange[key]}</label><span><Input disabled={ key=="id" ? 'true' :""} id={key} key={key} value={this.state.dataAlter[0][key]} onChange={this.setValue.bind(this)} /></span></p>
                             }
                         })
                     }
-                        <p className="ModalP"><span><Button type="primary" className='edt' onClick={this.changeCont.bind(this)} >{this.state.status == 1? '编辑': '保存' }</Button></span></p>   
+                        <p className="ModalP"><span><Button type="primary" className='edt' onClick={this.changeCont.bind(this)} >{this.state.states == 1? '编辑': '保存' }</Button></span></p>   
                 </Modal>
                 <Modal title="添加商品信息" visible={this.state.addvisible} onOk={this.addOk} onCancel={this.addCancel} 
                     okText="确定" cancelText="取消" className="ModalDiv"
                 >
                     {
                         this.getKeys(this.props.dataset[0]).map((key, index) => {
-                            if(this.state.status == '3'){
-                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{key}</label><span><Input disabled={key == 'id' ? 'true' : '' } id={key} key={key} onChange={this.getValue.bind(this)} /></span></p>
+                            if(this.state.states == '3'){
+                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{this.state.languageExchange[key]}</label><span><Input disabled={key == 'id' ? 'true' : '' } id={key} key={key} onChange={this.getValue.bind(this)} /></span></p>
                             }
                         })
                     }
@@ -205,8 +295,15 @@ class DataGridComponent extends React.Component{
         )
     }
     componentDidUpdate(){
-        if(this.props.updateResponse == 'Ok'){
-            this.props.getData(this.state.url, {status:this.state.states},this.props.currentPage);
+        if(this.props.messageRequested == 'Ok'){
+            var params = {
+                status:this.state.status,
+                page:this.props.currentPage
+            }
+            this.props.getData(
+                this.state.url,
+                params
+            );
         }
     }
 }
@@ -214,11 +311,11 @@ class DataGridComponent extends React.Component{
 const mapToState = function(state){
     console.log(state)
     return {
-        dataset: state.dataGrid.respones,
-        total: state.dataGrid.total,
+        dataset: state.dataGrid.respones || [],
+        total: state.dataGrid.total || 0,
         currentPage:state.dataGrid.currentPage || 1,
-        edtData:state.dataGrid.responeSingle || [],
-        updateResponse:state.dataGrid.updateResponse || '',
+        dataAlter:state.dataGrid.responesone || [],
+        messageRequested:state.dataGrid.responesone || '',
         loading:state.dataGrid.loading || false,
     }
 }

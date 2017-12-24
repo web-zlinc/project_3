@@ -1,0 +1,115 @@
+$mainColor:#108ee9;
+#main{
+    height:100%;
+    .headerMain{
+        height: 60px;
+        border-bottom:1px solid #ddd;
+        width: 100%;
+        .imgContainer{
+            float:left;
+            >a{
+                display: block;
+                width: 200px;
+                height: 60px;
+                text-align:center;
+                line-height: 60px;
+                color:$mainColor;
+            }
+        }
+        .userInfo{
+            float:right;
+            padding-right: 30px;
+            >dd{
+                float: left;
+                position: relative;
+                &:nth-child(2){
+                    >a{
+                        width: 120px;
+                    }
+                }
+                &:nth-child(3){
+                    >a{
+                        font-size:22px;
+                        width: 40px;
+                        text-align:left;
+                    }
+                }
+                >a{
+                    display: block;
+                    height: 60px;
+                    width: 60px;
+                    text-align: center;
+                    line-height:60px;
+                    color:#666;
+                    >img{
+                        width: 80%;
+                        border-radius:50%;
+                        padding: 6px 0;
+                        margin: 0 auto;
+                    }
+                }
+                >ul{
+                    position: absolute;
+                    right:-10px;
+                    bottom:-30px;
+                    display: none;
+                    >li{
+                        border:1px solid #ddd;
+                        border-top:none;
+                        border-bottom:none;
+                        >a{
+                            display: block;
+                            width:80px;
+                            height: 30px;
+                            line-height:30px;
+                            text-align: center;
+                            border-bottom: 1px solid #ddd;
+                            color:#666;
+                            >span{
+                                margin-left: 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .mainContent{
+        height:634px;
+        .mainAside{
+            float: left;
+            width: 228px;
+            height:100%;
+            border-right:1px solid #ddd;
+            >ul{
+                >li{
+                    position: relative;
+                    >a{
+                        display: block;
+                        width: 100%;
+                        height: 40px;
+                        border-bottom:1px solid #ddd;
+                        text-align:center;
+                        line-height:40px;
+                        color:#666;
+                        &.activeAside{
+                            background-color: $mainColor;
+                            color:#fff;
+                        }
+                    }
+                    .itemAnticon{
+                        position: absolute;
+                        left:50px;
+                        top:8px;
+                        font-size: 20px;
+                        color:#666;
+                    }
+                }
+            }
+        }
+        .content{
+            height:100%;
+            overflow: hidden;
+        }
+    }
+}
