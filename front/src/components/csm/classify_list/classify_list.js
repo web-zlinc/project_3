@@ -23,16 +23,17 @@ class Classify_list extends React.Component{
         currentSpan.style.borderBottom="4px solid #75A739";
         const name=currentSpan.innerText;
 
-        const type=currentLi.innerText;
+        
+        var type=currentSpan.innerText;
         this.props.getData("allShow.php",{type:type}); 
 
-         var type=currentSpan.innerText;
-         if(type=="全部"){
+        
+        if(type=="全部"){
             this.props.getData("classify_list.php");      
-         }
-         else{
+        }
+        else{
             this.props.getData("classify_list.php",{name:type});
-         }
+        }
              
 
     }

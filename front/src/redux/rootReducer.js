@@ -17,7 +17,7 @@ export default combineReducers({
     allshow,
     cart,
     searchFruit,
-    myorder
+    myorder,
     searchRecommend
 })
 
