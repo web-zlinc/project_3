@@ -20,18 +20,27 @@ export default class WyorchardComponent extends React.Component{
     }
     componentWillMount(){
         if(window.localStorage.data){
-            console.log(window.localStorage.data);
             this.state.storage=JSON.parse(window.localStorage.data);
             this.state.hint=this.state.storage[0].phone;
             this.state.img=this.state.storage[0].portrait;
         }
     }
     person(){
-        console.log(this.state.hint);
         if(this.state.hint=='登陆/注册'){
              hashHistory.push('login');
         }
     }
+
+    myorder(e){
+        var currli=e.target.parentElement;
+        if(currli.tagName.toLowerCase()==='li'||e.target.tagName.toLowerCase()==='li'){
+            hashHistory.push('myorder');
+        }
+        if(e.target.tagName.toLowerCase()==='span'){
+            hashHistory.push('myorder');
+        }
+    }
+
     render(){
         return (
             <div id="w_container">
@@ -63,17 +72,17 @@ export default class WyorchardComponent extends React.Component{
                         <div className="wmht">
                             <div>
                                 <Icon type="exception" className="ord1" />
-                                <span>我的订单</span>
+                                <span onClick={this.myorder.bind(this)}>我的订单</span>
                             </div>
                             <div>
-                                <span>全部订单</span>
+                                <span onClick={this.myorder.bind(this)}>全部订单</span>
                                 <Icon type="right" className="ord2" />
                             </div>
                         </div>
                         <ul className="wmhc">
                              {
                                 this.state.arr2.map((item,idx)=>{
-                                    return <li key={idx}><Icon type="folder-open" /><a>{item}</a></li>
+                                    return <li key={idx} onClick={this.myorder.bind(this)}><Icon type="folder-open" /><a>{item}</a></li>
                                 })
                             }
 

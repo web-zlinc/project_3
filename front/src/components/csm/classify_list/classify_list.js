@@ -2,7 +2,7 @@
 * @Author: sherah
 * @Date:   2017-12-22 10:24:01
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-23 12:50:21
+* @Last Modified time: 2017-12-23 15:11:26
 */
 
 import React from 'react'
@@ -30,8 +30,8 @@ class Classify_list extends React.Component{
         currentSpan.style.color="#75A739";
         currentSpan.style.borderBottom="4px solid #75A739";
         const name=currentSpan.innerText;
-         const type=currentLi.innerText;
-            this.props.getData("allShow.php",{type:type}); 
+        const type=currentLi.innerText;
+        this.props.getData("allShow.php",{type:type}); 
     }
     // 价格排序
     order(event){

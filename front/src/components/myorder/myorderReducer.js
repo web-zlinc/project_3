@@ -1,4 +1,4 @@
-export default function LoginReducer(state = {}, action){
+export default function MyorderReducer(state = {}, action){
     var newState = JSON.parse(JSON.stringify(state));
     switch(action.type){
         case 'beforeRequest':

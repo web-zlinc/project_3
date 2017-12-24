@@ -31,7 +31,6 @@ class PersonalComponent extends React.Component{
             this.props.getData('user.php',params);
 
         }
-        console.log(this);
     }   
     render(){
         return (
