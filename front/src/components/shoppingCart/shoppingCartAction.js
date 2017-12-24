@@ -1,4 +1,3 @@
-
 export function getUserInfo(_params){
     return {
         type: ['beforeRequest', 'Requested', 'requestError'],

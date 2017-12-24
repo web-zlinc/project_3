@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Input, Button, Icon, Layout, Row, Col } from 'antd';
+import { Input, Button, Icon, Layout, Row, Col, AutoComplete } from 'antd';
 import { IndexLink } from "react-router";
 const { Header, Content } = Layout;
 const Search = Input.Search;
@@ -10,6 +10,9 @@ const ButtonGroup = Button.Group;
 import * as searchFruitActions from './searchAction'
 
 import '../../assets/css/commonSearch.css'
+
+
+const dataSource = ['奇异果', '牛油果', '热带水果', '樱桃', '葡萄/提子', '柑橙桔柚'];
 
 
 class SearchComponent extends React.Component {
@@ -55,28 +58,21 @@ class SearchComponent extends React.Component {
     }
     onChangesearchFruit(e) {
         this.setState({ searchFruit: e.target.value });
+    }
+    searchForList(){
+        console.log(this.state.searchFruit)
         let keyWord = this.state.searchFruit;
         let api = this.state.api;
-        
-        // this.timer = setTimeout(function () {
 
-            this.props.getData(api, { keyword: keyWord });
+        this.props.getData(api, { keyword: keyWord });
 
-            var resData = this.props.dataset;
-
-            console.log(resData.length)
-
-            if(resData.length === 0) {
-                
-                return ;
-            }else{
-                console.log(resData)
-                
-            }
-        // }.bind(this), 3000)
+        var resData = this.props.dataset;
+        // 异步请求 返回undefind
+        console.log(resData)
     }
     render() {
         const { searchFruit } = this.state;
+        let self = this;
         // const path = this.state.lastPath;
         const suffix = searchFruit ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this)} /> : null;
         return (
@@ -98,7 +94,7 @@ class SearchComponent extends React.Component {
                             ref={node => this.searchFruitInput = node}
                         />
                         <div className="sub-btn">
-                            <span>
+                            <span onClick={this.searchForList.bind(this)}>
                             搜索
                             </span>
                         </div>
