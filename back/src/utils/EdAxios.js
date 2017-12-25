@@ -15,7 +15,7 @@ var fliterUrl = function(url){
 export default {
     get:(opt)=>{
         return  new Promise((resolve,reject)=>{
-                    axios.get(fliterUrl(opt.url)).then((response)=>{
+                    axios.get(fliterUrl(opt.url), { params: opt.params }).then((response)=>{
                         resolve(response);
                     }).catch((error)=>{
                         reject(error);
@@ -24,7 +24,7 @@ export default {
     },
     post:(opt)=>{
         return new Promise((reslove,reject)=>{
-                 axios({
+                axios({
                     url:fliterUrl(opt.url),
                     data: qs.stringify(opt.params),
                     method: 'post',

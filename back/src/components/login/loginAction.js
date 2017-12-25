@@ -1,3 +1,8 @@
-export function login(_username, _password){
-    type:
+export function login(_url, _params = {}){
+    return {
+        types:['loginbeforeRequest','loginRequested','loginRequestedError'],
+        url:_url,
+        params:_params,
+        method:'get'
+    }
 }

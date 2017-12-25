@@ -16,24 +16,11 @@ notification.config({
 class DataGridComponent extends React.Component{
     componentWillMount(){
         this.setState({
-            url:'FuritExpress.php',
-            filerSet:['imgurl','details','name'],
-            states:1,
-            status:'query',
-            languageExchange:{
-                id:'#',
-                gid:'商品编号',
-                name:'商品详情',
-                details:'商品描述',
-                price:'商品价格',
-                images:'图片路径',
-                short_name:'商品名称',
-                inventory:'商品库存',
-                standard:'商品规格',
-                hot:'热销',
-                sale:'销售量',
-                type:'商品类型',
-            }
+            url:this.props.url,
+            filerSet:this.props.filerSet,
+            states:this.props.states,
+            status:this.props.status,
+            languageExchange:this.props.languageExchange
         })
     }
     componentDidMount(){
@@ -168,6 +155,7 @@ class DataGridComponent extends React.Component{
             var params = JSON.parse(JSON.stringify(this.state.dataAlter[0]));
             params.status = 'update';
             params.handle = 'updateOne';
+            params.page = this.props.currentPage;
             this.props.getData(
                 this.state.url,
                 params
@@ -300,6 +288,9 @@ class DataGridComponent extends React.Component{
                 status:this.state.status,
                 page:this.props.currentPage
             }
+            if(this.state.optType && this.state.optContent){
+                params[this.state.optType] = this.state.optContent;
+            }
             this.props.getData(
                 this.state.url,
                 params
@@ -309,7 +300,7 @@ class DataGridComponent extends React.Component{
 }
 
 const mapToState = function(state){
-    console.log(state)
+    console.log(state);
     return {
         dataset: state.dataGrid.respones || [],
         total: state.dataGrid.total || 0,

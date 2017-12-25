@@ -20,7 +20,8 @@ export function ajaxMiddleWare(MiddleWareAPI){
             }else{
                 curPage = params.page
             }
-            if(url){
+            console.log('params',params);
+            if(method =='post'){
                 http[method]({url:url,params}).then(res => {
                     MiddleWareAPI.dispatch({
                         type:types[1],
@@ -34,7 +35,21 @@ export function ajaxMiddleWare(MiddleWareAPI){
                         error,
                     })
                 })
-            } 
+            }else if(method == 'get'){
+                http[method]({url:url,params}).then(res => {
+                    MiddleWareAPI.dispatch({
+                        type:types[1],
+                        respones:res.data,
+                        page:curPage,
+                        loading:false,
+                    })
+                }).catch(error => {
+                    MiddleWareAPI.dispatch({
+                        type: types[2],
+                        error,
+                    })
+                })
+            }
         }
     }
 }
