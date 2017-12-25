@@ -22,19 +22,33 @@ class LoginComponent extends React.Component{
     
     // 组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state
     componentWillUpdate(nextProps, nextState){
+        //登陆
         if(nextProps.type == 0){
             nextState.show = true;
         }else if(nextProps.type == 1){
             nextState.show = false;
-            if(nextProps.dataset.length>0){
-               hashHistory.push('myorchard');
-
-            }else if(nextProps.dataset.length==0){
-                alert('用户名和密码错误');
+            if(typeof nextProps.dataset=='object'){
+                var phone=this.refs.phone.input.value;
+                var password=this.refs.pwd.input.value;
+               if(phone||password){
+                    if(nextProps.dataset.length>0){
+                        hashHistory.push('/home/success');
+                    }else if(nextProps.dataset.length==0){
+                        alert('用户名和密码不正确！');
+                    }
+               }
             }
-
+            else if(typeof nextProps.dataset=='string'){
+                if(nextProps.dataset=="sucess"){
+                    alert('注册成功');
+                }else if(nextProps.dataset=="failed"){
+                    alert('用户名已被注册');
+                }
+            }
+            
         }
         
+
     }
     componentDidUpdate(prevProps, prevState){
         if(this.props.dataset){
@@ -48,9 +62,10 @@ class LoginComponent extends React.Component{
         var phone=this.refs.phone.input.value;
         var password=this.refs.pwd.input.value;
         if(phone&&password){
-            
             this.props.getData('user.php',{lphone:phone,lpassword:password});
             return;
+        }else{
+            alert('请输入用户名和密码');
         }
 
     }
@@ -61,7 +76,9 @@ class LoginComponent extends React.Component{
         var phone=this.refs.phone.input.value;
         var password=this.refs.pwd.input.value;
         if(phone&&password){
-            this.props.getData('user.php',{rphone:phone,rpassword:password});
+            this.props.getData('register.php',{phone:phone,password:password});
+        }else{
+            alert('请输入用户名和密码');
         }
         
 
