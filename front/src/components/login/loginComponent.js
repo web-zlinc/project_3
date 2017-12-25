@@ -48,7 +48,7 @@ class LoginComponent extends React.Component{
         }
 
     }
-    
+
     componentDidUpdate(prevProps, prevState){
         if(this.props.dataset){
             var obj=JSON.stringify(this.props.dataset);
@@ -81,8 +81,6 @@ class LoginComponent extends React.Component{
 
     }
 
-    
-
     render(){
         return (
             <div id="l_container">
@@ -108,9 +106,16 @@ class LoginComponent extends React.Component{
                         <Input type="password" placeholder="密码" ref="pwd" onBlur={this.pwdCheck} />
                     </p>
                     <p className="cont">首次用手机号登录将自动为您注册，并有豪礼相送。</p>
-                    <p><Button type="primary" className="login" onClick={this.login.bind(this)}>登录</Button></p>
-                    <p><Button type="primary" className="register" onClick={this.register.bind(this)}>注册</Button></p>
-                    <p className="footer"><span className="fl">账号密码登录</span><span className="fr">未收到验证码?</span></p>
+                    <p>
+                        <Button type="primary" className="login" onClick={this.login.bind(this)}>登录</Button>
+                    </p>
+                    <p>
+                        <Button type="primary" className="register" onClick={this.register.bind(this)}>注册</Button>
+                    </p>
+                    <p className="footer">
+                        <span className="fl">账号密码登录</span>
+                        <span className="fr">未收到验证码?</span>
+                    </p>
                 </form>
             </div>
         )
