@@ -4,6 +4,8 @@ import login from '../components/login/loginReducer'
 import datagrid from '../components/datagrid/datagridReducer'
 import allshow from '../components/csm/allShow/allShowReducer'
 import cart from '../components/shoppingCart/shoppingCartReducer';
+import cartOrder from '../components/cartOrder/cartOrderReducer';
+import getOrder from '../components/pay/payReducer.js';
 import searchFruit from '../components/commonComponent/searchReducer'
 
 
@@ -18,6 +20,8 @@ export default combineReducers({
     cart,
     searchFruit,
     myorder,
-    searchRecommend
+    searchRecommend,
+    cartOrder,
+    getOrder
 })
 

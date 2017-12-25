@@ -17,7 +17,7 @@ class ShoppingCartComponent extends Component{
     constructor(props){
         super(props);
         this.state= {
-            phone:'2',
+            phone:'150',
             getUser:[],
             edit:"编辑",
             isEdit:true,
@@ -26,7 +26,7 @@ class ShoppingCartComponent extends Component{
             buycarQty:[],
             checkProduct:[],
             isAlert:false,
-            mess:"请选择您要购买的商品"
+            mess:null
 
         }
 
@@ -39,19 +39,12 @@ class ShoppingCartComponent extends Component{
     componentDidUpdate(){
         if(this.props.getUser && this.props.getUser.length>0){
             this.setState({getUser:JSON.parse(JSON.stringify(this.props.getUser))})
-            this.showQty();
-            this.isSelected()
+        }else {
+            return false;
         }
-    }
-    // buycarQty是一个装着商品数量的数组
-    showQty(){
-        var arr = [];
-        for(var i=0;i<this.props.getUser.length;i++){
-            arr.push(this.props.getUser[i].qty);
-        }
-        this.setState({buycarQty:arr});
-        this.totalPrice();        
-    }
+    } 
+    
+    
 
     render(){
         if(!this.props.getUser){
@@ -87,8 +80,8 @@ class ShoppingCartComponent extends Component{
 
                         <ul className="y_cart_list_items" >
                             {
-                                this.state.getUser.length > 0 ? 
-                                this.state.getUser.map(function(item,idx){
+                                this.props.getUser.length > 0 ? 
+                                this.props.getUser.map(function(item,idx){
                                     return (
                                         <li className="y_cart_info" key={'li'+idx}>
                                             <span onClick={this.isChecked.bind(this)} className="y_oneChecked"><Icon className="y_checked_icon" type="check-circle-o" /></span>
@@ -148,7 +141,7 @@ class ShoppingCartComponent extends Component{
         for(var i=0; i<length;i++){
             if($('.y_oneChecked').eq(i).hasClass('y_checked')){
                 // var unitPrice = ($('.y_oneChecked')[i].parents('li').find('.y_goods_price em').text())*1;
-                var unitPrice = Number(this.state.getUser[i].price);
+                var unitPrice = Number(this.props.getUser[i].price);
                 
                 var qty = ($('.y_oneChecked').parents('li').find('.y_goods_num').eq(i).text())*1;
             } else {
@@ -236,6 +229,7 @@ class ShoppingCartComponent extends Component{
             checkProduct.map(function(item,index){
                 goodsInfo.push ({
                     images : item.images,
+                    gid : item.gid,
                     name : item.name,
                     standard : item.standard,
                     price : item.price,
@@ -245,7 +239,7 @@ class ShoppingCartComponent extends Component{
             })
             var order = JSON.stringify({
                 uid : checkProduct[0].uid,
-                orderNo : 'P' + new Date().getTime(),
+                orderNo : new Date().getTime(),
                 username : checkProduct[0].username,
                 phone :checkProduct[0].phone,
                 address : checkProduct[0].address,
@@ -259,7 +253,8 @@ class ShoppingCartComponent extends Component{
             hashHistory.push('/cartOrder');
 
         } else{
-            // alert('请选择您要购买的商品')
+            alert('请选择您要购买的商品')
+            
             this.setState({isAlert:true, mess:'请选择您要购买的商品'})
             setTimeout(()=>{
                 this.setState({isAlert:false, mess:null})
