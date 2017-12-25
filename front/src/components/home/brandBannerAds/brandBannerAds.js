@@ -1,9 +1,29 @@
 import React from 'react'
 import { Carousel } from 'antd';
+import $ from 'jquery';
 
 class BrandBannerAdsComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            _dayThis: this,
+            _dayNews: [
+                '积分将过期，好礼抢兑ing',
+                '【第2件9.9】广西甘蔗大特卖',
+                '积分将过期，好礼抢兑ing'
+            ]
+        }
+    }
     componentDidMount(){
-        console.log('BrandBanner complete!')
+        setInterval(() => {
+            $('.rollNews ul').stop().animate({top: -95});
+            if ($('.rollNews ul').css('top') === '-95px'){
+                $('.rollNews ul').stop().animate({ top: -190 },function(){
+
+                    $('.rollNews ul').css('top','0')
+                });
+            }
+        }, 3000);
     }
     render(){
         return (
@@ -28,6 +48,20 @@ class BrandBannerAdsComponent extends React.Component {
                     <a>
                         <img src=".\src\assets\images\adv\caa96ee4453a25ed3e58f4a8f73e736d.jpg" />
                     </a>
+                </div>
+                <div className="rollNews">
+                    <h2>天天快报</h2>
+                    <ul>
+                        {
+                            (function(self){
+                                return self.state._dayNews.map(function(item,idx){
+                                    return <li key={idx}>
+                                            <a>{item}</a>
+                                        </li>
+                                })
+                            })(this.state._dayThis)
+                        }
+                    </ul>
                 </div>
             </div>
         )

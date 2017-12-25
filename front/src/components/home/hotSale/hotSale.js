@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Icon, Modal } from 'antd';
 
-// import './dialog.scss';
-
 class HotSale extends React.Component {
     constructor() {
         super();
@@ -104,7 +102,6 @@ class HotSale extends React.Component {
                                 <Link to="/login" className="btn btn-primary">
                                     去登陆
                                 </Link>
-                                {/* <a >去登录</a> */}
                             </div>
                         </div>
                     </div>
