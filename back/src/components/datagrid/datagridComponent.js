@@ -15,12 +15,14 @@ notification.config({
 
 class DataGridComponent extends React.Component{
     componentWillMount(){
+        var userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
         this.setState({
             url:this.props.url,
-            filerSet:this.props.filerSet,
-            states:this.props.states,
-            status:this.props.status,
-            languageExchange:this.props.languageExchange
+            filerSet:this.props.filerSet || [],
+            states:this.props.states || 1,
+            status:this.props.status || 'query',
+            languageExchange:this.props.languageExchange,
+            type:userInfo.type
         })
     }
     componentDidMount(){
@@ -224,7 +226,7 @@ class DataGridComponent extends React.Component{
                 </Select>
                 <Input type="text" onBlur={this.getInputValue.bind(this)} className="SearchIpt" />
                 <Button type="primary" shape="circle" icon="search" onClick={this.sendCondition.bind(this)} ></Button>
-                <Button type="primary" shape="circle" icon="plus-circle-o" onClick={this.bounceModal.bind(this)}  ></Button>
+                <Button disabled={this.state.type == '1' ? '' : 'true' } type="primary" shape="circle" icon="plus-circle-o" onClick={this.bounceModal.bind(this)}  ></Button>
                 <table className="tabBox" >
                     <thead className="tabHead" >
                         <tr>
@@ -245,7 +247,7 @@ class DataGridComponent extends React.Component{
                                         if(this.state.filerSet.indexOf(key) < 0 ){
                                             return <td key={idx}>{obj[key]}</td>
                                         }
-                                    })}<td><Button type="primary" className='show'>查看</Button><Button type="danger" className="del">删除</Button></td></tr>
+                                    })}<td><Button type="primary" className='show'>查看</Button><Button disabled={this.state.type == '1' ? '' : 'true' } type="danger" className="del">删除</Button></td></tr>
                             }.bind(this))
                         }
                     </tbody>
@@ -274,7 +276,7 @@ class DataGridComponent extends React.Component{
                     {
                         this.getKeys(this.props.dataset[0]).map((key, index) => {
                             if(this.state.states == '3'){
-                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{this.state.languageExchange[key]}</label><span><Input disabled={key == 'id' ? 'true' : '' } id={key} key={key} onChange={this.getValue.bind(this)} /></span></p>
+                                return <p className="ModalP" key={'p' + key } ><label className="LabelP" key={'label' + key} >{this.state.languageExchange[key]}</label><span><Input disabled={key == 'id' || key == 'addtime' ? 'true' : '' } id={key} key={key} onChange={this.getValue.bind(this)} /></span></p>
                             }
                         })
                     }

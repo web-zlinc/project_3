@@ -14,12 +14,12 @@ class MainComponent extends React.Component{
         });
         this.setState({
             items:[
-                {icon:"team", text:'管理员模块',path:'#/products'},
-                {icon:"edit", text:'评论模块',path:'#/products'},
+                {icon:"team", text:'管理员模块',path:'#/administrator'},
+                {icon:"edit", text:'评论模块',path:'#/appraise'},
                 {icon:"bars",text:'产品模块',path:'#/products'},
-                {icon:"wallet",text:'订单模块',path:'#/products'},
-                {icon:"shopping-cart",text:'购物车模块',path:'#/products'},
-                {icon:"user",text:'用户模块',path:'#/products'}
+                {icon:"wallet",text:'订单模块',path:'#/order'},
+                {icon:"shopping-cart",text:'购物车模块',path:'#/shoppingcart'},
+                {icon:"user",text:'用户模块',path:'#/user'}
             ]
         })
     }

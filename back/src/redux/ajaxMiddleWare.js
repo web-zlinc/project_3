@@ -20,7 +20,6 @@ export function ajaxMiddleWare(MiddleWareAPI){
             }else{
                 curPage = params.page
             }
-            console.log('params',params);
             if(method =='post'){
                 http[method]({url:url,params}).then(res => {
                     MiddleWareAPI.dispatch({
