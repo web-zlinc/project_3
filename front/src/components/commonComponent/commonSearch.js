@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { Input, Button, Icon, Layout, Row, Col, AutoComplete } from 'antd';
-import { IndexLink } from "react-router";
+import { IndexLink, Link } from "react-router";
 const { Header, Content } = Layout;
 const Search = Input.Search;
 const ButtonGroup = Button.Group;
@@ -74,7 +74,7 @@ class SearchComponent extends React.Component {
 
         // 记录历史搜索
         this.state.historySearch.push(keyWord);
-        console.log(this.state.historySearch)
+        // console.log(this.state.historySearch)
 
     }
     render() {
@@ -102,7 +102,7 @@ class SearchComponent extends React.Component {
                         />
                         <div className="sub-btn">
                             <span onClick={this.searchForList.bind(this)}>
-                            搜索
+                                <Link to={'/classify/classify_list/' + this.state.searchFruit}>搜索</Link>
                             </span>
                         </div>
                     </Header>
