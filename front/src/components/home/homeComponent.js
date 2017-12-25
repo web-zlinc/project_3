@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon , Affix , BackTop } from 'antd';
+import { Icon, Affix, BackTop, Tabs } from 'antd';
 import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import axios from 'axios';
@@ -11,26 +11,27 @@ import MiddleAdv from './middleAdv/middleAdv'
 import HotSale from './hotSale/hotSale'
 import RecommendFruit from './recommend/recommend'
 import TopMenu from './topMenu/topMenu'
+import WechatGift from './wechatGift/wcgift'
 import CommonFooter from '../commonComponent/commonFoot'
 
 import * as searchActions from './recommend/recommendAction'
 
 import './home.scss';
 
+const TabPane = Tabs.TabPane;
+
 class HomeComponent extends React.Component {
  
-    scrollTop(){
-        scrollTo(0,0)
-    }
     constructor(props){
         super(props);
         this.state = {
+            _loginState: this.props.params.status,
             _text: 123,
             _getData: [],
             _currentUrl: '',
             _path: 'http://localhost:5555/php/HsearchForRecommend.php'
         };
-        // console.log(this.state)
+        // console.log(this.state._loginState)
         this.AxiosGet=(url)=>{
             var self = this;
             console.log(url)
@@ -41,42 +42,43 @@ class HomeComponent extends React.Component {
                 self.setState({
                     _getData: res.data
                 })
-                console.log(self.state._getData)
+                // console.log(self.state._getData)
             })
         }
     }
-    componentDidMount() {
+    componentWillMount() {
         let ajaxUrl = this.state._path;
         this.AxiosGet(ajaxUrl);
     }
-  
-    // componentDidMount() {
-    //     window.addEventListener('scroll',() => {
-    //         let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-    //         if(scrollTop > 799){
-    //             this.changeState();
-    //         }
-    //     });
-    // }
     render(){
         return (
             <div>
                 <TopMenu />
-                <section className="container home" style={{paddingTop: 10}}>
-                    <div className="swiper-container home-swiper">
-                        <div className="swiper-wrapper" >
-                            <div className="swiper-slide">
-                                <BrandBannerAds />
-                                <MiddleAdv />
-                                <HotSale  />
-                                <BigImgBanners className={this.state.className} />
-                                <RecommendFruit text={this.state._getData} />
+                <Tabs defaultActiveKey="1">
+                    <TabPane tab="精选推荐" key="1">
+                        <section className="container home" style={{ paddingTop: 10 }}>
+                            <div className="swiper-container home-swiper">
+                                <div className="swiper-wrapper" >
+                                    <div className="swiper-slide">
+                                        <BrandBannerAds />
+                                        <MiddleAdv />
+                                        <HotSale red={this.state._getData} />
+                                        <BigImgBanners red={this.state._getData} className={this.state.className} />
+                                        <RecommendFruit red={this.state._getData} />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="backTop" onClick={this.scrollTop.bind(this)}>返回顶部</div>
-                </section>
-                <CommonFooter />
+                            {/* <div id="backTop" onClick={this.scrollTop.bind(this)}>返回顶部</div> */}
+                        </section>
+                        <CommonFooter />
+                    </TabPane>
+                    <TabPane tab="限时特惠" key="2">
+                        
+                    </TabPane>
+                    <TabPane tab="点击就送" key="3">
+                        <WechatGift />
+                    </TabPane>
+                </Tabs>
             </div>
         )
     }
