@@ -78,6 +78,11 @@
     white-space: nowrap;
 }
 
+#searchNav .sub-btn span a {
+    color: #64a131;
+
+}
+
 .ant-input-affix-wrapper {
     font-family: "Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -170,4 +175,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* for hidden */
+.forHidden {
+    display: none;
 }

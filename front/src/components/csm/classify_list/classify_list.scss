@@ -1,0 +1,129 @@
+$color:#75A739;
+#datalist{
+    height: 100%;
+    background-color:#fff;
+    display:flex;
+    flex-direction:column;
+    .data_top{
+        position:flex;
+        top:0.0rem;
+        height:1.666667rem;
+        display:flex;
+        flex-direction:column;
+        .data_header{
+            color:$color;
+            background-color:#F8F8F8;
+            height: 0.8rem;
+            border-bottom:1px solid #D8D8D8;
+               text-align:center;
+               display:flex;
+               padding:0 0.266667rem;
+                p{
+                flex:1;
+                font-size:0.266667rem; 
+                line-height: 0.693333rem;
+                position:relative;                
+                }
+                p:nth-child(1){
+                    text-align:left;
+                } 
+                p:nth-child(3){
+                    text-align:right;
+                } 
+        }
+        .data_nav{ 
+            height:0.533333rem;       
+            overflow-y: hidden;  
+            ul{ 
+                overflow-x:auto;
+                height:0.666667rem;
+                margin: 0.0rem;
+                white-space: nowrap;
+                li{
+                height:0.48rem; 
+                overflow: hidden;
+                display: inline-block;
+                    span{
+                    color:#000;
+                    height: 0.466667rem;
+                    display:block;             
+                    font-weight:bold;
+                    font-size:0.186667rem;
+                    line-height:0.466667rem;
+                    padding:0 0.133333rem;
+                    margin:0 0.133333rem;
+                    }
+                
+                }
+            }     
+        }
+        .data_order{
+            height: 0.6rem;
+            background-color:#F5F5F5;
+            margin: 0;
+            display:flex;
+            li{
+                flex:1;
+                text-align:center;
+                font-size:0.186667rem;
+                line-height: 0.6rem;
+                color:#000;
+            } 
+            li:nth-child(1){
+                color:$color;
+            }
+            .order{
+                display:inline-block;
+                position:relative;
+                top: 0rem;
+                margin-left: .05rem;
+                text-align:center;
+                width: 0.133333rem;
+                i{
+                    font-size:0.133333rem;
+                    position:absolute;
+                }
+                i:nth-child(1){
+                    top:0.00rem;
+                    left:0.0rem;
+                }
+                i:nth-child(2){
+                    top:0.066667rem;
+                    left:0.0rem;
+                }
+            }
+        }
+    }
+    .data_content{
+        flex:1;
+        overflow:auto;
+    }
+     .cart{
+        position:relative;
+        bottom:0.133333rem;
+        a{
+            text-align:center;
+            display:block;
+            width: 0.693333rem;
+            height: 0.693333rem;
+            border-radius:50%;
+            background-color:#65A032;
+            margin:0.133333rem;
+            font-size:0.533333rem;
+            color:#fff;
+        }
+        .totalQty{
+            text-align:center;
+            display:block;
+            width: 0.266667rem;
+            height: 0.266667rem;
+            font-size:0.186667rem;
+            position:absolute;
+            top:0.0rem;
+            left:0.533333rem;
+            background-color:#FF8000;
+            border-radius:50%;
+            color:#fff;
+        }
+     }       
+}

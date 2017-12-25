@@ -1,0 +1,81 @@
+.list{
+    display:flex;
+    flex-direction:column;
+    li{
+        padding:0.133333rem;
+        height: 1.666667rem;
+        border-bottom:1px solid #D8D8D8; 
+       a{
+         display:flex;
+        width: 100%;
+        img{
+            height:1.4rem;
+            width: 1.4rem;
+            border-right:0.133333rem;
+        }
+        .list_right{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            p{
+                margin: 0;
+            }
+            .r_top{
+                height: 0.84rem;
+                 .name{
+                font-size:0.186667rem;
+                line-height: 0.266667rem;
+                color:#3A3A3A;
+                font-weight:bold;
+                 }
+                .details{
+                    font-size:0.16rem;
+                    color:#878796;
+                }
+            }
+           
+            .inventory{
+                height:0.24rem;
+                 color:#878796;
+                 font-size:0.16rem;
+                 line-height:0.266667rem;
+            }
+            .price{
+                flex:1;
+                color:#FF8000;
+                display:flex;
+                p{
+                    flex:1;
+                    height: 0.266667rem;
+                    position:relative;
+                    span:nth-child(1){
+                        font-size:0.266667rem;
+                        font-weight:bold;
+                    }
+                    span:nth-child(2){
+                        background-color:#FF8000;
+                        color:#fff;
+                        font-size:0.186667rem;
+                        border-radius:0.026667rem;
+                        padding:0.026667rem;
+                        margin-left:0.133333rem;
+                        position:absolute;
+                        top:0.066667rem;
+
+                    }
+                }
+                p:nth-child(2){
+                    text-align:right;
+                    
+                    i{
+                        padding:0.133333rem;
+                        font-size:0.293333rem;
+                    }
+                }
+            }
+        }
+    }  
+    }
+   
+
+}

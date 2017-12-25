@@ -2,41 +2,36 @@
 * @Author: sherah
 * @Date:   2017-12-20 20:41:46
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-21 20:48:13
+* @Last Modified time: 2017-12-24 20:59:14
 */
 import React from 'react';
 import {connect} from 'react-redux'
 import {Icon} from 'antd';
-import * as allShowActions from '../../datagrid/datagridAction.js'
+import {Link} from 'react-router'
 class AllShowComponent extends React.Component{
-    shouldComponentUpdate(newProps, newState){
-        var url=this.props.url;
-        var type=this.props.type;
-            this.props.getData(url,{type:this.props.type});
-            return true       
-    }
-     componentDidMount(){
-        var url=this.props.url;
-        var type=this.props.type;
-            this.props.getData(url,{type:this.props.type}); 
-     }
+     constructor(props){
+        super(props);
+        this.state = {
+            type: this.props.type
+        };
+    } 
     render(){
-        if(!this.props.dataset){
+        if(!this.props.data){
             return null
         }
         return (
             <div className="allshow">
-                <div><p>{this.props.type}<span>全部<Icon type="right" /></span></p></div>
+                <div><p className="tip">{this.props.type}</p><span>全部<Icon type="right" /></span></div>
                 <div>
                     <dl>
-                        {
-                            this.props.dataset.map(function(obj,index){
+                       {
+                            this.props.data.map(function(obj,index){
                                 return (
-                                <a key={index}>
+                            <Link to={"/classify/classify_list/"+obj.short_name+"/"+obj.type} key={index}>
                             <dt key={'dt'+index}><img src={obj.images} alt="" />
                             </dt>
                             <dd key={'dd'+index}>{obj.short_name}</dd>
-                             </a>)
+                             </Link>)
                             })
                         }
                     
@@ -47,10 +42,5 @@ class AllShowComponent extends React.Component{
             )
     }
 }
-const mapToState=function(state){
-    return {
-        dataset:state.allshow.response
-    }
-}
 import './allShow.scss'
-export default connect(mapToState,allShowActions)(AllShowComponent)
+export default AllShowComponent

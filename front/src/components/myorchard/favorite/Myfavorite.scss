@@ -1,0 +1,29 @@
+#m_container{
+    display:flex;
+    height:100%;
+    flex-direction:column;
+    background:#F5F5F5;
+    .mc_top{
+        width: 100%;
+        height:0.613333rem;
+        background:#fff;
+        font-size:0.213333rem;
+        border-bottom:0.013333rem solid #ccc;
+        text-align:center;
+        color:#75A739;
+        padding-left:0.213333rem;
+        .anticon{
+            margin-top:0.213333rem;
+            font-size:0.213333rem;
+        }
+        span{
+            font-size:0.213333rem;
+            line-height: 0.613333rem;
+            text-align:center;
+        }
+    }
+    .mc_main{
+        flex:1;
+        background:#fff;
+    }
+}
