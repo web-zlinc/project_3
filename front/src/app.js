@@ -29,6 +29,7 @@ import Details from './components/commonComponent/commonDetails.js'
 
 
 import Myorder from './components/myorder/myorderComponent'
+import Favorite from './components/myorchard/favorite/MyfavoriteComponent'
 
 Rem.rem();
 ReactDOM.render(
@@ -38,6 +39,7 @@ ReactDOM.render(
         <Route path="/home(/:status)" component={HomeComponent} />
         <Route path="/myorchard" component={Myorchard}/>
         <Route path="/myorchard/personal" component={Personal}/>
+        <Route path="/myorchard/favorite" component={Favorite}/>
         <Route path="/cart" component={Cart}/>
         <Route path="/myorder" component={Myorder}/>
         <Route path="/search" component={SearchComponent} />

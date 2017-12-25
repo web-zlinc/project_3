@@ -51,7 +51,11 @@ export default class WyorchardComponent extends React.Component{
             hashHistory.push('myorder');
         }
     }
-
+    gofavorite(e){
+        if(e.target.innerText==='我的收藏'){
+            hashHistory.push('/myorchard/favorite');
+        }
+    }
     render(){
         return (
             <div id="w_container">
@@ -104,7 +108,7 @@ export default class WyorchardComponent extends React.Component{
                             {
                                 this.state.arr3.map((item,idx)=>{
                                     return <li key={idx}>
-                                    <a><Icon type="home" /><span>{item}</span></a>
+                                    <a><Icon type="home" /><span onClick={this.gofavorite.bind(this)}>{item}</span></a>
                                     <Icon type="right" />
                                     </li>
                                 })

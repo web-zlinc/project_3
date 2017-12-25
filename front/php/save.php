@@ -17,6 +17,6 @@
     if($id&&$gender&&$phone&&$brithday&&$site){
         $sql = "update user set gender='$gender',phone='$phone',brithday='$brithday',address='$site' where uid='$id'";
     }
-    $result = query($sql);
+    $result = excute($sql); 
     echo json_encode($result,JSON_UNESCAPED_UNICODE);
 ?>    

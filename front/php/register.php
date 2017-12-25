@@ -12,7 +12,7 @@
         $result = query($sql);
         if($result==[]){
             $sql = "insert into user (phone,password) values($phone,$password)";
-            $result = query($sql);
+            $result = excute($sql);
             $res="sucess";
         }else{
             $res="failed";

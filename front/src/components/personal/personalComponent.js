@@ -11,6 +11,7 @@ class PersonalComponent extends React.Component{
     constructor(props){  
         super(props);  
         this.state = {
+            img:1,
             data:[]
         }  
     }
@@ -19,23 +20,34 @@ class PersonalComponent extends React.Component{
         if(window.localStorage.data){
             this.state.data=JSON.parse(window.localStorage.data);
         }
+        
+    }
+    componentWillUpdate(nextProps, nextState){
+        var nick=this.refs.nick.input.value;
+        var gender=this.refs.gender.input.value;
+        var brithday=this.refs.brithday.input.value;
+        var site=this.refs.site.input.value;
+
     }
 
     back(){
         this.props.router.goBack()
     }
     
+
+
     save(){
-        console.log(this.props.dataset);
         var nick=this.refs.nick.input.value;
         var gender=this.refs.gender.input.value;
         var brithday=this.refs.brithday.input.value;
         var site=this.refs.site.input.value;
         var uid=this.state.data[0].uid;
 
+
         if(nick==='' || gender==='' || brithday==='' || site===''){
             alert('请完善信息！');
         }else if(nick&&gender&&brithday&&site){
+            
             var params={id:uid,phone:nick,gender:gender,brithday:brithday,site:site};
             this.props.getData('save.php',params);
         }
@@ -103,7 +115,7 @@ class PersonalComponent extends React.Component{
     }
 }
 
-const mapToState = function(state){ 
+const mapToState = function(state){
     return {
         dataset: state.login.response
     }

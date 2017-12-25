@@ -110,7 +110,9 @@ class OdmainComponent extends React.Component{
                 </TabPane>
                 <TabPane tab="待评价" key="待评价">
                     <ul>
-                        <li><h1>待评价</h1></li>
+                        {  
+                            this.html()
+                        }
                     </ul>
                 </TabPane>
             </Tabs>

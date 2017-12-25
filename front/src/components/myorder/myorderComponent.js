@@ -17,7 +17,6 @@ export default class MyorderComponent extends React.Component{
     }
     
     
-    
     back(){
         this.props.router.goBack()
     }

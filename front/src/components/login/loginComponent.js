@@ -18,7 +18,6 @@ class LoginComponent extends React.Component{
     back(){
         this.props.router.goBack()
     }
-
     
     // 组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state
     componentWillUpdate(nextProps, nextState){
@@ -47,9 +46,9 @@ class LoginComponent extends React.Component{
             }
             
         }
-        
 
     }
+    
     componentDidUpdate(prevProps, prevState){
         if(this.props.dataset){
             var obj=JSON.stringify(this.props.dataset);
@@ -69,9 +68,7 @@ class LoginComponent extends React.Component{
         }
 
     }
-
     
-
     register(){
         var phone=this.refs.phone.input.value;
         var password=this.refs.pwd.input.value;
