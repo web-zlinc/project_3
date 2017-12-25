@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './shoppingCart.scss';
-import {Icon,Alert} from 'antd';
+import {Icon} from 'antd';
 import $ from 'jquery';
-import Loading from '../spinner/spinnerComponent.js'
 import {Router, hashHistory, browserHistory} from 'react-router';
 
 import FooterComponent from '../commonComponent/commonFoot.js'
@@ -13,11 +12,10 @@ import {connect} from 'react-redux'
 import * as ShoppingCartActions from './shoppingCartAction'
 import AlertCom from './alertComponent/alertComponent'
 
-class ShoppingCartComponent extends Component{
+class ShoppingCartComponent extends React.Component{
     constructor(props){
         super(props);
         this.state= {
-            phone:'2',
             getUser:[],
             edit:"编辑",
             phone:'15027101120',
@@ -26,10 +24,8 @@ class ShoppingCartComponent extends Component{
             isEdit:true,
             totalPri:'0.00',
             totalQty:'0',
-            buycarQty:[],
-            checkProduct:[],
             isAlert:false,
-            mess:"请选择您要购买的商品"
+            mess:null
 
         }
 
@@ -42,20 +38,10 @@ class ShoppingCartComponent extends Component{
     componentDidUpdate(){
         if(this.props.getUser && this.props.getUser.length>0){
             this.setState({getUser:JSON.parse(JSON.stringify(this.props.getUser))})
-            this.showQty();
-            this.isSelected()
+        }else {
+            return false;
         }
-    }
-    // buycarQty是一个装着商品数量的数组
-    showQty(){
-        var arr = [];
-        for(var i=0;i<this.props.getUser.length;i++){
-            arr.push(this.props.getUser[i].qty);
-        }
-        this.setState({buycarQty:arr});
-        this.totalPrice();        
-    }
-
+    } 
     render(){
         if(!this.props.getUser){
             return null
@@ -90,8 +76,8 @@ class ShoppingCartComponent extends Component{
 
                         <ul className="y_cart_list_items" >
                             {
-                                this.state.getUser.length > 0 ? 
-                                this.state.getUser.map(function(item,idx){
+                                this.props.getUser.length > 0 ? 
+                                this.props.getUser.map(function(item,idx){
                                     return (
                                         <li className="y_cart_info" key={'li'+idx}>
                                             <span onClick={this.isChecked.bind(this)} className="y_oneChecked"><Icon className="y_checked_icon" type="check-circle-o" /></span>
@@ -129,7 +115,7 @@ class ShoppingCartComponent extends Component{
                         <em className="tt">合计：</em>
                         <em className="price">￥{this.state.totalPri}</em>
                     </span>
-                    <span onClick={this.deleteAll.bind(this)} style={{display:this.state.isEdit ? 'none' : 'block'}}  className="clearCart" >清空购物车</span>
+                    <span onClick={this.deleteAll} style={{display:this.state.isEdit ? 'none' : 'block'}}  className="clearCart" >清空购物车</span>
 
                     <span className="y_cart_account"  style={{display:this.state.isEdit ? 'block' : 'none'}} onClick={this.payment.bind(this)}>结算 ( {this.state.totalQty} )</span>
                     <span style={{display:this.state.isEdit ? 'none' : 'block'}} className="deleteCart">删除</span>
@@ -137,8 +123,6 @@ class ShoppingCartComponent extends Component{
                 <div className="gonggong">
                     <FooterComponent></FooterComponent>
                 </div>
-
-                <AlertCom isAlert={this.state.isAlert} mess={this.state.mess}/>
 
             </div>
         )
@@ -151,7 +135,7 @@ class ShoppingCartComponent extends Component{
         for(var i=0; i<length;i++){
             if($('.y_oneChecked').eq(i).hasClass('y_checked')){
                 // var unitPrice = ($('.y_oneChecked')[i].parents('li').find('.y_goods_price em').text())*1;
-                var unitPrice = Number(this.state.getUser[i].price);
+                var unitPrice = Number(this.props.getUser[i].price);
                 
                 var qty = ($('.y_oneChecked').parents('li').find('.y_goods_num').eq(i).text())*1;
             } else {
@@ -196,19 +180,6 @@ class ShoppingCartComponent extends Component{
         $(event.target).parents('li').find('span').toggleClass('y_checked'); 
         this.totalPrice()
     }
-     // 判断是否全选
-    isSelected(){
-        var checkProduct = [];
-        for(var i=0;i<this.state.getUser.length;i++){
-            if($('.y_oneChecked').eq(i).hasClass('y_checked')){
-                checkProduct.push(this.state.getUser[i])
-            }
-        }
-        this.setState({checkProduct:checkProduct});
-        if(checkProduct.length == this.state.getUser.length){
-            $('.y_select_all').addClass('y_checked')
-        } 
-    }
     // 全选
     isCheckall(event){
         $('.y_select_all').toggleClass('y_checked');
@@ -227,18 +198,14 @@ class ShoppingCartComponent extends Component{
                 checkProduct.push(this.state.getUser[i])
             }
         }
-        this.setState({checkProduct:checkProduct});
         if(checkProduct.length > 0){
             var account = this.state.totalPri;
-            // hashHistory.push('/cartOrder/:' + JSON.stringify(checkProduct) + '/:'+ account);
-            // 
-            // checkProduct是选中商品的所有信息，是一个数组对象
-            // 遍历提取相关信息插入order表中
 
             var goodsInfo=[];
             checkProduct.map(function(item,index){
                 goodsInfo.push ({
                     images : item.images,
+                    gid : item.gid,
                     name : item.name,
                     standard : item.standard,
                     price : item.price,
@@ -248,7 +215,7 @@ class ShoppingCartComponent extends Component{
             })
             var order = JSON.stringify({
                 uid : checkProduct[0].uid,
-                orderNo : 'P' + new Date().getTime(),
+                orderNo : new Date().getTime(),
                 username : checkProduct[0].username,
                 phone :checkProduct[0].phone,
                 address : checkProduct[0].address,
@@ -257,23 +224,18 @@ class ShoppingCartComponent extends Component{
             })
             // 将order存起来
             window.localStorage.setItem("order",order)
-            console.log(window.localStorage.getItem("order"))
-
             hashHistory.push('/cartOrder');
 
         } else{
-            // alert('请选择您要购买的商品')
-            this.setState({isAlert:true, mess:'请选择您要购买的商品'})
-            setTimeout(()=>{
-                this.setState({isAlert:false, mess:null})
-            },3000);
+            alert('请选择您要购买的商品')
+            
+            // this.setState({isAlert:true, mess:'请选择您要购买的商品'})
+            // setTimeout(()=>{
+            //     this.setState({isAlert:false, mess:null})
+            // },3000);
         }
     }
-    // 清空购物车
-    deleteAll(e){
-        this.props.delCart({uid: this.state.getUser[0].uid})
-
-    }
+    
    
 
 }

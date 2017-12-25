@@ -35,9 +35,11 @@ class CartOrderComponent extends Component{
 
     }
     goback(e){
-        hashHistory.push('/cart');
+        history.back()
+        // hashHistory.push('/cart');
     }
     render(){
+        // var now = new Date().toLocaleString()
         return (
             <div className="container">
                 <header id="y_cart_header">
@@ -70,7 +72,7 @@ class CartOrderComponent extends Component{
                         </li>
                         <li className="song">
                             <span>送达时间</span>
-                            <span>12月27日|周三 09:00-18:00</span>
+                            <span>2017/12/27|09:00-18:00</span>
                         </li>
 
 
@@ -117,10 +119,39 @@ class CartOrderComponent extends Component{
                 </div>
                 <div className="orderFooter">
                     <span>待支付：￥<em>{this.state.totalPri}</em></span>
-                    <span>提交订单</span>
+                    <span onClick={this.submitOrder.bind(this)}>提交订单</span>
                 </div>
             </div>
         )
+    }
+    submitOrder(e){
+        // 将订单写入数据库
+        // 遍历order中的数组，提取qty和gid
+        var resCreate = []
+        this.state.order.goodsInfo.map(item=>{
+            resCreate.push( {
+                uid : this.state.order.uid,
+                orderNo :  this.state.order.orderNo,
+                stu : 1,
+                gid :  item.gid,
+                qty :  item.qty,
+            })
+        })
+        var resDel = []
+        this.state.order.goodsInfo.map(item=>{
+            resDel.push( {
+                uid : this.state.order.uid,
+                gid :  item.gid
+            })
+        })
+        // 插入订单表
+        this.props.createOrder({params: JSON.stringify(resCreate)})
+        // 删除购物车对应商品（uid，gid）
+        this.props.deleteCart({params: JSON.stringify(resDel)})
+        
+        hashHistory.push('/pay')
+
+        
     }
   
 
@@ -128,8 +159,6 @@ class CartOrderComponent extends Component{
 }
 const cartToState = function(state){
     return {
-        loading: state.cart.loading,
-        getUser:state.cart.response
     }
 }
 

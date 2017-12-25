@@ -1,10 +1,10 @@
 import React from 'react';
-import { Icon, Affix, BackTop, Tabs } from 'antd';
+import { Icon, Affix, Tabs } from 'antd';
 import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import axios from 'axios';
 
-import BackTopComponent from '../commonComponent/commonBackTop'
+import HBackTop from '../commonComponent/backTop'
 import BigImgBanners from './bigImgBanner/bigImgBanner'
 import BrandBannerAds from './brandBannerAds/brandBannerAds'
 import MiddleAdv from './middleAdv/middleAdv'
@@ -79,6 +79,7 @@ class HomeComponent extends React.Component {
                         <WechatGift />
                     </TabPane>
                 </Tabs>
+                <HBackTop />
             </div>
         )
     }

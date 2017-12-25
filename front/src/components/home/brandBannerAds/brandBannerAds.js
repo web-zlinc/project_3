@@ -15,6 +15,7 @@ class BrandBannerAdsComponent extends React.Component {
         }
     }
     componentDidMount(){
+        console.log('BrandBanner is compelete!')
         setInterval(() => {
             $('.rollNews ul').stop().animate({top: -95});
             if ($('.rollNews ul').css('top') === '-95px'){
@@ -23,7 +24,7 @@ class BrandBannerAdsComponent extends React.Component {
                     $('.rollNews ul').css('top','0')
                 });
             }
-        }, 3000);
+        }, 2000);
     }
     render(){
         return (

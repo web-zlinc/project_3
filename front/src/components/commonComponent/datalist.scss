@@ -4,8 +4,10 @@
     li{
         padding:0.133333rem;
         height: 1.666667rem;
-        display:flex;
-        border-bottom:1px solid #D8D8D8;
+        border-bottom:1px solid #D8D8D8; 
+       a{
+         display:flex;
+        width: 100%;
         img{
             height:1.4rem;
             width: 1.4rem;
@@ -64,12 +66,16 @@
                 }
                 p:nth-child(2){
                     text-align:right;
+                    
                     i{
+                        padding:0.133333rem;
                         font-size:0.293333rem;
                     }
                 }
             }
         }
+    }  
     }
+   
 
 }
