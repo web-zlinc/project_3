@@ -44,14 +44,14 @@ ReactDOM.render(
             <Route path="/cartOrder" component={CartOrder}/>
             <Route path="/myorder" component={Myorder}/>
             <Route path="/search" component={SearchComponent} />
-            <Route path="/" component={Main} />
+
             <Route path="/classify" component={ClassifyComponent}/>
             <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
             <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
 
 
     
-            <Route path="/home(/:status)" component={HomeComponent} />
+            <Route path="/(/:status)" component={HomeComponent} />
             <Route path="/myorchard/favorite" component={Favorite}/>
             <Route path="/classify_list/details(/:gid)" component={Details}/>
         </Router>

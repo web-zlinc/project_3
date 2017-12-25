@@ -2,18 +2,18 @@
     position: fixed;
     bottom: .7rem;
     right: .2rem;
-    width: .3rem;
-    height: .3rem;
-    background-color: #74fa74;
+    width: .4rem;
+    height: .4rem;
+    background-color: #6cfd6c;
     border-radius: 50%;
 }
 
 #H_ToTop span {
     color: #fff;
     position: fixed;
-    bottom: .69rem;
+    bottom: .65rem;
     right: .205rem;
-    width: .3rem;
-    height: .3rem;
+    width: .4rem;
+    height: .4rem;
     text-align: center;
 }
