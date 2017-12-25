@@ -21,7 +21,7 @@ class Myfavorite extends React.Component{
     back(){
         this.props.router.goBack()
     }
-    render(){
+    render(){console.log(this.props.dataset)
         return (
                 <div id="m_container">
                     
@@ -30,7 +30,7 @@ class Myfavorite extends React.Component{
                         <span>我的收藏</span>
                     </div>
                     <div className="mc_main">
-                        <Conent data={this.props.dataset}/>
+                        <Conent datas={this.props.dataset}/>
                     </div>
                
                 </div>
