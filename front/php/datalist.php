@@ -3,7 +3,7 @@
  * @Author: sherah
  * @Date:   2017-12-25 10:08:10
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-12-25 16:23:15
+ * @Last Modified time: 2017-12-25 19:36:38
  */
     header('Access-Control-Allow-Origin:*');
     header('Access-Control-Allow-Methods:POST,GET,OPTIONS'); 
@@ -11,8 +11,10 @@
     include "DBHelper.php";
     $gid = isset($_GET["gid"]) ? $_GET["gid"] : '';
     $phone = isset($_GET["phone"]) ? $_GET["phone"] : '';
-    $userid = query("select uid from user where phone=$phone");
-    $uid=$userid[0]->uid;
+    $userid ="select uid from user where phone=$phone";
+    if(query($userid)){
+      $uid=query($userid)[0]->uid;   
+    }
     $sql="select s.uid,s.gid,s.qty from shoppingCart as s ,user as u where u.phone=$phone and s.gid=$gid and u.uid=s.uid"; 
     $sql.=";select FOUND_ROWS() as rows";
     $sql.=";select sum(qty) as sum from shoppingcart where uid='$uid'";
