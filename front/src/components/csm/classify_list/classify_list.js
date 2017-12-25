@@ -2,7 +2,7 @@
 * @Author: sherah
 * @Date:   2017-12-22 10:24:01
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-23 16:30:47
+* @Last Modified time: 2017-12-25 17:48:28
 */
 
 import React from 'react'
@@ -14,8 +14,11 @@ import * as listActions from '../../datagrid/datagridAction.js'
 var arr=["全部","奇异果","苹果","橙柑橘柚","牛油果","热带水果","牛排"]
 class Classify_list extends React.Component{
     componentDidMount(){
+        // var obj=JSON.parse(window.localStorage.data);
+        // var phone=obj.phone;
         this.props.getData("classify_list.php",{name:this.props.params.name});
-     }
+    }  
+     
     change(event){
         var nav=document.getElementsByClassName('data_nav')[0];
         var spans=nav.getElementsByTagName('span');
@@ -26,7 +29,6 @@ class Classify_list extends React.Component{
         var currentSpan=event.target;
         currentSpan.style.color="#75A739";
         currentSpan.style.borderBottom="4px solid #75A739";
-        const name=currentSpan.innerText;
          var type=currentSpan.innerText;
          if(type=="全部"){
             this.props.getData("classify_list.php");      
@@ -34,7 +36,6 @@ class Classify_list extends React.Component{
          else{
             this.props.getData("classify_list.php",{name:type});
          }
-             
     }
     // 价格排序
     order(event){
@@ -46,20 +47,44 @@ class Classify_list extends React.Component{
        var currentSpan=event.target;
        var span=currentSpan.innerText;
        var arr=this.props.dataset;
+       currentSpan.style.color="#75A739";
        if(span=="综合"){
-        
+          this.props.dataset.sort(this.compare("id"));
        }
        if(span=="销量"){ 
+        this.props.dataset.sort(this.compare("sale"));
        }    
        if(currentSpan.className=="price"){
         currentSpan.nextSibling.firstChild.style.color="#75A739";
+        this.props.dataset.sort(this.compare("price"));
        }
-        currentSpan.style.color="#75A739";     
+             
+    }
+    // 排序
+    compare(prop){
+      return function (obj1, obj2) {
+        var val1 = obj1[prop];
+        var val2 = obj2[prop];
+        if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+            val1 = Number(val1);
+            val2 = Number(val2);
+        }
+        if (val1 < val2) {
+            return -1;
+        } else if (val1 > val2) {
+            return 1;
+        } else {
+            return 0;
+        }            
+      } 
     }
     back(){
-        this.props.router.goBack();
+        this.props.router.goBack(-1);
     }
     render(){
+      if(!this.props.dataset.data1){
+        return null
+      }
         return (
             <div id="datalist">
                 <div className="data_top">
@@ -85,7 +110,7 @@ class Classify_list extends React.Component{
                     </ul>
                 </div>
                 <div className="data_content">
-                    <Datalist data={this.props.dataset}></Datalist>
+                    <Datalist datas={this.props.dataset.data1}></Datalist>
                 </div>
                 <div className="cart">
                     <Link to="/cart">
@@ -95,11 +120,12 @@ class Classify_list extends React.Component{
                
             </div>
             )
-    }
+      }
+    
 }
 const mapToState=function(state){
     return {
-        dataset:state.datagrid.response
+        dataset:state.allshow.response
     }
 }
 import './classify_list.scss'
