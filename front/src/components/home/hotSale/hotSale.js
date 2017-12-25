@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Icon, Modal } from 'antd';
 
-// import './dialog.scss';
-
 class HotSale extends React.Component {
     constructor() {
         super();
@@ -16,7 +14,8 @@ class HotSale extends React.Component {
     judgeLogin(){
         // console.log(window.localStorage.data)
         let loginState = window.localStorage.data;
-        if(loginState != undefined){
+        // console.log(loginState)
+        if(loginState != undefined && loginState != '[]'){
             console.log('添加成功')
         }else {
             this.setState({dialogState: 'block'})
@@ -103,7 +102,6 @@ class HotSale extends React.Component {
                                 <Link to="/login" className="btn btn-primary">
                                     去登陆
                                 </Link>
-                                {/* <a >去登录</a> */}
                             </div>
                         </div>
                     </div>

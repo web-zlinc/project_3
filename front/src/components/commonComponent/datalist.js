@@ -2,23 +2,50 @@
 * @Author: sherah
 * @Date:   2017-12-22 17:15:14
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-23 12:05:54
+* @Last Modified time: 2017-12-25 17:51:58
 */
 import React from 'react'
 import {Icon} from 'antd';
 import {Link} from 'react-router'
+import {connect} from 'react-redux';
+import * as datalistAction from '../datagrid/datagridAction.js'
+import Spinner from '../spinner/spinnerComponent.js'
 class Datalist extends React.Component{
+     constructor(props){
+        super(props);
+        this.state = {
+            show: false,
+            totalQty:0
+        };
+    }
+    addCart(event){
+        var tag=event.target.tagName.toLowerCase();
+        if(tag=="i"){
+            var gid=event.target.parentNode.className;
+            var phone="15027101120";//测试
+            // var phone=window.localStorage.data[0].phone;
+           this.props.getData("datalist.php",{gid:gid,phone:phone});   
+            this.setState({show:true});
+           // var timer=setTimeout(function(){
+           //    this.setState({show:false}); 
+           //      clearTimeout(timer);
+           // }.bind(this),500);
+                
+        }       
+        event.preventDefault(); 
+    }
     render(){
-        if(!this.props.data){
+        if(!this.props.datas){
             return null
         }
         return (
-            <ul className="list">{
-                this.props.data.map(function(item,index){
+            <ul className="list"><Spinner show={this.state.show}></Spinner>{
+                this.props.datas.map(function(item,index){
                     return (
-                    <li key={index}>
-                       <img src={item.images}/>
-                       <div className="list_right">
+                        <li key={index} >
+                        <Link to={"/classify_list/details/"+item.gid} >
+                        <img src={item.images}/>
+                        <div className="list_right">
                         <div className="r_top">
                             <p className="name">{item.name}
                             </p>
@@ -30,18 +57,24 @@ class Datalist extends React.Component{
                         <p className="inventory">{item.standard}</p>
                         <div className="price">
                         <p>￥<span>{item.price}</span><span>明日达</span></p>
-                            <p><Icon type="plus-circle-o" /></p>
+                        <p className={item.gid} onClick={this.addCart.bind(this)}><Icon type="plus-circle-o" /></p>
                         </div>
                        </div>
+
+                    </Link>
                     </li>
                         )
-                })
+                }.bind(this))
             }
                
             </ul>
             )
     }
 }
-
+const mapToState=function(state){
+    return {
+       cart:state.allshow.response
+    }
+}
 import './datalist.scss'
-export default Datalist
+export default connect(mapToState,datalistAction)(Datalist)

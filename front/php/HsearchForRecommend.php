@@ -13,7 +13,7 @@
 
     include 'DBHelper.php';
 
-    $sql = "select * from goods"; 
+    $sql = "select name,price,details,images,standard from goods"; 
    
     $result = query($sql);
 

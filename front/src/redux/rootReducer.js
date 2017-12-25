@@ -6,22 +6,26 @@ import allshow from '../components/csm/allShow/allShowReducer'
 import cart from '../components/shoppingCart/shoppingCartReducer';
 import cartOrder from '../components/cartOrder/cartOrderReducer';
 import getOrder from '../components/pay/payReducer.js';
-import searchFruit from '../components/commonComponent/searchReducer'
+import searchFruit from '../components/commonComponent/searchReducer';
 
 
-import myorder from '../components/myorder/myorderReducer'
+import myorder from '../components/myorder/myorderReducer';
+import save from '../components/personal/personalReducer';
+import favorite from '../components/myorchard/favorite/favoriteReducer';
+import searchRecommend from '../components/home/recommend/recommendReducer';
 
-import searchRecommend from '../components/home/recommend/recommendReducer'
 
 export default combineReducers({
     login,
     datagrid,
     allshow,
     cart,
+    favorite,
     searchFruit,
     myorder,
     searchRecommend,
     cartOrder,
-    getOrder
+    getOrder,
+    save,
 })
 

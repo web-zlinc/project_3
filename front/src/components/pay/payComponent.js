@@ -14,16 +14,6 @@ class PayComponent extends Component{
     constructor(props){
         super(props);
         this.state= {
-            phone:'15027101120',
-            getUser:[],
-            edit:"编辑",
-            isEdit:true,
-            totalPri:'0.00',
-            totalQty:'0',
-            buycarQty:[],
-            checkProduct:[],
-            isAlert:false,
-            mess:null
 
         }
 

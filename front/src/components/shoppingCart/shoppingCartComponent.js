@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './shoppingCart.scss';
-import {Icon,Alert} from 'antd';
+import {Icon} from 'antd';
 import $ from 'jquery';
-import Loading from '../spinner/spinnerComponent.js'
 import {Router, hashHistory, browserHistory} from 'react-router';
 
 import FooterComponent from '../commonComponent/commonFoot.js'
@@ -13,18 +12,18 @@ import {connect} from 'react-redux'
 import * as ShoppingCartActions from './shoppingCartAction'
 import AlertCom from './alertComponent/alertComponent'
 
-class ShoppingCartComponent extends Component{
+class ShoppingCartComponent extends React.Component{
     constructor(props){
         super(props);
         this.state= {
-            phone:'150',
             getUser:[],
             edit:"编辑",
+            phone:'15027101120',
+            uid:'',
+            address:'',
             isEdit:true,
             totalPri:'0.00',
             totalQty:'0',
-            buycarQty:[],
-            checkProduct:[],
             isAlert:false,
             mess:null
 
@@ -43,9 +42,6 @@ class ShoppingCartComponent extends Component{
             return false;
         }
     } 
-    
-    
-
     render(){
         if(!this.props.getUser){
             return null
@@ -119,7 +115,7 @@ class ShoppingCartComponent extends Component{
                         <em className="tt">合计：</em>
                         <em className="price">￥{this.state.totalPri}</em>
                     </span>
-                    <span onClick={this.deleteAll.bind(this)} style={{display:this.state.isEdit ? 'none' : 'block'}}  className="clearCart" >清空购物车</span>
+                    <span onClick={this.deleteAll} style={{display:this.state.isEdit ? 'none' : 'block'}}  className="clearCart" >清空购物车</span>
 
                     <span className="y_cart_account"  style={{display:this.state.isEdit ? 'block' : 'none'}} onClick={this.payment.bind(this)}>结算 ( {this.state.totalQty} )</span>
                     <span style={{display:this.state.isEdit ? 'none' : 'block'}} className="deleteCart">删除</span>
@@ -127,8 +123,6 @@ class ShoppingCartComponent extends Component{
                 <div className="gonggong">
                     <FooterComponent></FooterComponent>
                 </div>
-
-                <AlertCom isAlert={this.state.isAlert} mess={this.state.mess}/>
 
             </div>
         )
@@ -186,19 +180,6 @@ class ShoppingCartComponent extends Component{
         $(event.target).parents('li').find('span').toggleClass('y_checked'); 
         this.totalPrice()
     }
-     // 判断是否全选
-    isSelected(){
-        var checkProduct = [];
-        for(var i=0;i<this.state.getUser.length;i++){
-            if($('.y_oneChecked').eq(i).hasClass('y_checked')){
-                checkProduct.push(this.state.getUser[i])
-            }
-        }
-        this.setState({checkProduct:checkProduct});
-        if(checkProduct.length == this.state.getUser.length){
-            $('.y_select_all').addClass('y_checked')
-        } 
-    }
     // 全选
     isCheckall(event){
         $('.y_select_all').toggleClass('y_checked');
@@ -217,13 +198,8 @@ class ShoppingCartComponent extends Component{
                 checkProduct.push(this.state.getUser[i])
             }
         }
-        this.setState({checkProduct:checkProduct});
         if(checkProduct.length > 0){
             var account = this.state.totalPri;
-            // hashHistory.push('/cartOrder/:' + JSON.stringify(checkProduct) + '/:'+ account);
-            // 
-            // checkProduct是选中商品的所有信息，是一个数组对象
-            // 遍历提取相关信息插入order表中
 
             var goodsInfo=[];
             checkProduct.map(function(item,index){
@@ -248,24 +224,18 @@ class ShoppingCartComponent extends Component{
             })
             // 将order存起来
             window.localStorage.setItem("order",order)
-            console.log(window.localStorage.getItem("order"))
-
             hashHistory.push('/cartOrder');
 
         } else{
             alert('请选择您要购买的商品')
             
-            this.setState({isAlert:true, mess:'请选择您要购买的商品'})
-            setTimeout(()=>{
-                this.setState({isAlert:false, mess:null})
-            },3000);
+            // this.setState({isAlert:true, mess:'请选择您要购买的商品'})
+            // setTimeout(()=>{
+            //     this.setState({isAlert:false, mess:null})
+            // },3000);
         }
     }
-    // 清空购物车
-    deleteAll(e){
-        this.props.delCart({uid: this.state.getUser[0].uid})
-
-    }
+    
    
 
 }

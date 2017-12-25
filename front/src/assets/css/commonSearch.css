@@ -171,3 +171,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* for hidden */
+.forHidden {
+    display: none;
+}

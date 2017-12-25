@@ -4,7 +4,7 @@ class MiddleAdv extends React.Component {
     render(){
         return (
             <div>
-                <div className="section flex composite space">
+                <div className="section flex composite space" id="h_composite">
                     <a className="left goToTab">
                         <img src=".\src\assets\images\adv\9660d07715fa9eb2949ea2ef11b927eb.jpg" />
                     </a>

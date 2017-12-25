@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './cartOrder.scss';
 import {Icon} from 'antd';
@@ -21,6 +21,7 @@ class CartOrderComponent extends Component{
         }
 
     }
+    
     componentWillMount(){
         var o = JSON.parse(localStorage.getItem("order"))
         this.setState({order:o})
