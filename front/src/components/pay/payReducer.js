@@ -1,5 +1,5 @@
 
-export default function createOrderReducer(state = {}, action){
+export default function getOrderReducer(state = {}, action){
     var newState = JSON.parse(JSON.stringify(state));
     switch(action.type){
         case 'beforeRequest':
@@ -13,6 +13,7 @@ export default function createOrderReducer(state = {}, action){
             newState.status = -1;
             newState.error = action.error
             break;
+        
     }
 
     return newState;
