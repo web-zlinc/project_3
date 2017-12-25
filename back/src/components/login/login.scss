@@ -1,3 +1,4 @@
+$mainColor:#108ee9;
 #login-box{
     width: 428px;
 	height: 298px;
@@ -22,6 +23,7 @@
             line-height: 1.1;
             color: inherit;
             font-size:24px;
+            color:$mainColor;
         }
         #login-from{
             .form-group{
