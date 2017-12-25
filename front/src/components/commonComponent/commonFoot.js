@@ -9,22 +9,22 @@ class Main extends Component {
         super(props);
         this.state = {
             data: [{
-                title: "首页",
+                title: "",
                 urlTo: "/home",
                 icon: "home",
                 now: "/home"
             }, {
-                title: "分类",
+                title: "",
                 urlTo: "/classify",
                 icon: "appstore",
                 now: "/classify"
             }, {
-                title: "购物车",
+                title: "",
                 urlTo: "/cart",
                 icon: "shopping-cart",
                 now: "/cart"
             }, {
-                title: "我的",
+                title: "",
                 urlTo: "/myorchard",
                 icon: "user",
                 now: "/myorchard"
