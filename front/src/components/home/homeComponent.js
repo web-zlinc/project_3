@@ -1,6 +1,8 @@
 import React from 'react';
 import { Icon , Affix , BackTop } from 'antd';
 import { browserHistory } from "react-router";
+import { connect } from "react-redux";
+import axios from 'axios';
 
 import BackTopComponent from '../commonComponent/commonBackTop'
 import BigImgBanners from './bigImgBanner/bigImgBanner'
@@ -9,10 +11,13 @@ import MiddleAdv from './middleAdv/middleAdv'
 import HotSale from './hotSale/hotSale'
 import RecommendFruit from './recommend/recommend'
 import TopMenu from './topMenu/topMenu'
+import CommonFooter from '../commonComponent/commonFoot'
+
+import * as searchActions from './recommend/recommendAction'
 
 import './home.scss';
 
-export default class HomeComponent extends React.Component {
+class HomeComponent extends React.Component {
  
     scrollTop(){
         scrollTo(0,0)
@@ -20,19 +25,31 @@ export default class HomeComponent extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            _text: 123,
+            _getData: [],
             _currentUrl: '',
-            _path : []
+            _path: 'http://localhost:5555/php/HsearchForRecommend.php'
         };
         // console.log(this.state)
+        this.AxiosGet=(url)=>{
+            var self = this;
+            console.log(url)
+            axios({
+                method: 'POST',
+                url: url,
+            }).then(function(res){
+                self.setState({
+                    _getData: res.data
+                })
+                console.log(self.state._getData)
+            })
+        }
     }
     componentDidMount() {
-        // this.setState({_currentUrl: this.props.location.pathname})
-        this.state._path.push(this.props.location.pathname)
-        // console.log(this.props.location.pathname)
-        // console.log(this.state)
-
+        let ajaxUrl = this.state._path;
+        this.AxiosGet(ajaxUrl);
     }
-
+  
     // componentDidMount() {
     //     window.addEventListener('scroll',() => {
     //         let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
@@ -51,15 +68,24 @@ export default class HomeComponent extends React.Component {
                             <div className="swiper-slide">
                                 <BrandBannerAds />
                                 <MiddleAdv />
-                                <HotSale />
+                                <HotSale  />
                                 <BigImgBanners className={this.state.className} />
-                                <RecommendFruit />
+                                <RecommendFruit text={this.state._getData} />
                             </div>
                         </div>
                     </div>
                     <div id="backTop" onClick={this.scrollTop.bind(this)}>返回顶部</div>
                 </section>
+                <CommonFooter />
             </div>
         )
     }
 }
+
+const mapToState = function (state) {
+    return {
+        dataset: state.searchRecommend.response
+    }
+}
+
+export default connect(mapToState, searchActions)(HomeComponent)

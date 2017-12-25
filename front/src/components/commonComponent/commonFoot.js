@@ -40,12 +40,12 @@ class Main extends Component {
         var data = this.state.data;
         //console.log(nextProps.location)
 
-        data.forEach(function (item, index) {
-            //console.log(nextProps.location.pathname)
-            if (nextProps.location.pathname == item.urlTo) {
-                self.setState({ currentIndex: index })
-            }
-        })
+        // data.forEach(function (item, index) {
+        //     //console.log(nextProps.location.pathname)
+        //     if (nextProps.location.pathname == item.urlTo) {
+        //         self.setState({ currentIndex: index })
+        //     }
+        // })
     }
     render() {
         return (<Row id="commonFoot" type="flex" justify="center">

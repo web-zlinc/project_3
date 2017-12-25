@@ -31,7 +31,7 @@ ReactDOM.render(
     <Provider store={store}>
     <Router history={hashHistory}>
         <Route path="/login" component={Login}/>
-        <Route path="/home" component={HomeComponent} />
+        <Route path="/home(/:status)" component={HomeComponent} />
         <Route path="/myorchard" component={Myorchard}/>
         <Route path="/myorchard/personal" component={Personal}/>
         <Route path="/cart" component={Cart}/>

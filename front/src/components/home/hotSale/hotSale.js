@@ -16,7 +16,8 @@ class HotSale extends React.Component {
     judgeLogin(){
         // console.log(window.localStorage.data)
         let loginState = window.localStorage.data;
-        if(loginState != undefined){
+        // console.log(loginState)
+        if(loginState != undefined && loginState != '[]'){
             console.log('添加成功')
         }else {
             this.setState({dialogState: 'block'})

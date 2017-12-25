@@ -1,23 +1,24 @@
 import React from 'react'
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
-import * as searchActions from './recommendAction'
+// import * as searchActions from './recommendAction'
 
 
 class RecommendFruit extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            api: 'HsearchForRecommend.php'
-        }
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         api: 'HsearchForRecommend.php'
+    //     }
 
 
-    }
+    // }
     componentDidMount(){
-        let ajaxUrl = this.state.api;
-        this.props.getData(ajaxUrl);
-        var resData = this.props;
-        console.log(resData)
+        // let ajaxUrl = this.state.api;
+        // this.props.getData(ajaxUrl);
+        // var resData = this.props;
+        // console.log(resData)
+        console.log(this)
     }  
     render(){
         return (
@@ -36,10 +37,10 @@ class RecommendFruit extends React.Component {
     }
 }
 
-const mapToState = function(state){
-    return {
-        dataset: state.searchRecommend.response
-    }
-}
+// const mapToState = function(state){
+//     return {
+//         dataset: state.searchRecommend.response
+//     }
+// }
 
-export default connect (mapToState,searchActions)(RecommendFruit)
+export default RecommendFruit;
