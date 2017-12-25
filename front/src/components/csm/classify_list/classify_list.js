@@ -1,9 +1,3 @@
-/* 
-* @Author: sherah
-* @Date:   2017-12-22 10:24:01
-* @Last Modified by:   Marte
-* @Last Modified time: 2017-12-25 17:48:28
-*/
 
 import React from 'react'
 import { Link} from 'react-router';
@@ -29,13 +23,24 @@ class Classify_list extends React.Component{
         var currentSpan=event.target;
         currentSpan.style.color="#75A739";
         currentSpan.style.borderBottom="4px solid #75A739";
+
          var type=currentSpan.innerText;
          if(type=="全部"){
+  
+        var type=currentSpan.innerText;
+        this.props.getData("allShow.php",{type:type}); 
+
+        
+        if(type=="全部"){
+
             this.props.getData("classify_list.php");      
-         }
-         else{
+        }
+        else{
             this.props.getData("classify_list.php",{name:type});
          }
+        }
+             
+
     }
     // 价格排序
     order(event){

@@ -1,38 +1,66 @@
 import React from 'react'
 import { Form, Icon, Input, Button,Modal} from 'antd';
 import {connect} from 'react-redux';
+import {hashHistory,Link} from 'react-router'
+
+
 import './personal.scss'
 import * as LoginAction from '../login/loginAction';
-
-
 
 class PersonalComponent extends React.Component{
     constructor(props){  
         super(props);  
-        this.state = {  
-         
+        this.state = {
+            img:1,
+            data:[]
         }  
-  
+    }
+
+    componentWillMount(){
+        if(window.localStorage.data){
+            this.state.data=JSON.parse(window.localStorage.data);
+        }
+        
+    }
+    componentWillUpdate(nextProps, nextState){
+        var nick=this.refs.nick.input.value;
+        var gender=this.refs.gender.input.value;
+        var brithday=this.refs.brithday.input.value;
+        var site=this.refs.site.input.value;
+
     }
 
     back(){
         this.props.router.goBack()
     }
     
+
+
     save(){
-        console.log(this.state.Storage);
         var nick=this.refs.nick.input.value;
         var gender=this.refs.gender.input.value;
-        var birthday=this.refs.birthday.input.value;
+        var brithday=this.refs.brithday.input.value;
         var site=this.refs.site.input.value;
+        var uid=this.state.data[0].uid;
 
-        if(nick&&gender&&birthday&&site){
-            var params={pphone:nick,pgender:gender,pbirthday:birthday,psite:site};
-            this.props.getData('user.php',params);
 
+        if(nick==='' || gender==='' || brithday==='' || site===''){
+            alert('请完善信息！');
+        }else if(nick&&gender&&brithday&&site){
+            
+            var params={id:uid,phone:nick,gender:gender,brithday:brithday,site:site};
+            this.props.getData('save.php',params);
         }
-        console.log(this);
+
+
     }   
+
+    exit(){
+        alert('确认要要出吗?');
+        localStorage.removeItem('data');
+        hashHistory.push('/myorchard');
+    }
+
     render(){
         return (
             <div id="p_container">
@@ -43,16 +71,16 @@ class PersonalComponent extends React.Component{
                 <div className="p_main">
                     <div className="pmt">
                         <span>头像</span>
-                        <img src/>
+                        <img src={this.state.data[0].portrait}/>
                     </div>
                     <div className="pmc">
                         <p>
                             <label htmlFor="nick">呢称</label>
-                            <Input placeholder id="nick" ref="nick"/>
+                            <Input id="nick" ref="nick" placeholder={this.state.data[0].phone}/>
                         </p>
                         <p>
                             <label htmlFor="gender">性别</label>
-                            <Input id="gender" list="cars" ref="gender"/>
+                            <Input id="gender" list="cars" ref="gender" placeholder={this.state.data[0].gender}/>
                             <datalist id="cars">
                               <option value="男" />
                               <option value="女"/>
@@ -61,13 +89,13 @@ class PersonalComponent extends React.Component{
                         </p>
                         <p>
                             
-                            <label htmlFor="birthday">生日</label>
-                            <Input type="date" placeholder="保密" ref="birthday" id="birthday"/>
+                            <label htmlFor="brithday">生日</label>
+                            <Input type="date" placeholder="保密" ref="brithday" id="brithday" />
                         </p>
                         <p>
                             
                             <label htmlFor="site">地址管理</label>
-                            <Input placeholder="输入地址" ref="site" id="site"/>
+                            <Input  ref="site" id="site" placeholder={this.state.data[0].address}/>
                             <Icon type="right" />
                         </p>
                         <p>
@@ -77,6 +105,9 @@ class PersonalComponent extends React.Component{
                         <p>
                             <Button type="primary" onClick={this.save.bind(this)}>保存</Button>
                         </p>
+                        <p>
+                            <Button type="primary" onClick={this.exit.bind(this)}>退出登录</Button>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -84,8 +115,7 @@ class PersonalComponent extends React.Component{
     }
 }
 
-const mapToState = function(state){ 
-    
+const mapToState = function(state){
     return {
         dataset: state.login.response
     }

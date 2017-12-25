@@ -9,22 +9,22 @@ class Main extends Component {
         super(props);
         this.state = {
             data: [{
-                title: "首页",
+                title: "",
                 urlTo: "/home",
                 icon: "home",
                 now: "/home"
             }, {
-                title: "分类",
+                title: "",
                 urlTo: "/classify",
                 icon: "appstore",
                 now: "/classify"
             }, {
-                title: "购物车",
+                title: "",
                 urlTo: "/cart",
                 icon: "shopping-cart",
                 now: "/cart"
             }, {
-                title: "我的",
+                title: "",
                 urlTo: "/myorchard",
                 icon: "user",
                 now: "/myorchard"
@@ -40,12 +40,12 @@ class Main extends Component {
         var data = this.state.data;
         //console.log(nextProps.location)
 
-        data.forEach(function (item, index) {
-            //console.log(nextProps.location.pathname)
-            if (nextProps.location.pathname == item.urlTo) {
-                self.setState({ currentIndex: index })
-            }
-        })
+        // data.forEach(function (item, index) {
+        //     //console.log(nextProps.location.pathname)
+        //     if (nextProps.location.pathname == item.urlTo) {
+        //         self.setState({ currentIndex: index })
+        //     }
+        // })
     }
     render() {
         return (<Row id="commonFoot" type="flex" justify="center">

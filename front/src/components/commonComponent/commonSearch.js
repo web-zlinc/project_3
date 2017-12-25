@@ -14,13 +14,16 @@ import '../../assets/css/commonSearch.css'
 
 const dataSource = ['奇异果', '牛油果', '热带水果', '樱桃', '葡萄/提子', '柑橙桔柚'];
 
+
 class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             api: 'Hsearch.php',
             searchFruit: '',
-            lastPath: ''
+            lastPath: '',
+            historySearch: [],
+            historyClass: 'title forHidden'
         };
     }
     componentDidMount() {
@@ -68,6 +71,11 @@ class SearchComponent extends React.Component {
         var resData = this.props.dataset;
         // 异步请求 返回undefind
         console.log(resData)
+
+        // 记录历史搜索
+        this.state.historySearch.push(keyWord);
+        console.log(this.state.historySearch)
+
     }
     render() {
         const { searchFruit } = this.state;
@@ -99,7 +107,19 @@ class SearchComponent extends React.Component {
                         </div>
                     </Header>
                     <Content id="keyword" style={{ padding: '20px 50px' }} >
-                        <div className="title">热门搜索：</div>
+                        <div className="title">历史搜索：</div>
+                        <div className="con">
+                            {
+                                (function(self){
+                                    if(self.state.historySearch){
+                                        return self.state.historySearch.map(function(item,idx){
+                                            return <a key={idx}>{item}</a>
+                                        })
+                                    }
+                                })(this)
+                            }
+                        </div>
+                        <div className="title" style={{ marginTop: 100 }}>热门搜索：</div>
                         <div className="con">  
                             <a>橙</a>  
                             <a>提子</a>  

@@ -9,19 +9,17 @@ export function ajaxMiddleware(api){
             }
 
             api.dispatch({
-                type: 'beforeRequest'
+                type: 'beforeRequest',
+                data:params
             })
             if(url){
-                http.get(url, params).then(res => {
-                    
-                    api.dispatch({
-                        type: 'Requested',
-                        response: res
-                    })
-                }).catch(error => {
-                    api.dispatch({
-                        type: 'requestError',
-                        error
+                return new Promise((resolve, reject) => {
+                    http[method](url, params).then(res => {
+                        api.dispatch({
+                            type: 'Requested',
+                            response: res
+                        })
+                        resolve(res);
                     })
                 })
             }

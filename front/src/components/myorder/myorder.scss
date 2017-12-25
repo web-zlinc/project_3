@@ -1,9 +1,11 @@
 #o_container{
     display:flex;
-    height:100%;
     flex-direction:column;
+    height: 100%;
     background:#F5F5F5;
     .oc_top{
+        width: 100%;
+        position:fixed;
         height:0.613333rem;
         background:#fff;
         font-size:0.213333rem;
@@ -21,108 +23,108 @@
             text-align:center;
         }
     }
-    .oc_nav{
-        height:0.533333rem;
-        background:#fff;
-        margin-bottom:0.133333rem;
-        ul{
-            height:100%;
+    .ant-tabs{
+        width: 100%;
+        position:fixed;
+        top:0.613333rem;
+        .ant-tabs-bar{
+            height:0.533333rem;
+            margin-bottom:0;
+        }
+        .ant-tabs-nav{
+            width: 100%;
+            position:fixed;
             display:flex;
-            justify-content:space-around;
+            justify-content:space-between;
             align-items:center;
-            li{
-                flex:1;
-                display:flex;
-                padding-top:0.133333rem;
+            background:#fff;
+            margin-bottom:0.133333rem;
+            .ant-tabs-tab{
                 font-size:0.186667rem;
-                justify-content:center;
-                height: 100%;
-                padding-bottom:.02rem;
-                
             }
-            .active{
-                color: #65a032;
-                border-bottom: .02rem solid #65a032;
-            }
+            
         }
-    }
-    .oc_main{
-        flex:1;
-        background:#fff;
-        ul{
-            display:flex;
-            height: 100%;
-            flex-direction:column;
-            background:#F5F5F5;
-            li{
-                display:flex;
-                height:2.8rem;
-                background:#fff;
-                margin-bottom:0.133333rem;
-                flex-direction:column;
-                .one,.two,.three{
-                    margin-bottom:0;
-                    height:0.453333rem;
-                    line-height: 0.453333rem;
-                    font-size:0.186667rem;
-                    padding:0 0.133333rem;
-                    border-bottom:0.013333rem solid #ccc;
-                }
-                .one{
-                    justify-content:space-between;
-                }
-                .sdel{
-                    flex:1;
-                    padding:0.186667rem 0.133333rem;
-                    p{
-                        margin-bottom:0;
-                        font-size:0.186667rem;
-                        margin-bottom:0.186667rem;
-                    }
-                    border-bottom:0.013333rem solid #ccc;
-                    img{
-                        width:0.933333rem;
-                        height:0.933333rem;
-                        border:0.013333rem solid #ccc;
-                        margin-right:0.133333rem;
-
-                    }
-                    .sdr{
-                        display:flex;
-                        flex-direction:column;
-                        width:100%;
-                        .unit {
-                            text-align:left;
-                        }
-                    }
-
-                } 
-                .one,.sdel{
+        .ant-tabs-content{
+            .ant-tabs-tabpane{
+                overflow-y:auto; 
+                ul{
+                    height: 100%;
                     display:flex;
-                }
-                .two,.three{
-                    text-align:right;
-                }
-                .two{
-                    span{
-                        color:#FF7E05;
-                        &:before{
-                            content:'￥';
+                    height: 100%;
+                    flex-direction:column;
+                    background:#F5F5F5;
+                    li{
+                        display:flex;
+                        height:2.8rem;
+                        background:#fff;
+                        margin-bottom:0.133333rem;
+                        flex-direction:column;
+                        .one,.two,.three{
+                            margin-bottom:0;
+                            height:0.453333rem;
+                            line-height: 0.453333rem;
+                            font-size:0.186667rem;
+                            padding:0 0.133333rem;
+                            border-bottom:0.013333rem solid #ccc;
                         }
-                    }
-                    
-                }
-                .three{
-                    span{
-                        height: 0.346667rem;
-                        color:#FF7E05;
-                        border-radius:0.173333rem;
-                        padding:0 0.066667rem;
-                        margin-right:0.133333rem;
-                        border:0.013333rem solid #FF7E05;
+                        .one{
+                            justify-content:space-between;
+                        }
+                        .sdel{
+                            flex:1;
+                            padding:0.186667rem 0.133333rem;
+                            p{
+                                margin-bottom:0;
+                                font-size:0.186667rem;
+                                margin-bottom:0.186667rem;
+                            }
+                            border-bottom:0.013333rem solid #ccc;
+                            img{
+                                width:0.933333rem;
+                                height:0.933333rem;
+                                border:0.013333rem solid #ccc;
+                                margin-right:0.133333rem;
+
+                            }
+                            .sdr{
+                                display:flex;
+                                flex-direction:column;
+                                width:100%;
+                                .unit {
+                                    text-align:left;
+                                }
+                            }
+
+                        } 
+                        .one,.sdel{
+                            display:flex;
+                        }
+                        .two,.three{
+                            text-align:right;
+                        }
+                        .two{
+                            span{
+                                color:#FF7E05;
+                                &:before{
+                                    content:'￥';
+                                }
+                            }
+                            
+                        }
+                        .three{
+                            span{
+                                height: 0.346667rem;
+                                color:#FF7E05;
+                                border-radius:0.173333rem;
+                                padding:0 0.066667rem;
+                                margin-right:0.133333rem;
+                                border:0.013333rem solid #FF7E05;
+                            }
+                        }
                     }
                 }
             }
-        }
-    }
+        } 
+    } 
+    
 }

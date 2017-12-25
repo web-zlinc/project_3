@@ -21,19 +21,27 @@ import Personal from './components/personal/personalComponent';
 
 import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
+
+import cartOrder from "./components/cartOrder/cartOrderComponent.js";
+
 import Classify_list from './components/csm/classify_list/classify_list.js'
 import Details from './components/csm/commonDetails/commonDetails.js'
+
+
 import Myorder from './components/myorder/myorderComponent'
+import Favorite from './components/myorchard/favorite/MyfavoriteComponent'
+
 Rem.rem();
 ReactDOM.render(
     <Provider store={store}>
     <Router history={hashHistory}>
         <Route path="/login" component={Login}/>
-        <Route path="/home" component={HomeComponent} />
+        <Route path="/home(/:status)" component={HomeComponent} />
         <Route path="/myorchard" component={Myorchard}/>
-        <Route path="/personal" component={Personal}/>
+        <Route path="/myorchard/personal" component={Personal}/>
+        <Route path="/myorchard/favorite" component={Favorite}/>
         <Route path="/cart" component={Cart}/>
-
+        <Route path="/myorder" component={Myorder}/>
         <Route path="/search" component={SearchComponent} />
         <Route path="/" component={Main} />
         <Route path="/classify" component={ClassifyComponent}/>
@@ -42,6 +50,7 @@ ReactDOM.render(
         </Router>
     </Provider>
     ,document.getElementById('app'))
+
 
      
 
