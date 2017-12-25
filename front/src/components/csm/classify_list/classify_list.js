@@ -8,9 +8,14 @@ import * as listActions from '../../datagrid/datagridAction.js'
 var arr=["全部","奇异果","苹果","橙柑橘柚","牛油果","热带水果","牛排"]
 class Classify_list extends React.Component{
     componentDidMount(){
-        // var obj=JSON.parse(window.localStorage.data);
-        // var phone=obj.phone;
-        this.props.getData("classify_list.php",{name:this.props.params.name});
+        if(window.localStorage.data){
+             var arr=JSON.parse(window.localStorage.data);
+            var phone=arr[0].phone;
+        }
+        else{
+            var phone="";
+        }
+        this.props.getData("classify_list.php",{name:this.props.params.name,phone:phone});
     }  
      
     change(event){
@@ -89,7 +94,7 @@ class Classify_list extends React.Component{
     render(){
       if(!this.props.dataset.data1){
         return null
-      }
+      }console.log(this.props.dataset.data2)
         return (
             <div id="datalist">
                 <div className="data_top">

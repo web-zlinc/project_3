@@ -2,7 +2,7 @@
 * @Author: sherah
 * @Date:   2017-12-22 17:15:14
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-25 17:51:58
+* @Last Modified time: 2017-12-25 20:26:09
 */
 import React from 'react'
 import {Icon} from 'antd';
@@ -20,10 +20,10 @@ class Datalist extends React.Component{
     }
     addCart(event){
         var tag=event.target.tagName.toLowerCase();
-        if(tag=="i"){
-            var gid=event.target.parentNode.className;
-            var phone="15027101120";//测试
-            // var phone=window.localStorage.data[0].phone;
+        if(tag=="i"&&window.localStorage.data){
+            var gid=event.target.parentNode.className;        
+            var arr=JSON.parse(window.localStorage.data);
+            var phone=arr[0].phone;
            this.props.getData("datalist.php",{gid:gid,phone:phone});   
             this.setState({show:true});
            // var timer=setTimeout(function(){
@@ -31,15 +31,20 @@ class Datalist extends React.Component{
            //      clearTimeout(timer);
            // }.bind(this),500);
                 
-        }       
+        } 
+        else{
+
+        }      
         event.preventDefault(); 
     }
-    render(){
+        render(){
         if(!this.props.datas){
             return null
         }
         return (
-            <ul className="list"><Spinner show={this.state.show}></Spinner>{
+            <ul className="list">
+            <Spinner show={this.state.show}></Spinner>
+            {
                 this.props.datas.map(function(item,index){
                     return (
                         <li key={index} >
