@@ -24,7 +24,7 @@ export default class WyorchardComponent extends React.Component{
         if(localStorage.data){
             this.state.storage=JSON.parse(window.localStorage.data);
             
-            if(this.state.storage>0){
+            if(this.state.storage.length>0){
                 this.state.hint=this.state.storage[0].phone;
                 this.state.img=this.state.storage[0].portrait;
             }
