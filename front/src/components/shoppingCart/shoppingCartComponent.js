@@ -10,7 +10,6 @@ import FooterComponent from '../commonComponent/commonFoot.js'
 import {connect} from 'react-redux'
 // 引入action
 import * as ShoppingCartActions from './shoppingCartAction'
-import AlertCom from './alertComponent/alertComponent'
 
 class ShoppingCartComponent extends React.Component{
     constructor(props){
@@ -19,29 +18,28 @@ class ShoppingCartComponent extends React.Component{
             getUser:[],
             edit:"编辑",
             phone:'15027101120',
-            uid:'',
-            address:'',
             isEdit:true,
             totalPri:'0.00',
-            totalQty:'0',
-            isAlert:false,
-            mess:null
+            totalQty:'0'    
 
         }
 
     }
     // 发起请求，拿到phone对应的用户及购物车信息
-    componentWillMount(){
-        this.props.getUserInfo({phone: this.state.phone})
+    componentDidMount(){
+         this.props.getUserInfo({phone: this.state.phone})
+         console.log(localStorage.data)
         
-    }
-    componentDidUpdate(){
         if(this.props.getUser && this.props.getUser.length>0){
             this.setState({getUser:JSON.parse(JSON.stringify(this.props.getUser))})
         }else {
-            return false;
+            return null;
         }
-    } 
+    }   
+    // componentDidUpdate(){
+    //     console.log(this.props.getUser && this.props.getUser.length>0)
+
+    // } 
     render(){
         if(!this.props.getUser){
             return null
@@ -57,7 +55,7 @@ class ShoppingCartComponent extends React.Component{
                             <span>购物车</span>
                         </li>
                         <li>
-                            <span onClick={this.isEdit.bind(this)}>{this.state.edit}</span>
+                            <span onClick={this.eEdit.bind(this)}>{this.state.edit}</span>
                         </li>
                     </ul>
                 </header>
@@ -88,7 +86,7 @@ class ShoppingCartComponent extends React.Component{
                                                 <h3 className="y_goods_name">{item.name}</h3>
                                                 <h4 className="y_goods_standard">{item.standard}</h4>
                                                 <p className="y_goods_price">
-                                                    <small>￥{this.state.totalPrice}</small>
+                                                    <small>￥</small>
                                                     <em>{item.price}</em>
                                                 </p>
                                             </div>
@@ -149,11 +147,11 @@ class ShoppingCartComponent extends React.Component{
         sum = sum.toFixed(2);
         this.setState({totalPri:sum});
         this.setState({totalQty:ttQty});
+        return
     }
     
     // 右上角的编辑
-    isEdit(e){
-        
+    eEdit(e){
         this.setState({edit:e.target.innerHTML == "编辑" ? "完成" : e.target.innerHTML == "完成" ? "编辑" : "完成" })
         this.setState({isEdit:!this.state.isEdit})
     }
@@ -193,14 +191,13 @@ class ShoppingCartComponent extends React.Component{
     }
     payment(e){
         var checkProduct = [];
-        for(var i=0;i<this.state.getUser.length;i++){
+        for(var i=0;i<this.props.getUser.length;i++){
             if($('.y_oneChecked').eq(i).hasClass('y_checked')){
-                checkProduct.push(this.state.getUser[i])
+                checkProduct.push(this.props.getUser[i])
             }
         }
+        console.log(199,this.props.getUser.length)
         if(checkProduct.length > 0){
-            var account = this.state.totalPri;
-
             var goodsInfo=[];
             checkProduct.map(function(item,index){
                 goodsInfo.push ({
@@ -223,16 +220,11 @@ class ShoppingCartComponent extends React.Component{
                 goodsInfo : goodsInfo,
             })
             // 将order存起来
-            window.localStorage.setItem("order",order)
+            localStorage.setItem("order",order)
             hashHistory.push('/cartOrder');
 
         } else{
             alert('请选择您要购买的商品')
-            
-            // this.setState({isAlert:true, mess:'请选择您要购买的商品'})
-            // setTimeout(()=>{
-            //     this.setState({isAlert:false, mess:null})
-            // },3000);
         }
     }
     
@@ -241,7 +233,6 @@ class ShoppingCartComponent extends React.Component{
 }
 const cartToState = function(state){
     return {
-        loading: state.cart.loading,
         getUser:state.cart.response
     }
 }

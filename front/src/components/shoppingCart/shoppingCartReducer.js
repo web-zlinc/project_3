@@ -1,5 +1,5 @@
 
-export default function DataGridReducer(state = {}, action){
+export default function getUserReducer(state = {}, action){
     var newState = JSON.parse(JSON.stringify(state));
     switch(action.type){
         case 'beforeRequest':

@@ -22,7 +22,9 @@ export default class WyorchardComponent extends React.Component{
 
     componentWillMount(){
         if(window.localStorage.data){
+            console.log(22)
             this.state.storage=JSON.parse(window.localStorage.data);
+            console.log(this.state.storage);
             this.state.hint=this.state.storage[0].phone;
             this.state.img=this.state.storage[0].portrait;
         }

@@ -1,21 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory, browserHistory, Link, IndexRoute} from 'react-router'
+import {Provider} from 'react-redux';
+import {Router, Route, hashHistory} from 'react-router';
 
+import 'antd/dist/antd.css'; //引入蚂蚁金服的样式
 
-import RootComponent from './components/rootComponent';
-import NavComponent from './components/navComponent';
-import MovieComponent from './components/movieComponent';
-import TvComponent from './components/tvComponent';
-import ShowComponent from './components/showComponent';
+import store from './redux/configStore';
+import routes from './router/rootRouter';
+import './basescss/base.scss';//引入基础样式
 
+import './app.scss';
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={RootComponent}></Route>
-        <Route path="/nav" component={NavComponent}>
-            <Route path="movie" component={MovieComponent}></Route>
-            <Route path="tv" component={TvComponent}></Route>
-            <Route path="show" component={ShowComponent}></Route>
-        </Route>
-    </Router>,document.getElementById('app'))
+    <Provider store = {store}>
+        <Router history ={hashHistory} routes= {routes} >
+        </Router>
+    </Provider>
+    ,document.getElementById('app')
+)
