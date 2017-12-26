@@ -2,7 +2,7 @@
 * @Author: sherah
 * @Date:   2017-12-20 20:41:46
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-24 20:59:14
+* @Last Modified time: 2017-12-26 12:48:32
 */
 import React from 'react';
 import {connect} from 'react-redux'
