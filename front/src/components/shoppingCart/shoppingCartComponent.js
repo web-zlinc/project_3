@@ -17,7 +17,7 @@ class ShoppingCartComponent extends React.Component{
         this.state= {
             getUser:[],
             edit:"编辑",
-            phone:'15027101120',
+            phone:'',
             isEdit:true,
             totalPri:'0.00',
             totalQty:'0'    
@@ -25,21 +25,23 @@ class ShoppingCartComponent extends React.Component{
         }
 
     }
-    // 发起请求，拿到phone对应的用户及购物车信息
-    componentDidMount(){
-         this.props.getUserInfo({phone: this.state.phone})
-         console.log(localStorage.data)
-        
-        if(this.props.getUser && this.props.getUser.length>0){
-            this.setState({getUser:JSON.parse(JSON.stringify(this.props.getUser))})
-        }else {
-            return null;
-        }
-    }   
-    // componentDidUpdate(){
-    //     console.log(this.props.getUser && this.props.getUser.length>0)
+    componentWillMount(){
+        if(localStorage.data){
+            var arr=JSON.parse(localStorage.data)
+            this.setState({
+                phone:arr[0].phone
+            })
+        } 
 
-    // } 
+    }
+    // 发起请求，拿到phone对应的用户及购物车信息
+    componentDidMount(){console.log(this.state.phone);
+        this.props.getUserInfo({phone: this.state.phone})
+    }   
+     
+    back(){
+        this.props.router.goBack();
+    }
     render(){
         if(!this.props.getUser){
             return null
@@ -49,7 +51,7 @@ class ShoppingCartComponent extends React.Component{
                 <header id="y_cart_header">
                     <ul>
                         <li>
-                            <Icon type="left" />
+                            <Icon type="left" onClick={this.back.bind(this)}/>
                         </li>
                         <li>
                             <span>购物车</span>
@@ -196,7 +198,6 @@ class ShoppingCartComponent extends React.Component{
                 checkProduct.push(this.props.getUser[i])
             }
         }
-        console.log(199,this.props.getUser.length)
         if(checkProduct.length > 0){
             var goodsInfo=[];
             checkProduct.map(function(item,index){

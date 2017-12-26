@@ -7,7 +7,7 @@ import '../../assets/css/backTop.css'
 class BackTop extends React.Component {
     HbackTop(){
         // console.log($)
-        $('body').stop().animate({ scrollTop: 0 }, 400);
+        $('html').stop().animate({ scrollTop: 0 }, 400);
     }
     componentDidMount(){
         window.addEventListener('scroll',() => {
