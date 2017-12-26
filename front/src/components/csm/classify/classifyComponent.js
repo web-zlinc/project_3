@@ -33,9 +33,13 @@ class ClassifyComponent extends React.Component{
             this.props.getData("allShow.php",{type:type}); 
     }
     render(){
+        if(!this.props.dataset){
+            return null
+        }
         return (
                 <div id="classify_container">
-                    <div className="classify_top">商品分类</div>
+                    <div className="classify_top">商品分类
+                    </div>
                     <div className="classify_content">
                         <div className="left">
                             <ul >
@@ -47,7 +51,7 @@ class ClassifyComponent extends React.Component{
                             </ul>
                          </div>
                         <div className="right">
-                        <AllShowComponent data={this.props.dataset} type={this.state.type}></AllShowComponent>
+                        <AllShowComponent data={this.props.dataset.data1} type={this.state.type}></AllShowComponent>
                         </div>
                     </div>
                     
