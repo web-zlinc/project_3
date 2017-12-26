@@ -22,7 +22,7 @@ class Details extends React.Component{
     }
     addcart(event){
         var gid=this.props.params.gid;
-        this.setState({show:true});console.log(this)
+        this.setState({show:true});
         if(window.localStorage.data){
            var arr=JSON.parse(window.localStorage.data);
             var phone=arr[0].phone; 
@@ -39,9 +39,9 @@ class Details extends React.Component{
         this.props.router.goBack();
     }
     render(){
-    if(!this.state.data){
+    if(!this.props.data){
         return null
-    }
+    }console.log(this.props)
     return (
         <div id="details"><Spinner show={this.show}></Spinner>
         <div className="data_header">
@@ -50,8 +50,8 @@ class Details extends React.Component{
             <p><Icon type="ellipsis" /></p>                   
         </div> 
         <div className="center">
-            <Content dataset={this.state.data.data1}></Content>
-            <Evaluate dataset={this.state.data.data2}></Evaluate>
+            <Content dataset={this.props.data.data1}></Content>
+            <Evaluate dataset={this.props.data.data2}></Evaluate>
         </div>
         
         <div className="cart">
@@ -59,7 +59,7 @@ class Details extends React.Component{
                     <Link to="/cart">
                         <Icon type="shopping-cart" className="cart"/>
                     </Link>
-                    <span className="totalQty">{this.state.data.data2[0].sum}</span>
+                    <span></span>
                 </div>            
                     <div className="addCart" onClick={this.addcart.bind(this)}> 
                     <span>明日达</span>

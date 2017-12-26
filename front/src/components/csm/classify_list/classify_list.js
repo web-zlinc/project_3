@@ -38,7 +38,7 @@ class Classify_list extends React.Component{
          }            
 
     }
-    // 价格排序
+    // 排序
     order(event){
         var nav=document.getElementsByClassName('data_order')[0];
         var spans=nav.getElementsByTagName('span');
@@ -50,15 +50,15 @@ class Classify_list extends React.Component{
        var arr=this.props.dataset.data1;
        currentSpan.style.color="#75A739";
        if(span=="综合"){
-          arr.sort(this.compare("id"));
+          arr.sort(this.compare("id"));console.log(arr)
        }
        if(span=="销量"){
-        arr.sort(this.compare("sale"));
-        
+        arr.sort(this.compare("sale"));console.log(arr)
+
        }    
        if(currentSpan.className=="price"){
         currentSpan.nextSibling.firstChild.style.color="#75A739";
-        arr.sort(this.compare("price"));
+        arr.sort(this.compare("price"));console.log(arr)
        }
              
     }
