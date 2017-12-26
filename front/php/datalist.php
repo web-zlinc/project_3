@@ -3,7 +3,7 @@
  * @Author: sherah
  * @Date:   2017-12-25 10:08:10
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-12-25 19:36:38
+ * @Last Modified time: 2017-12-25 20:59:09
  */
     header('Access-Control-Allow-Origin:*');
     header('Access-Control-Allow-Methods:POST,GET,OPTIONS'); 
@@ -30,15 +30,20 @@
       else { $obj = $array; }
       return $obj;
     }
-    $obj = array2object($result); 
-    $data1=array2object($obj->data1[0]);
-    $data2=array2object($obj->data2[0]);
-    $qty=(int)$data1->qty;
+    $obj = array2object($result);
+    if($obj->data1){
+        $data1=array2object($obj->data1[0]);
+        $qty=(int)$data1->qty;      
+    }
+    else{
+        $qty=1;
+    } 
+    $data2=array2object($obj->data2[0]);   
     if($data2->rows!="0"){
         $sql="update shoppingcart set qty=$qty+1 where uid='$uid' and gid='$gid'";
     }
     else if($data2->rows=="0"||!$result){
-        $sql="insert into shoppingcart(uid,gid,qty) values($uid,$gid,1)";
+        $sql="insert into shoppingcart(uid,gid,qty) values($uid,$gid,$qty)";
     }
     $result =excute($sql);
     echo json_encode($result, JSON_UNESCAPED_UNICODE);

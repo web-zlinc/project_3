@@ -48,12 +48,14 @@
             .ant-tabs-tabpane{
                 overflow-y:auto; 
                 ul{
-                    height: 100%;
+                    // position:relative;
+                    overflow: hidden;
                     display:flex;
                     height: 100%;
                     flex-direction:column;
                     background:#F5F5F5;
                     li{
+                        // position: absolute;
                         display:flex;
                         height:2.8rem;
                         background:#fff;

@@ -2,7 +2,7 @@
 * @Author: sherah
 * @Date:   2017-12-22 17:15:14
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-25 20:26:09
+* @Last Modified time: 2017-12-25 21:06:55
 */
 import React from 'react'
 import {Icon} from 'antd';
@@ -23,18 +23,11 @@ class Datalist extends React.Component{
         if(tag=="i"&&window.localStorage.data){
             var gid=event.target.parentNode.className;        
             var arr=JSON.parse(window.localStorage.data);
-            var phone=arr[0].phone;
+            var phone=arr[0].phone; 
            this.props.getData("datalist.php",{gid:gid,phone:phone});   
-            this.setState({show:true});
-           // var timer=setTimeout(function(){
-           //    this.setState({show:false}); 
-           //      clearTimeout(timer);
-           // }.bind(this),500);
-                
-        } 
-        else{
-
-        }      
+            // this.setState({show:true});
+            // console.log(this.props.cart)
+        }     
         event.preventDefault(); 
     }
         render(){

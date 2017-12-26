@@ -33,8 +33,6 @@ class PersonalComponent extends React.Component{
     back(){
         this.props.router.goBack()
     }
-    
-
 
     save(){
         var nick=this.refs.nick.input.value;
@@ -47,14 +45,13 @@ class PersonalComponent extends React.Component{
         if(nick==='' || gender==='' || brithday==='' || site===''){
             alert('请完善信息！');
         }else if(nick&&gender&&brithday&&site){
-            
             var params={id:uid,phone:nick,gender:gender,brithday:brithday,site:site};
             this.props.getData('save.php',params);
         }
 
 
     }   
-
+    
     exit(){
         alert('确认要要出吗?');
         localStorage.removeItem('data');
@@ -62,6 +59,9 @@ class PersonalComponent extends React.Component{
     }
 
     render(){
+        if(this.props.dataset=='true'){
+            alert('修改成功！')
+        }
         return (
             <div id="p_container">
                 <div className="p_head">
@@ -96,7 +96,6 @@ class PersonalComponent extends React.Component{
                             
                             <label htmlFor="site">地址管理</label>
                             <Input  ref="site" id="site" placeholder={this.state.data[0].address}/>
-                            <Icon type="right" />
                         </p>
                         <p>
                             <span>我的收藏</span>
@@ -112,7 +111,8 @@ class PersonalComponent extends React.Component{
                 </div>
             </div>
             )
-    }
+        }
+    
 }
 
 const mapToState = function(state){
