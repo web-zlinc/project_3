@@ -4,15 +4,19 @@
     li{
         padding:0.133333rem;
         height: 1.666667rem;
-        border-bottom:1px solid #D8D8D8; 
-       a{
-         display:flex;
-        width: 100%;
-        img{
+        border-bottom:1px solid #D8D8D8;
+         a{
+            float:left;
             height:1.4rem;
             width: 1.4rem;
-            border-right:0.133333rem;
-        }
+            display:block;
+           img{
+                height:1.4rem;
+                width: 1.4rem;
+                border-right:0.133333rem;
+            }
+         }  
+         
         .list_right{
             flex:1;
             display:flex;
@@ -73,8 +77,8 @@
                     }
                 }
             }
-        }
-    }  
+        } 
+      
     }
    
 
