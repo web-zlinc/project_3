@@ -82,7 +82,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'updateOk';
         }
     }else if($status == 'delete'){
         $sql = 'delete from `order` where id='.$id;
@@ -90,7 +90,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'deleteOk';
         }
     }else if($status == 'insert'){
         $sql = 'insert into `order`(`uid`,`orderNo`,`stu`,`gid`,`qty`)';
@@ -99,7 +99,7 @@
         $result = excute_oop($sql);
 
         if($result == '1'){
-            echo 'Ok';
+            echo 'insertOk';
         }
 
     }

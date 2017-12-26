@@ -117,7 +117,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'updateOk';
         }
     }else if($status == 'delete'){
         $sql = 'delete from goods where id='.$id;
@@ -125,7 +125,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'deleteOk';
         }
     }else if($status == 'insert'){
         $sql = 'insert into goods(`gid`,`hot`,`details`,`name`,`type`,`price`,`short_name`,`inventory`,`images`,`standard`,`sale`)';
@@ -134,7 +134,7 @@
         $result = excute_oop($sql);
 
         if($result == '1'){
-            echo 'Ok';
+            echo 'insertOk';
         }
 
     }

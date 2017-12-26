@@ -22,13 +22,14 @@ class DataGridComponent extends React.Component{
             states:this.props.states || 1,
             status:this.props.status || 'query',
             languageExchange:this.props.languageExchange,
-            type:userInfo.type
+            type:userInfo.type,
+            page:1,
         })
     }
     componentDidMount(){
         var params = {
             status:this.state.status,
-            page:this.props.currentPage
+            page:this.state.page
         }
         this.props.getData(
             this.state.url,
@@ -88,26 +89,29 @@ class DataGridComponent extends React.Component{
     }
     //获取选项框的内容的函数
     getSelectValue(value){
-        this.setState({optType:value})
+        this.setState({optType:value});
     }
     //获取输入框的内容的函数
     getInputValue(e){
-        this.setState({optContent:e.target.value})
+        this.setState({optContent:e.target.value});
+        e.target.value = '';
     }
     //发起查询的条件
     sendCondition(){
-        if(!this.state.optContent || !this.state.optType){
-            notification.error({
-                message: '错误信息',
-                description: '选项框内容和输入框内容不能为空!',
-            });
-            return false;
-        }
+        // if(!this.state.optContent || !this.state.optType){
+        //     notification.error({
+        //         message: '错误信息',
+        //         description: '选项框内容和输入框内容不能为空!',
+        //     });
+        //     return false;
+        // }
         var params = {
             status:this.state.status,
             page:1,
         };
-        params[this.state.optType] = this.state.optContent;
+        if(this.state.optContent && this.state.optType){
+            params[this.state.optType] = this.state.optContent;
+        }
         this.props.getData(
             this.state.url,
             params
@@ -285,7 +289,36 @@ class DataGridComponent extends React.Component{
         )
     }
     componentDidUpdate(){
-        if(this.props.messageRequested == 'Ok'){
+        var type;
+        if(this.props.messageRequested == 'updateOk' || this.props.messageRequested == 'deleteOk' || this.props.messageRequested == 'insertOk'){
+            if(this.props.messageRequested == 'updateOk'){
+                type = 'success';
+                notification[type]({
+                    message: '消息提示',
+                    description: '修改数据成功',
+                });
+            }
+            if(this.props.messageRequested == 'deleteOk'){
+               type = 'success';
+               notification[type]({
+                    message: '消息提示',
+                    description: '删除数据成功',
+                });
+            }
+            if(this.props.messageRequested == 'insertOk'){
+                type = 'success';
+                notification[type]({
+                    message: '消息提示',
+                    description: '插入数据成功',
+                });
+            }
+            if(this.props.error){
+                type = 'error',
+                notification[type]({
+                    message: '消息提示',
+                    description: '操作失败!',
+                });
+            }
             var params = {
                 status:this.state.status,
                 page:this.props.currentPage
@@ -299,6 +332,9 @@ class DataGridComponent extends React.Component{
             );
         }
     }
+    componentWillUnmount(){
+       console.log(this.props);
+    }
 }
 
 const mapToState = function(state){
@@ -306,10 +342,11 @@ const mapToState = function(state){
     return {
         dataset: state.dataGrid.respones || [],
         total: state.dataGrid.total || 0,
-        currentPage:state.dataGrid.currentPage || 1,
+        currentPage:state.dataGrid.currentPage,
         dataAlter:state.dataGrid.responesone || [],
         messageRequested:state.dataGrid.responesone || '',
         loading:state.dataGrid.loading || false,
+        error:state.dataGrid.error || '',
     }
 }
 

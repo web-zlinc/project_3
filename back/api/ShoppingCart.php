@@ -68,7 +68,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'updateOk';
         }
     }else if($status == 'delete'){
         $sql = 'delete from shoppingcart where id='.$id;
@@ -76,7 +76,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'deleteOk';
         }
     }else if($status == 'insert'){
         $sql = 'insert into shoppingcart(`uid`,`gid`,`username`,`qty`)';
@@ -86,7 +86,7 @@
         $result = excute_oop($sql);
 
         if($result == '1'){
-            echo 'Ok';
+            echo 'insertOk';
         }
 
     }
