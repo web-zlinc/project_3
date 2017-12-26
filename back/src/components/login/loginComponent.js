@@ -16,6 +16,7 @@ class LoginComponent extends React.Component{
         this.setState({
             url:'AdminLogin.php',
         })
+        document.addEventListener('keydown',this.loginHandler);
     }
     componentDidUpdate(){
         if(this.props.status == '1' && this.props.data ){
@@ -38,14 +39,17 @@ class LoginComponent extends React.Component{
         )
     }
     loginHandler =(e) => {
-        var params = {
-            username:this.state.userName,
-            password:this.state.passWord
+        console.log(e.keyCode);
+        if(e.keyCode == '13'){
+            var params = {
+                username:this.state.userName,
+                password:this.state.passWord
+            }
+            this.props.login(
+               this.state.url,
+               params
+            )
         }
-        this.props.login(
-           this.state.url,
-           params
-        )
     }
     getUserName = (e) =>{
         if(e.target.value == ''){
@@ -87,7 +91,7 @@ class LoginComponent extends React.Component{
                             <Input onBlur={this.getPassWord} prefix={<Icon type="lock" style={{ fontSize: 14 }} />} type="password" name="password" placeholder="请输入密码"  />
                         </div>
                         <div className="form-btn">
-                            <Button type="primary" className="btnSubmit" onClick={this.loginHandler} >登录</Button>
+                            <Button type="primary" className="btnSubmit"  >登录</Button>
                         </div>
                     </div>
                 </div>
