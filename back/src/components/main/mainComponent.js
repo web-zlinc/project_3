@@ -86,7 +86,7 @@ class MainComponent extends React.Component{
         return (
             <div id="main">
                 <header className="headerMain" >
-                    <h1 className="imgContainer" ><a>FuritExpress</a></h1>
+                    <h1 className="imgContainer" ><a>天天果园</a></h1>
                     <dl className="userInfo">
                         <dd><a><img src="./src/assets/imgs/2.jpg" /></a></dd>
                         <dd><a>{this.state.userInfo.username}</a></dd>

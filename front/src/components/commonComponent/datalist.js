@@ -33,12 +33,11 @@ class Datalist extends React.Component{
                  this.setState({show:false});
                     alert('添加成功！');                  
              }
-            else{
-                // console.log(window.localStorage.data)
-                alert('请先登录！');
-            }     
-
-        } 
+            else if(!window.localStorage.data){
+            // console.log(window.localStorage.data)
+            alert('请先登录！');
+            }
+        }     
         event.preventDefault(); 
     }
         render(){
