@@ -25,14 +25,19 @@ class Details extends React.Component{
         this.setState({show:true});
         if(window.localStorage.data){
            var arr=JSON.parse(window.localStorage.data);
+           if(arr.length>0){
             var phone=arr[0].phone; 
+           }
+            
           this.setState({show:true});
-             this.props.addCart("datalist.php",{gid:gid,phone:phone});
+            this.props.addCart("datalist.php",{gid:gid,phone:phone});
                  this.setState({show:false});
-                 if(this.props.cart=="true"){
-                    alert('保存成功！');
-                 } 
+                    alert('添加成功！');                  
         }
+        else if(!window.localStorage.data){
+            // console.log(window.localStorage.data)
+            alert('请先登录！');
+        }     
         event.preventDefault();
     }
     back(){
@@ -41,7 +46,7 @@ class Details extends React.Component{
     render(){
     if(!this.props.data){
         return null
-    }console.log(this.props)
+    }
     return (
         <div id="details"><Spinner show={this.show}></Spinner>
         <div className="data_header">

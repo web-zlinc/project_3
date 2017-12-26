@@ -31,7 +31,7 @@ class BigImgBanners extends React.Component{
                                         if(self.props.red){
                                             return self.props.red.map(function(item,idx){
                                                 return <li key={idx}>
-                                                <a className="swiper-slide" >
+                                                <a className="swiper-slide" href={'#/classify_list/details/' + item.gid }  >
                                                     <div className="img-box">
                                                         <img src={item.images} />
                                                     </div>
@@ -67,7 +67,7 @@ class BigImgBanners extends React.Component{
                                             if (self.props.red) {
                                                 return self.props.red.map(function (item, idx) {
                                                     return <li key={idx}>
-                                                        <a className="swiper-slide" >
+                                                        <a className="swiper-slide" href={'#/classify_list/details/' + item.gid }  >
                                                             <div className="img-box">
                                                                 <img src={item.images} />
                                                             </div>

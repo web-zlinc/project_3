@@ -121,15 +121,11 @@ class SearchComponent extends React.Component {
                         </div>
                         <div className="title" style={{ marginTop: 100 }}>热门搜索：</div>
                         <div className="con">  
-                            <a>橙</a>  
-                            <a>提子</a>  
-                            <a>樱桃</a>  
-                            <a>苹果</a>  
-                            <a>火龙果</a>  
-                            <a>瓜</a>  
-                            <a>羊蝎子</a>  
-                            <a>雪花鲳</a>  
-                            <a>奇异果</a>  
+                            <a href="#/classify/classify_list/%E5%A5%87%E5%BC%82%E6%9E%9C">奇异果</a>   
+                            <a href="#/classify/classify_list/%E6%A8%B1%E6%A1%83">樱桃</a>  
+                            <a href="#/classify/classify_list/%E8%8B%B9%E6%9E%9C">苹果</a>    
+                            <a href="#/classify/classify_list/%E7%89%9B%E6%B2%B9%E6%9E%9C">牛油果</a>   
+                            <a href="#/classify/classify_list/%E5%A5%87%E5%BC%82%E6%9E%9C">奇异果</a>  
                         </div>
                     </Content>
                 </Layout>

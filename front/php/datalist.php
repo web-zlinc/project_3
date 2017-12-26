@@ -3,7 +3,7 @@
  * @Author: sherah
  * @Date:   2017-12-25 10:08:10
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-12-26 09:45:02
+ * @Last Modified time: 2017-12-26 14:08:57
  */
     header('Access-Control-Allow-Origin:*');
     header('Access-Control-Allow-Methods:POST,GET,OPTIONS'); 
@@ -46,5 +46,5 @@
         $sql="insert into shoppingcart(uid,gid,qty) values($uid,$gid,$qty)";
     }
     $result =excute($sql);
-    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    // echo json_encode($result, JSON_UNESCAPED_UNICODE);
 ?>

@@ -66,30 +66,31 @@ class HotSale extends React.Component {
                 <div className="section has-recommend">
                     <div className="swiper-container">
                         <div className="seckill">
-                            <a className="swiper-slide" >
-                                <div className="img-box">
-                                    <img src=".\src\assets\images\adv\1-370x370-3745-S8YSYH5P.jpg" />
-                                </div>
-                                <p>智利甜心樱桃</p>
-                            </a>
-                            <a className="swiper-slide" >
-                                <div className="img-box">
-                                    <img src=".\src\assets\images\adv\1-370x370-3745-S8YSYH5P.jpg" />
-                                </div>
-                                <p>智利甜心樱桃</p>
-                            </a>
-                            <a className="swiper-slide" >
-                                <div className="img-box">
-                                    <img src=".\src\assets\images\adv\1-370x370-3745-S8YSYH5P.jpg" />
-                                </div>
-                                <p>智利甜心樱桃</p>
-                            </a>
-                            <a className="swiper-slide" >
-                                <div className="img-box">
-                                    <img src=".\src\assets\images\adv\1-370x370-3745-S8YSYH5P.jpg" />
-                                </div>
-                                <p>智利甜心樱桃</p>
-                            </a>
+                           
+                            <ul>
+                                    {
+                                        (function (self) {
+                                            if (self.props.red) {
+                                                return self.props.red.map(function (item, idx) {
+                                                    return <li key={idx}>
+                                                        <a className="swiper-slide" href={'#/classify_list/details/' + item.gid }  >
+                                                            <div className="img-box">
+                                                                <img src={item.images} />
+                                                            </div>
+                                                            <p>{item.name}</p>
+                                                            <div className="price">
+                                                                <span className="money">
+                                                                    ￥{item.price}
+                                                                    <em> / {item.standard}</em>
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                })
+                                            }
+                                        })(this)
+                                    }
+                                </ul>
                         </div>
                     </div>
                 </div>

@@ -37,16 +37,16 @@ class BrandBannerAdsComponent extends React.Component {
                 </Carousel>
                 <div className="section  brandBanner">
                     <div className="flex advantage">
-                        <a className="item">
+                        <a href="#/classify/classify_list/" className="item">
                             <img src="./src/assets/images/9a80964bf0201b57e8e9a4a382205fd7.png" />
                         </a>
                     </div>
                 </div>
                 <div className="section flex inner-range two-ads">
-                    <a>
+                    <a href="#/classify/classify_list/" >
                         <img src=".\src\assets\images\adv\e7d6856c1d6007ac64114619c11a6c7b.jpg" />
                     </a>
-                    <a>
+                    <a href="#/classify/classify_list/" >
                         <img src=".\src\assets\images\adv\caa96ee4453a25ed3e58f4a8f73e736d.jpg" />
                     </a>
                 </div>

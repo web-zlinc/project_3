@@ -49,11 +49,9 @@ ReactDOM.render(
 
             <Route path="/classify" component={ClassifyComponent}/>
             <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
-            <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
+            
 
-
-
-            <Route path="/(/:status)" component={HomeComponent} />
+            <Route path="/" component={HomeComponent} />
             <Route path="/merry" component={MerryComponent} />
             <Route path="/myorchard/favorite" component={Favorite}/>
             <Route path="/classify_list/details(/:gid)" component={Details}/>

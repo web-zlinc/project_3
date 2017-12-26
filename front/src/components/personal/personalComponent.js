@@ -72,7 +72,7 @@ class PersonalComponent extends React.Component{
                     </div>
                     <div className="pmc">
                         <p>
-                            <label htmlFor="nick">呢称</label>
+                            <label htmlFor="nick">电话</label>
                             <Input id="nick" ref="nick" placeholder={this.state.data[0].phone}/>
                         </p>
                         <p>

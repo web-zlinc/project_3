@@ -26,16 +26,20 @@ class ShoppingCartComponent extends React.Component{
 
     }
     componentWillMount(){
-        if(localStorage.data){
-            var arr=JSON.parse(localStorage.data)
-            this.setState({
-                phone:arr[0].phone
-            })
+        console.log(localStorage);
+        if(localStorage.getItem('data')){
+            var arr=JSON.parse(localStorage.data);
+            if(arr.length>0){
+                this.setState({
+                    phone:arr[0].phone
+                })
+            }
+           
         } 
 
     }
     // 发起请求，拿到phone对应的用户及购物车信息
-    componentDidMount(){console.log(this.state.phone);
+    componentDidMount(){
         this.props.getUserInfo({phone: this.state.phone})
     }   
      
@@ -65,9 +69,9 @@ class ShoppingCartComponent extends React.Component{
                 <div id="y_cart_Main">
                     <div className="y_cart_address">
                     <div className="y_cart_Main_address">
-                        <span className="y_address_name">{this.props.getUser[0].username}</span>
+                        <span className="y_address_name">{this.props.getUser[0]? this.props.getUser[0].username : ''}</span>
                         <span className="y_address_tel">{this.state.phone}</span>
-                        <p>{this.props.getUser[0].address}</p>
+                        <p>{this.props.getUser[0]? this.props.getUser[0].address :   ''}</p>
                         <Icon className="y_right_arror" type="right" />
                     </div>
                 </div>

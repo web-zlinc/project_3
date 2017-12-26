@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Link} from 'react-router';
+import { Link } from 'react-router';
 import { Input, Button, Icon, Layout, Row, Col } from 'antd';
 import Datalist from '../../commonComponent/datalist.js'
 import {connect} from 'react-redux';
@@ -9,8 +9,11 @@ var arr=["全部","奇异果","苹果","橙柑橘柚","牛油果","热带水果"
 class Classify_list extends React.Component{
     componentDidMount(){
         if(window.localStorage.data){
-             var arr=JSON.parse(window.localStorage.data);
-            var phone=arr[0].phone;
+            var arr=JSON.parse(window.localStorage.data);
+            if(arr.length>0){
+               var phone=arr[0].phone;
+            }
+           
         }
         else{
             var phone="";
