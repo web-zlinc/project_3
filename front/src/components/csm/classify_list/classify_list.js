@@ -16,8 +16,7 @@ class Classify_list extends React.Component{
             var phone="";
         }
         this.props.getData("classify_list.php",{name:this.props.params.name,phone:phone});
-    }  
-     
+    }   
     change(event){
         var nav=document.getElementsByClassName('data_nav')[0];
         var spans=nav.getElementsByTagName('span');
@@ -31,20 +30,12 @@ class Classify_list extends React.Component{
 
          var type=currentSpan.innerText;
          if(type=="全部"){
-  
         var type=currentSpan.innerText;
-        this.props.getData("allShow.php",{type:type}); 
-
-        
-        if(type=="全部"){
-
             this.props.getData("classify_list.php");      
         }
         else{
             this.props.getData("classify_list.php",{name:type});
-         }
-        }
-             
+         }            
 
     }
     // 价格排序
@@ -56,17 +47,18 @@ class Classify_list extends React.Component{
       }   
        var currentSpan=event.target;
        var span=currentSpan.innerText;
-       var arr=this.props.dataset;
+       var arr=this.props.dataset.data1;
        currentSpan.style.color="#75A739";
        if(span=="综合"){
-          this.props.dataset.sort(this.compare("id"));
+          arr.sort(this.compare("id"));
        }
-       if(span=="销量"){ 
-        this.props.dataset.sort(this.compare("sale"));
+       if(span=="销量"){
+        arr.sort(this.compare("sale"));
+        
        }    
        if(currentSpan.className=="price"){
         currentSpan.nextSibling.firstChild.style.color="#75A739";
-        this.props.dataset.sort(this.compare("price"));
+        arr.sort(this.compare("price"));
        }
              
     }
