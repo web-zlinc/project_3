@@ -11,6 +11,7 @@ import MiddleAdv from './middleAdv/middleAdv'
 import HotSale from './hotSale/hotSale'
 import RecommendFruit from './recommend/recommend'
 import TopMenu from './topMenu/topMenu'
+import Unlimited from './Unlimited/unlimited'
 import WechatGift from './wechatGift/wcgift'
 import CommonFooter from '../commonComponent/commonFoot'
 
@@ -73,7 +74,7 @@ class HomeComponent extends React.Component {
                         <CommonFooter />
                     </TabPane>
                     <TabPane tab="限时特惠" key="2">
-                        
+                        <Unlimited />
                     </TabPane>
                     <TabPane tab="点击就送" key="3">
                         <WechatGift />

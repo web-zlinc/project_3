@@ -149,7 +149,7 @@ img {
     height: 68px ;
     overflow: hidden;
     background-color: #fff;
-    // padding-bottom: 100px;
+    // padding-bottom: .16rem;
     position: relative;
     h2 {
         font-size: .17rem;
@@ -562,4 +562,35 @@ img {
 }
 .ant-tabs-nav {
     color: #58bc58;
+}
+
+// for limitedSale
+
+#limitedFoot {
+    padding-left: .15rem;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    font-family: '黑体';
+    // padding-top: 2rem;
+    font-size: .15rem;
+    padding-bottom: .14rem;
+    ul {
+        bottom: 0;
+        // position: fixed;
+        
+        margin-left: .14rem;
+    }
+}
+
+.limitedLoading {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    margin: 20px 0;
+    p {
+        color: #1890ff; 
+    }
 }
