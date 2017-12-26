@@ -3,7 +3,7 @@
  * @Author: sherah
  * @Date:   2017-12-25 10:08:10
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-12-25 20:59:09
+ * @Last Modified time: 2017-12-26 09:45:02
  */
     header('Access-Control-Allow-Origin:*');
     header('Access-Control-Allow-Methods:POST,GET,OPTIONS'); 

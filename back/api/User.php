@@ -89,7 +89,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'updateOk';
         }
     }else if($status == 'delete'){
         $sql = 'delete from user where id='.$id;
@@ -97,7 +97,7 @@
         $result = excute_oop($sql);
         
         if($result == '1'){
-            echo 'Ok';
+            echo 'deleteOk';
         }
     }else if($status == 'insert'){
         $sql = 'insert into user(`uid`,`phone`,`password`,`gender`,`brithday`,`portrait`,`address`)';
@@ -107,7 +107,7 @@
         $result = excute_oop($sql);
 
         if($result == '1'){
-            echo 'Ok';
+            echo 'insertOk';
         }
 
     }

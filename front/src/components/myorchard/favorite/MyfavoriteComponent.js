@@ -18,19 +18,19 @@ class Myfavorite extends React.Component{
         }
         
     }
+    
     back(){
         this.props.router.goBack()
     }
     render(){
         return (
                 <div id="m_container">
-                    
                     <div className="mc_top">
                         <Icon type="left" className="fl" onClick={this.back.bind(this)} />
                         <span>我的收藏</span>
                     </div>
                     <div className="mc_main">
-                        <Conent data={this.props.dataset}/>
+                        <Conent datas={this.props.dataset}/>
                     </div>
                
                 </div>

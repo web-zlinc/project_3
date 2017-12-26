@@ -8,6 +8,9 @@ import './main.scss'; //引入主模板样式
 
 class MainComponent extends React.Component{
     componentWillMount(){
+        if(!window.localStorage.getItem('userInfo')){
+            return false;
+        }
         this.setState({
             userInfo:JSON.parse(window.localStorage.getItem('userInfo')),
             visible: false,
@@ -57,9 +60,6 @@ class MainComponent extends React.Component{
         this.setState({
             visible: true,
         })
-        // window.localStorage.removeItem(this.state.userInfo);
-        // window.localStorage.removeItem('userInfo');        
-        // hashHistory.push('/login');
     }
     handleOk = (e) => {
         console.log(e);
