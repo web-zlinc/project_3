@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import * as classifyActions from '../../datagrid/datagridAction.js'
 import AllShowComponent from '../allShow/allShowComponent.js'
+
+import Footer from '../../commonComponent/commonFoot'
 // 数据库数据不足，自力更生
 var arr=["果园优选","新鲜水果","水产海鲜","肉禽蛋类","乳品速食","时令鲜蔬","烘焙料理","粮油干货","酒水饮料","礼盒券卡","果园周边"];
 class ClassifyComponent extends React.Component{
@@ -50,7 +52,7 @@ class ClassifyComponent extends React.Component{
                         <AllShowComponent data={this.props.dataset} type={this.state.type}></AllShowComponent>
                         </div>
                     </div>
-                    
+                    <Footer/>
                 </div>
             )
     }

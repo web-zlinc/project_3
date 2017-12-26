@@ -59,9 +59,6 @@ class PersonalComponent extends React.Component{
     }
 
     render(){
-        if(this.props.dataset!=undefined){
-            alert('修改成功！');
-        }
         return (
             <div id="p_container">
                 <div className="p_head">

@@ -34,18 +34,16 @@ class CartOrderComponent extends Component{
         this.setState({totalPri:this.state.order.totalPri*1+this.refs.yunfei.innerHTML*1})
 
     }
-    goback(e){
-        history.back()
-        // hashHistory.push('/cart');
+    back(){
+        this.props.router.goBack();
     }
     render(){
-        // var now = new Date().toLocaleString()
         return (
             <div className="container">
                 <header id="y_cart_header">
                     <ul>
                         <li>
-                            <Icon type="left"  onClick = {this.goback}/>
+                            <Icon type="left"  onClick = {this.back.bind(this)}/>
                         </li>
                         <li>
                             <span>确认订单</span>
