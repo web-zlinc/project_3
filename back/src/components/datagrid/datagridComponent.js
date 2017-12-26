@@ -25,6 +25,8 @@ class DataGridComponent extends React.Component{
             type:userInfo.type,
             page:1,
         })
+        document.addEventListener('keydown' ,this.sendCondition);
+        document.addEventListener('keydown' ,this.getInputValue);
     }
     componentDidMount(){
         var params = {
@@ -92,12 +94,14 @@ class DataGridComponent extends React.Component{
         this.setState({optType:value});
     }
     //获取输入框的内容的函数
-    getInputValue(e){
+    getInputValue=(e)=>{
         this.setState({optContent:e.target.value});
-        e.target.value = '';
+        if(e.keyCode == '13'){
+            e.target.blur();
+        }
     }
     //发起查询的条件
-    sendCondition(){
+    sendCondition=(e)=>{
         // if(!this.state.optContent || !this.state.optType){
         //     notification.error({
         //         message: '错误信息',
@@ -105,17 +109,19 @@ class DataGridComponent extends React.Component{
         //     });
         //     return false;
         // }
-        var params = {
-            status:this.state.status,
-            page:1,
-        };
-        if(this.state.optContent && this.state.optType){
-            params[this.state.optType] = this.state.optContent;
+        if(e.keyCode == '13'){
+            var params = {
+                status:this.state.status,
+                page:1,
+            };
+            if(this.state.optContent && this.state.optType){
+                params[this.state.optType] = this.state.optContent;
+            }
+            this.props.getData(
+                this.state.url,
+                params
+            )
         }
-        this.props.getData(
-            this.state.url,
-            params
-        )
     }
     handle(e){
         if(e.target.className == 'ant-btn show ant-btn-primary'){
@@ -228,8 +234,8 @@ class DataGridComponent extends React.Component{
                 <Select onSelect={this.getSelectValue.bind(this)}>
                     {this.createSelect()}
                 </Select>
-                <Input type="text" onBlur={this.getInputValue.bind(this)} className="SearchIpt" />
-                <Button type="primary" shape="circle" icon="search" onClick={this.sendCondition.bind(this)} ></Button>
+                <Input type="text" onChange={this.getInputValue} className="SearchIpt" />
+                <Button type="primary" shape="circle" icon="search" onClick={this.sendCondition} ></Button>
                 <Button disabled={this.state.type == '1' ? '' : 'true' } type="primary" shape="circle" icon="plus-circle-o" onClick={this.bounceModal.bind(this)}  ></Button>
                 <table className="tabBox" >
                     <thead className="tabHead" >
@@ -331,9 +337,6 @@ class DataGridComponent extends React.Component{
                 params
             );
         }
-    }
-    componentWillUnmount(){
-       console.log(this.props);
     }
 }
 

@@ -1,8 +1,13 @@
+$color:#75A739;
 #classify_container{
     height:100%;
     display:flex;
     flex-direction:column;
     .classify_top{
+        text-align:center;
+         font-size:0.266667rem; 
+                line-height: 0.693333rem;
+         color:$color;
         top:0.0rem;
         height:0.6rem;
         border-bottom:0.013333rem solid #D8D8D8;

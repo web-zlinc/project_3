@@ -13,7 +13,7 @@ import myorder from '../components/myorder/myorderReducer';
 import save from '../components/personal/personalReducer';
 import favorite from '../components/myorchard/favorite/favoriteReducer';
 import searchRecommend from '../components/home/recommend/recommendReducer';
-
+import details from '../components/csm/commonDetails/detailsReducer.js'
 
 export default combineReducers({
     login,
@@ -27,5 +27,6 @@ export default combineReducers({
     cartOrder,
     getOrder,
     save,
+    details
 })
 

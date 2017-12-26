@@ -94,12 +94,12 @@ class Classify_list extends React.Component{
     render(){
       if(!this.props.dataset){
         return null
-      }console.log(this.props.dataset.data2)
+      }
         return (
             <div id="datalist">
                 <div className="data_top">
                     <div className="data_header">
-                            <p><Icon type="left" onClick ={this.back.bind(this)}/></p>
+                            <p><Link to="/classify"><Icon type="left"/></Link></p>
                             <p>{this.props.params.type}</p>
                             <p><Icon type="search" /></p>
                             
@@ -126,6 +126,7 @@ class Classify_list extends React.Component{
                     <Link to="/cart">
                         <Icon type="shopping-cart" className="cart"/>
                     </Link>
+                    
                 </div>
                
             </div>
