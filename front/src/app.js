@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import store from './redux/configStore.js'
 
 // 引入蚂蚁金服
-import { DatePicker } from 'antd';
+import {DatePicker} from 'antd';
 import 'antd/dist/antd.css';
 import './basescss/base.scss'
 import Rem from './getRem/getRem.js'

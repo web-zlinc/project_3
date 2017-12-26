@@ -13,15 +13,13 @@ export function ajaxMiddleware(api){
                 data:params
             })
             if(url){
-                return new Promise((resolve, reject) => {
-                    http[method](url, params).then(res => {
-                        api.dispatch({
-                            type: 'Requested',
-                            response: res
-                        })
-                        resolve(res);
+                http[method](url, params).then(res => {
+                    api.dispatch({
+                        type: 'Requested',
+                        response: res
                     })
                 })
+                
             }
         }
     }
