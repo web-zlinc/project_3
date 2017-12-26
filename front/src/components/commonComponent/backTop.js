@@ -8,6 +8,7 @@ class BackTop extends React.Component {
     HbackTop(){
         // console.log($)
         $('html').stop().animate({ scrollTop: 0 }, 400);
+        $('body').stop().animate({ scrollTop: 0 }, 400);
     }
     componentDidMount(){
         window.addEventListener('scroll',() => {

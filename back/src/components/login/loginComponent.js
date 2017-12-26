@@ -80,7 +80,7 @@ class LoginComponent extends React.Component{
             <div id="login-box">
                 <Spinner show={this.props.loading} ></Spinner>
                 <div className="login-main" >
-                    <h3 className="login-title">FruitExpress后台登录系统</h3>
+                    <h3 className="login-title">天天果园后台登录系统</h3>
                     <div id="login-from" >
                         <div className="form-group">
                             <label className="from-label" >用户名：</label>

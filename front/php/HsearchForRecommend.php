@@ -3,7 +3,7 @@
  * @Author: leon
  * @Date:   2017-12-22 14:10:27
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-12-22 16:08:21
+ * @Last Modified time: 2017-12-26 16:03:20
  */
 
   // 跨域请求处理  
@@ -13,7 +13,7 @@
 
     include 'DBHelper.php';
 
-    $sql = "select name,price,details,images,standard from goods"; 
+    $sql = "select name,price,details,images,standard,gid from goods"; 
    
     $result = query($sql);
 

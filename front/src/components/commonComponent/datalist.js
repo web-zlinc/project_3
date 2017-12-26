@@ -24,14 +24,15 @@ class Datalist extends React.Component{
         if(tag=="i" && window.localStorage.data){     
             var gid=event.target.parentNode.className;        
             var arr=JSON.parse(window.localStorage.data);
-            var phone=arr[0].phone;
+            if(arr.length>0){
+                var phone=arr[0].phone;
+            }
+            
             this.setState({datas:this.props.datas});
              this.setState({show:true});
              this.props.addCart("datalist.php",{gid:gid,phone:phone});
                  this.setState({show:false});
-                 if(this.props.cart=="true"){
-                    alert('保存成功！');
-                 }         
+                    alert('添加成功！');                  
         }
         else if(!window.localStorage.data){
             // console.log(window.localStorage.data)

@@ -4,7 +4,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-var baseUrl = 'http://10.3.135.225:168/';
+var baseUrl = 'http://10.3.135.250:168/';
 //url:参数类似(Query.php)
 var fliterUrl = function(url){
     if(url.startsWith('http')){

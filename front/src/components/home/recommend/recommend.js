@@ -42,7 +42,7 @@ class RecommendFruit extends React.Component {
                             (function(self){
                                 if(self.props.red){
                                     return self.props.red.map(function(item,idx){
-                                        return <a className="item" key={idx}>
+                                        return <a className="item" href={'#/classify_list/details/' + item.gid }  key={idx}>
                                             <div className="img-box">
                                                 <img src={item.images} />
                                             </div>
@@ -55,7 +55,7 @@ class RecommendFruit extends React.Component {
                                                         <em> / {item.standard}</em>
                                                     </span>
                                                     <span onClick={self.judgeLogin.bind(self)}>
-                                                        <Icon type="plus-circle-o">
+                                                        <Icon>
 
                                                         </Icon>
                                                     </span>

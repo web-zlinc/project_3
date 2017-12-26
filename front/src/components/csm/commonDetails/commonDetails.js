@@ -22,24 +22,29 @@ class Details extends React.Component{
     }
     addcart(event){
         var gid=this.props.params.gid;
-        this.setState({show:true});console.log(this)
+        this.setState({show:true});
         if(window.localStorage.data){
            var arr=JSON.parse(window.localStorage.data);
+           if(arr.length>0){
             var phone=arr[0].phone; 
+           }
+            
           this.setState({show:true});
-             this.props.addCart("datalist.php",{gid:gid,phone:phone});
+            this.props.addCart("datalist.php",{gid:gid,phone:phone});
                  this.setState({show:false});
-                 if(this.props.cart=="true"){
-                    alert('保存成功！');
-                 } 
+                    alert('添加成功！');                  
         }
+        else if(!window.localStorage.data){
+            // console.log(window.localStorage.data)
+            alert('请先登录！');
+        }     
         event.preventDefault();
     }
     back(){
         this.props.router.goBack();
     }
     render(){
-    if(!this.state.data){
+    if(!this.props.data){
         return null
     }
     return (
@@ -50,8 +55,8 @@ class Details extends React.Component{
             <p><Icon type="ellipsis" /></p>                   
         </div> 
         <div className="center">
-            <Content dataset={this.state.data.data1}></Content>
-            <Evaluate dataset={this.state.data.data2}></Evaluate>
+            <Content dataset={this.props.data.data1}></Content>
+            <Evaluate dataset={this.props.data.data2}></Evaluate>
         </div>
         
         <div className="cart">
@@ -59,7 +64,7 @@ class Details extends React.Component{
                     <Link to="/cart">
                         <Icon type="shopping-cart" className="cart"/>
                     </Link>
-                    <span className="totalQty">{this.state.data.data2[0].sum}</span>
+                    <span></span>
                 </div>            
                     <div className="addCart" onClick={this.addcart.bind(this)}> 
                     <span>明日达</span>

@@ -22,7 +22,10 @@ class OdmainComponent extends React.Component{
         if(key=='0'){
             if(window.localStorage.data){
                 var arr=JSON.parse(window.localStorage.data);
-                this.props.getData('order.php',{uid:arr[0].uid})
+                if(arr.length>0){
+                    this.props.getData('order.php',{uid:arr[0].uid})
+                }
+                
             }
         }
 
