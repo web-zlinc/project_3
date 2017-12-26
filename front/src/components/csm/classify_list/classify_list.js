@@ -101,7 +101,7 @@ class Classify_list extends React.Component{
                     <div className="data_header">
                             <p><Icon type="left" onClick ={this.back.bind(this)}/></p>
                             <p>{this.props.params.type}</p>
-                            <p><Icon type="search" /></p>
+                            <p><Link to="/search"><Icon type="search" /></Link></p>
                             
                     </div>
                     <div className="data_nav">
