@@ -31,7 +31,7 @@ class LoginComponent extends React.Component{
                 var password=this.refs.pwd.input.value;
                if(phone||password){
                     if(nextProps.dataset.length>0){
-                        hashHistory.push('/home/success');
+                        hashHistory.push('//success');
                     }else if(nextProps.dataset.length==0){
                         alert('用户名和密码不正确！');
                     }

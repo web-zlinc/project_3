@@ -59,8 +59,8 @@ class PersonalComponent extends React.Component{
     }
 
     render(){
-        if(this.props.dataset=='true'){
-            alert('修改成功！')
+        if(this.props.dataset!=undefined){
+            alert('修改成功！');
         }
         return (
             <div id="p_container">

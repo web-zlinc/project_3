@@ -92,7 +92,7 @@ class Classify_list extends React.Component{
         this.props.router.goBack(-1);
     }
     render(){
-      if(!this.props.dataset.data1){
+      if(!this.props.dataset){
         return null
       }console.log(this.props.dataset.data2)
         return (
