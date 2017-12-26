@@ -13,7 +13,7 @@ export default function dataGridReducer(state = {}, action){
             newState.respones = action.respones.data1;
             newState.total = action.respones.data2[0].rowsCount;
             newState.currentPage = action.page;
-            newState.loading = action.loading;    
+            newState.loading = action.loading;
             break;
         case 'dataGridRequestedError':
             newState.status = -1;
