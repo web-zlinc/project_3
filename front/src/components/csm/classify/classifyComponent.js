@@ -35,7 +35,7 @@ class ClassifyComponent extends React.Component{
     render(){
         return (
                 <div id="classify_container">
-                    <div className="classify_top"></div>
+                    <div className="classify_top">商品分类</div>
                     <div className="classify_content">
                         <div className="left">
                             <ul >
