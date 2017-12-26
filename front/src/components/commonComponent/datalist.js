@@ -1,9 +1,3 @@
-/* 
-* @Author: sherah
-* @Date:   2017-12-22 17:15:14
-* @Last Modified by:   Marte
-* @Last Modified time: 2017-12-26 11:59:52
-*/
 import React from 'react'
 import {Icon} from 'antd';
 import {Link} from 'react-router'
@@ -46,7 +40,6 @@ class Datalist extends React.Component{
         event.preventDefault(); 
     }
         render(){
-            // console.log(this.state.datas)
         if(!this.props.datas){
             return null
         }

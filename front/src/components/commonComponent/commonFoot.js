@@ -10,7 +10,7 @@ class Main extends Component {
         this.state = {
             data: [{
                 title: "",
-                urlTo: "/home",
+                urlTo: "/",
                 icon: "home",
                 now: "/home"
             }, {

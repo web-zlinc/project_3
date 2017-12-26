@@ -19,7 +19,7 @@ class OdmainComponent extends React.Component{
             var arr=JSON.parse(window.localStorage.data);
             this.props.getData('order.php',{uid:arr[0].uid,status:key});
         }
-        if(key=='全部'){
+        if(key=='0'){
             if(window.localStorage.data){
                 var arr=JSON.parse(window.localStorage.data);
                 this.props.getData('order.php',{uid:arr[0].uid})
@@ -35,7 +35,7 @@ class OdmainComponent extends React.Component{
             return <li key={idx}>
                     <p className="one">
                         <span>{item.orderNo}</span>
-                        <span>{item.status}</span>
+                        <span>{item.stu}</span>
                     </p>
                     <div className="sdel">
                         <img src={item.images}/>
@@ -76,8 +76,8 @@ class OdmainComponent extends React.Component{
 
     render(){
         return(
-            <Tabs defaultActiveKey="1" onChange={this.callback.bind(this)}>
-                <TabPane tab="全部" key="全部">
+            <Tabs defaultActiveKey="0" onChange={this.callback.bind(this)}>
+                <TabPane tab="全部" key="0">
                     <ul>
                         {  
                             this.html()
@@ -85,22 +85,14 @@ class OdmainComponent extends React.Component{
                         
                     </ul>
                 </TabPane>
-                <TabPane tab="待付款" key="待付款">
+                <TabPane tab="待付款" key="1">
                     <ul>
                         {  
                             this.html()
                         }
                     </ul>
                 </TabPane>
-                <TabPane tab="待发货" key="待发货">
-                    <ul>
-                        {  
-                            this.html()
-                        }
-                    </ul>
-                    
-                </TabPane>
-                <TabPane tab="待收货" key="待收货">
+                <TabPane tab="待发货" key="2">
                     <ul>
                         {  
                             this.html()
@@ -108,7 +100,15 @@ class OdmainComponent extends React.Component{
                     </ul>
                     
                 </TabPane>
-                <TabPane tab="待评价" key="待评价">
+                <TabPane tab="待收货" key="3">
+                    <ul>
+                        {  
+                            this.html()
+                        }
+                    </ul>
+                    
+                </TabPane>
+                <TabPane tab="待评价" key="4">
                     <ul>
                         {  
                             this.html()

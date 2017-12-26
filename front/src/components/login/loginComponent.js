@@ -31,7 +31,7 @@ class LoginComponent extends React.Component{
                 var password=this.refs.pwd.input.value;
                if(phone||password){
                     if(nextProps.dataset.length>0){
-                        hashHistory.push('/home/success');
+                        hashHistory.push('//success');
                     }else if(nextProps.dataset.length==0){
                         alert('用户名和密码不正确！');
                     }
@@ -91,7 +91,10 @@ class LoginComponent extends React.Component{
                         <span>手机快捷登录</span>
                     </p>
                 </div>
-                <form className="l_main">
+                <div className="l_banner">
+                    <img src="./src/assets/images/logo.jpg"/>
+                </div>
+                <div className="l_main">
                     <p>
                         <Icon type="mobile" />
                         <Input placeholder="手机号" className="phone" ref="phone" onBlur={this.telCheck}/>
@@ -116,7 +119,7 @@ class LoginComponent extends React.Component{
                         <span className="fl">账号密码登录</span>
                         <span className="fr">未收到验证码?</span>
                     </p>
-                </form>
+                </div>
             </div>
         )
     }

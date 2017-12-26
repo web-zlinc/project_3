@@ -6,15 +6,16 @@ import '../../assets/css/backTop.css'
 
 class BackTop extends React.Component {
     HbackTop(){
-        $('body').stop().animate({ scrollTop: 0 }, 400);
+        console.log($)
+        $('html').stop().animate({ scrollTop: 0 }, 400);
     }
     componentDidMount(){
         window.addEventListener('scroll',() => {
             var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
             if(scrollTop < 477){
-                $('#H_ToTop').fadeOut();
+                $('#H_ToTop').stop().fadeOut();
             }else if (scrollTop > 477){
-                $('#H_ToTop').fadeIn();
+                $('#H_ToTop').stop().fadeIn();
             }
         })
     }
@@ -23,7 +24,7 @@ class BackTop extends React.Component {
             <div>
                 <div id="H_ToTop"  onClick={this.HbackTop.bind(this)}>
                     <span>
-                        <Icon type="up" />      
+                        <Icon type="to-top" />      
                     </span>
                 </div>
             </div>

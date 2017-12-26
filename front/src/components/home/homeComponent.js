@@ -29,7 +29,7 @@ class HomeComponent extends React.Component {
             _text: 123,
             _getData: [],
             _currentUrl: '',
-            _path: 'http://localhost:5555/php/HsearchForRecommend.php'
+            _path: 'http://localhost:888/php/HsearchForRecommend.php'
         };
         // console.log(this.state._loginState)
         this.AxiosGet=(url)=>{

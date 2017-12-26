@@ -1,4 +1,6 @@
 import React from 'react';
+// import $ from 'jquery';
+
 import { Link } from 'react-router';
 import { Icon, Modal } from 'antd';
 
@@ -17,9 +19,13 @@ class HotSale extends React.Component {
         // console.log(loginState)
         if(loginState != undefined && loginState != '[]'){
             console.log('添加成功')
+            // console.log(this);
         }else {
             this.setState({dialogState: 'block'})
             console.log('您未登录')
+            // console.log(this.refs.loginS)
+
+            // $(this.refs.loginS).addClass('animated hinge');
         }
     };
     closeDiv(){
@@ -47,7 +53,7 @@ class HotSale extends React.Component {
                                         ￥29.8 /
                                         <em>1kg</em>
                                     </span>
-                                    <span onClick={this.judgeLogin.bind(this)}>
+                                    <span ref="loginS" onClick={this.judgeLogin.bind(this)}>
                                         <Icon type="plus-circle-o">
                                             
                                         </Icon>
