@@ -21,7 +21,7 @@ class BrandBannerAdsComponent extends React.Component {
             if ($('.rollNews ul').css('top') === '-95px'){
                 $('.rollNews ul').stop().animate({ top: -190 },function(){
 
-                    $('.rollNews ul').css('top','0')
+                    $('.rollNews ul').stop().css('top','0')
                 });
             }
         }, 2000);
@@ -50,6 +50,11 @@ class BrandBannerAdsComponent extends React.Component {
                         <img src=".\src\assets\images\adv\caa96ee4453a25ed3e58f4a8f73e736d.jpg" />
                     </a>
                 </div>
+                <div className="section" style={{paddingBottom: '.14rem'}}>
+                    <a href="#/merry">
+                        <img src=".\src\assets\images\bigImgBanner\bigGIF.gif" />
+                    </a>
+                </div>
                 <div className="rollNews">
                     <h2>天天快报</h2>
                     <ul>
@@ -64,6 +69,7 @@ class BrandBannerAdsComponent extends React.Component {
                         }
                     </ul>
                 </div>
+
             </div>
         )
     }

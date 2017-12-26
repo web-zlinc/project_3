@@ -10,7 +10,9 @@ import {DatePicker} from 'antd';
 import 'antd/dist/antd.css';
 import './basescss/base.scss'
 import Rem from './getRem/getRem.js'
+
 import HomeComponent from './components/home/homeComponent'
+import MerryComponent from './components/home/marryCms/merry'
 import Cart from './components/shoppingCart/shoppingCartComponent'
 import CartOrder from "./components/cartOrder/cartOrderComponent.js";
 import Pay from "./components/pay/payComponent.js";
@@ -50,8 +52,9 @@ ReactDOM.render(
             <Route path="/classify/classify_list(/:name)(/:type)" component={Classify_list}/>
 
 
-    
+
             <Route path="/(/:status)" component={HomeComponent} />
+            <Route path="/merry" component={MerryComponent} />
             <Route path="/myorchard/favorite" component={Favorite}/>
             <Route path="/classify_list/details(/:gid)" component={Details}/>
         </Router>

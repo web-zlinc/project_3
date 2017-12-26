@@ -2,7 +2,7 @@
 * @Author: sherah
 * @Date:   2017-12-22 17:15:14
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-12-25 21:06:55
+* @Last Modified time: 2017-12-25 21:40:23
 */
 import React from 'react'
 import {Icon} from 'antd';
@@ -30,7 +30,7 @@ class Datalist extends React.Component{
         }     
         event.preventDefault(); 
     }
-        render(){
+        render(){console.log(this);
         if(!this.props.datas){
             return null
         }
