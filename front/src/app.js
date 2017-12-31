@@ -18,10 +18,12 @@ import CartOrder from "./components/cartOrder/cartOrderComponent.js";
 import Pay from "./components/pay/payComponent.js";
 import ClassifyComponent from './components/csm/classify/classifyComponent.js'
 import AllShow from './components/csm/allShow/allShowComponent.js'
-import Login from './components/login/loginComponent'
+
 
 import Myorchard from './components/myorchard/myorchardComponent';
-import Personal from './components/personal/personalComponent';
+import Personal from './components/myorchard/personal/personalComponent';
+import Myorder from './components/myorchard/myorder/myorderComponent'
+import Login from './components/myorchard/login/loginComponent'
 
 import Main from "./components/commonComponent/commonFoot";
 import SearchComponent from "./components/commonComponent/commonSearch";
@@ -31,8 +33,8 @@ import Classify_list from './components/csm/classify_list/classify_list.js'
 import Details from './components/csm/commonDetails/commonDetails.js'
 
 
-import Myorder from './components/myorder/myorderComponent'
-import Favorite from './components/myorchard/favorite/MyfavoriteComponent'
+
+import Favorite from './components/favorite/MyfavoriteComponent'
 
 Rem.rem();
 ReactDOM.render(

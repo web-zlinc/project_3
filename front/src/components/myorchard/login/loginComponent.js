@@ -1,20 +1,21 @@
 import React from 'react';
-import { Form, Icon, Input, Button ,Alert} from 'antd';
+import { Form, Icon, Input, Button ,Alert,Modal} from 'antd';
 import { hashHistory, Link } from 'react-router';
 import {connect} from 'react-redux';
 import * as LoginAction from './loginAction';
-import Spinner from '../spinner/spinnerComponent'
+import Spinner from '../../spinner/spinnerComponent'
 import './login.scss'
 
 class LoginComponent extends React.Component{
     constructor(props){  
         super(props);  
         this.state = {  
-            show:false  
+            show:false,
         }  
   
     }
     
+
     back(){
         this.props.router.goBack()
     }
@@ -31,7 +32,7 @@ class LoginComponent extends React.Component{
                 var password=this.refs.pwd.input.value;
                if(phone||password){
                     if(nextProps.dataset.length>0){
-                        hashHistory.push('//success');
+                        hashHistory.push('/');
                     }else if(nextProps.dataset.length==0){
                         alert('用户名和密码不正确！');
                     }

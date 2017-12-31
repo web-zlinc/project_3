@@ -14,16 +14,16 @@ class OdmainComponent extends React.Component{
   
     }
     callback(key) {
-        if(window.localStorage.data){
-            var arr=JSON.parse(window.localStorage.data);
+        if(localStorage.getItem('data')){
+            var arr=JSON.parse(localStorage.getItem('data'));
             if(arr.length>0){
                 this.props.getData('order.php',{uid:arr[0].uid,status:key});
             }
             
         }
         if(key=='0'){
-            if(window.localStorage.data){
-                var arr=JSON.parse(window.localStorage.data);
+            if(localStorage.getItem('data')){
+                var arr=JSON.parse(localStorage.getItem('data'));
                 if(arr.length>0){
                     this.props.getData('order.php',{uid:arr[0].uid})
                 }
@@ -68,8 +68,8 @@ class OdmainComponent extends React.Component{
     }
 
     componentDidMount(){
-        if(window.localStorage.data){
-                var arr=JSON.parse(window.localStorage.data);
+        if(localStorage.getItem('data')){
+                var arr=JSON.parse(localStorage.getItem('data'));
                 if(arr.length>0){
                     this.props.getData('order.php',{uid:arr[0].uid})
                 }
@@ -130,6 +130,7 @@ class OdmainComponent extends React.Component{
 
 
 const mapToState = function(state){
+    console.log(state);
     return {
         type:state.login.status,
         dataset: state.login.response
