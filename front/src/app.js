@@ -34,7 +34,7 @@ import Details from './components/csm/commonDetails/commonDetails.js'
 
 
 
-import Favorite from './components/favorite/MyfavoriteComponent'
+import Favorite from './components/myorchard/favorite/MyfavoriteComponent'
 
 Rem.rem();
 ReactDOM.render(

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Icon, Input, Button,Modal,DatePicker,Select } from 'antd';
+import { Form, Icon, Input, Button,Modal,DatePicker,Select} from 'antd';
 import {connect} from 'react-redux';
 import {hashHistory,Link} from 'react-router'
 
@@ -14,22 +14,38 @@ class PersonalComponent extends React.Component{
         this.state = {
             img:1,
             data:[],
-            visible: false
+            visible1: false,
+            visible2: false,
+            visible3: false
         }  
     }
     showModal(){
         this.setState({
-          visible: true,
+          visible1: true,
+        });
+    }
+    showModal2(){
+        this.setState({
+          visible2: true,
+        });
+    }
+    showModal3(){
+        this.setState({
+          visible3: true,
         });
     }
     handleOk(e){
         this.setState({
-          visible: false,
+          visible1: false,
+          visible2: false,
+          visible3: false
         });
     }
     handleCancel(e){
         this.setState({
-          visible: false,
+          visible1: false,
+          visible2: false,
+          visible3: false
         });
     }
 
@@ -63,7 +79,10 @@ class PersonalComponent extends React.Component{
 
 
     }   
-    
+    gofavorite(){
+        hashHistory.push('/myorchard/favorite');
+    }
+
     exit(){
         alert('确认要要出吗?');
         localStorage.removeItem('data');
@@ -84,29 +103,25 @@ class PersonalComponent extends React.Component{
                     </div>
                     <div className="pmc">
                         <p>
-                            <label htmlFor="nick">呢称</label>
-                            <Input id="nick" ref="nick" placeholder={this.state.data[0].phone} onClick={this.showModal.bind(this)}/>
+                            <span>电话</span>
+                            <span className="sec" onClick={this.showModal.bind(this)}>{this.state.data[0].phone}</span>
                         </p>
                         <p>
-                            <label htmlFor="gender">性别</label>
-                            <Select defaultValue="保密" style={{ width:200}}>
-                              <Option value="男">男</Option>
-                              <Option value="女">女</Option>
-                              <Option value="保密">保密</Option>
-                            </Select>
-                        </p>
-                        <p>
+                            <span>性别</span>
+                            <span className="sec"  onClick={this.showModal2.bind(this)} >{this.state.data[0].gender}</span>
                             
-                            <label htmlFor="brithday">生日</label>
+                        </p>
+                        <p>
+                            <span>生日</span>
                             <DatePicker onChange={this.onChange.bind(this)} />
                         </p>
                         <p>
                             
-                            <label htmlFor="site">地址管理</label>
-                            <Input  ref="site" id="site" placeholder={this.state.data[0].address} onClick={this.showModal.bind(this)}/>
+                            <span >地址管理</span>
+                            <span className="sec" onClick={this.showModal3.bind(this)}>{this.state.data[0].address}</span>
                         </p>
                         <p>
-                            <span>我的收藏</span>
+                            <span onClick={this.gofavorite.bind(this)}>我的收藏</span>
                             <Icon type="right" />
                         </p>
                         <p>
@@ -117,14 +132,16 @@ class PersonalComponent extends React.Component{
                         </p>
                     </div>
                 </div>
-                <Modal
-                  title="请输入呢称"
-                  visible={this.state.visible}
-                  onOk={this.handleOk.bind(this)}
-                  onCancel={this.handleCancel.bind(this)}
-                >
-                  <p><Input/></p>
-                  
+                <Modal title="请输入呢称"  visible={this.state.visible1} onOk={this.handleOk.bind(this)} onCancel={this.handleCancel.bind(this)}>
+                  <p><Input ref="nick" placeholder={this.state.data[0].phone} /></p>
+                </Modal>
+                <Modal title="请选择"  visible={this.state.visible2} onOk={this.handleOk.bind(this)} onCancel={this.handleCancel.bind(this)}>
+                  <p>男</p>
+                  <p>女</p>
+                  <p>保密</p>
+                </Modal>
+                <Modal title="请输入地址"  visible={this.state.visible3} onOk={this.handleOk.bind(this)} onCancel={this.handleCancel.bind(this)}>
+                  <p><Input ref="nick" placeholder={this.state.data[0].address} /></p>
                 </Modal>
             </div>
             )

@@ -130,7 +130,6 @@ class OdmainComponent extends React.Component{
 
 
 const mapToState = function(state){
-    console.log(state);
     return {
         type:state.login.status,
         dataset: state.login.response

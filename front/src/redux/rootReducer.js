@@ -13,7 +13,7 @@ import myorder from '../components/myorchard/myorder/myorderReducer';
 
 
 import save from '../components/myorchard/personal/personalReducer';
-import favorite from '../components/favorite/favoriteReducer';
+import favorite from '../components/myorchard/favorite/favoriteReducer';
 import searchRecommend from '../components/home/recommend/recommendReducer';
 import details from '../components/csm/commonDetails/detailsReducer.js'
 

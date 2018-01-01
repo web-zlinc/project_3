@@ -49,12 +49,28 @@
                 padding:0 0.133333rem;
                 font-size:0.186667rem;
                 background:#fff;
-                input{
+                >span{
+                    width:2.666667rem;
                     height: 100%;
-                    border:none;
+                    line-height:90px;
+
                     font-size:0.186667rem;
+                }
+                .ant-calendar-picker{
+                    div{
+                        margin-top:20px;
+                        input{
+                            height: 60px;
+                            font-size:30px;
+                        }
+                        span{
+                            font-size:30px;
+                        }
+                        
+                    }
+                }
+                .sec{
                     text-align:right;
-                    width:2.666667rem
                 }
                 button{
                     height: 100%;

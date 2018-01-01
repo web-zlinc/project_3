@@ -7,7 +7,7 @@ import * as favoriteAction from './favoriteAction';
 
 
 import './Myfavorite.scss'
-import Conent from '../commonComponent/datalist'
+import Conent from '../../commonComponent/datalist'
 
 class Myfavorite extends React.Component{
     
