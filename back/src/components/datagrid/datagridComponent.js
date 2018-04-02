@@ -12,7 +12,6 @@ notification.config({
     placement: 'topLeft',
 });
 
-
 class DataGridComponent extends React.Component{
     componentWillMount(){
         var userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
